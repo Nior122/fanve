@@ -1,0 +1,546 @@
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import {
+  Star,
+  UploadCloud,
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+  Paperclip,
+  ArrowLeft,
+  Play,
+  Lock,
+  Loader2,
+  AlertCircle
+} from 'lucide-react';
+import { useMockData } from '../services/mockData';
+import { Lightbox } from './Lightbox';
+import { MediaType } from '../types';
+
+export const ProfilePage = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { profiles, user, toggleFavorite, isFavorite } = useMockData();
+  const [activeTab, setActiveTab] = useState<'all' | 'image' | 'video' | 'tags'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // Locking State
+  const [unlockedIds, setUnlockedIds] = useState<Set<string>>(new Set());
+  const [unlockingIds, setUnlockingIds] = useState<Set<string>>(new Set());
+  // Store remaining seconds for specific image IDs
+  const [unlockErrors, setUnlockErrors] = useState<Record<string, { spent: number; remaining: number }>>({});
+
+  // Reshuffle State
+  const [shuffleToken, setShuffleToken] = useState(0);
+
+  // Track unlock attempts
+  const unlockAttemptRef = useRef<{ id: string, time: number } | null>(null);
+
+  const ITEMS_PER_PAGE = 20;
+  const REQUIRED_WAIT_MS = 4000; // Reduced to 4 seconds
+
+  const profile = profiles.find(p => p.id === id);
+
+  if (!profile) return <Navigate to="/" />;
+
+  const isFav = isFavorite(profile.id);
+
+  // Mock dates for the specific aesthetic requirements
+  const getRandomDate = (index: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() - index);
+    return date.toISOString().split('T')[0];
+  };
+
+  const handleFavorite = () => {
+    if (!user) {
+      alert("Please sign in to add favorites");
+      return;
+    }
+    toggleFavorite(profile.id);
+  };
+
+  // Automatic Reshuffle Timer (Every 1 minute)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShuffleToken(prev => prev + 1);
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Focus listener to check duration
+  // Focus/Visibility listener to check duration
+  useEffect(() => {
+    const checkUnlock = () => {
+      const attempt = unlockAttemptRef.current;
+      if (!attempt) return;
+
+      const elapsed = Date.now() - attempt.time;
+      const { id } = attempt;
+
+      // Always stop loading spinner on return
+      setUnlockingIds(prev => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+
+      if (elapsed >= REQUIRED_WAIT_MS) {
+        // Success: Unlock
+        setUnlockedIds(prev => new Set(prev).add(id));
+        setUnlockErrors(prev => {
+          const next = { ...prev };
+          delete next[id];
+          return next;
+        });
+        // Only reset attempt on success
+        unlockAttemptRef.current = null;
+      } else {
+        // Failure: Calculate time spent and remaining
+        const secondsSpent = Math.floor(elapsed / 1000);
+        const secondsRemaining = Math.ceil((REQUIRED_WAIT_MS - elapsed) / 1000);
+        setUnlockErrors(prev => ({ ...prev, [id]: { spent: secondsSpent, remaining: secondsRemaining } }));
+        // Don't reset attempt - allow user to try again
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        checkUnlock();
+      }
+    };
+
+    // 1. Event Listeners
+    window.addEventListener('focus', checkUnlock);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // 2. Polling Backup (Every 500ms check if visible and waiting)
+    const interval = setInterval(() => {
+      if (document.visibilityState === 'visible' && unlockAttemptRef.current) {
+        checkUnlock();
+      }
+    }, 500);
+
+    return () => {
+      window.removeEventListener('focus', checkUnlock);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearInterval(interval);
+    };
+  }, []);
+
+  // Cleaned up timer logic: strict strict outside wait required. No auto-decrement.
+
+  const handleUnlock = (e: React.MouseEvent, imgId: string) => {
+    e.stopPropagation(); // Prevent lightbox opening
+
+    // Clear previous errors for this ID
+    setUnlockErrors(prev => {
+      const next = { ...prev };
+      delete next[imgId];
+      return next;
+    });
+
+    // Start unlock process
+    setUnlockingIds(prev => new Set(prev).add(imgId));
+    unlockAttemptRef.current = { id: imgId, time: Date.now() };
+
+    // Open the link
+    window.open("https://whatsappchatme.vercel.app/", "_blank");
+  };
+
+  // Memoized shuffled images - updates when shuffleToken changes (every min) or profile changes
+  const shuffledImages = useMemo(() => {
+    const shuffled = [...profile.images];
+    // Simple Fisher-Yates shuffle
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, [profile.images, shuffleToken]);
+
+  // Filtering Logic
+  const filteredMedia = useMemo(() => {
+    let media = shuffledImages;
+
+    // 1. Tab Filtering
+    if (activeTab === 'image') {
+      media = media.filter(m => m.mediaType === 'image');
+    } else if (activeTab === 'video') {
+      media = media.filter(m => m.mediaType === 'video');
+    }
+
+    // 2. Search Filtering
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      media = media.filter(m =>
+        (m.caption && m.caption.toLowerCase().includes(q))
+      );
+    }
+
+    return media;
+  }, [shuffledImages, activeTab, searchQuery]);
+
+  // Pagination Logic
+  const totalImages = filteredMedia.length;
+  const totalPages = Math.ceil(totalImages / ITEMS_PER_PAGE);
+
+  // Ensure current page is valid when tab changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeTab, searchQuery]);
+
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalImages);
+  const displayImages = filteredMedia.slice(startIndex, endIndex);
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      window.scrollTo({ top: 600, behavior: 'smooth' }); // Scroll past header
+    }
+  };
+
+  // Custom Pagination Button Component
+  const PageBtn = ({ children, active = false, disabled = false, onClick }: any) => (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`
+        min-w-[32px] h-8 px-3 flex items-center justify-center text-sm font-medium border
+        transition-colors duration-200
+        ${active
+          ? 'bg-[#007bff] border-[#007bff] text-white'
+          : 'bg-[#262626] border-[#333] text-gray-300 hover:bg-[#333] hover:text-white'
+        }
+        ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+      `}
+    >
+      {children}
+    </button>
+  );
+
+  const PaginationControls = () => (
+    <div className="flex gap-1">
+      <PageBtn
+        disabled={currentPage === 1}
+        onClick={() => goToPage(1)}
+      >
+        <ChevronsLeft size={16} />
+      </PageBtn>
+      <PageBtn
+        disabled={currentPage === 1}
+        onClick={() => goToPage(currentPage - 1)}
+      >
+        <ChevronLeft size={16} />
+      </PageBtn>
+
+      {/* Simple Page Indicator */}
+      <div className="flex items-center px-2 text-gray-400 text-sm font-mono">
+        Page {currentPage} of {totalPages}
+      </div>
+
+      <PageBtn
+        disabled={currentPage === totalPages || totalPages === 0}
+        onClick={() => goToPage(currentPage + 1)}
+      >
+        <ChevronRight size={16} />
+      </PageBtn>
+      <PageBtn
+        disabled={currentPage === totalPages || totalPages === 0}
+        onClick={() => goToPage(totalPages)}
+      >
+        <ChevronsRight size={16} />
+      </PageBtn>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-[#121212] text-gray-200 font-sans pb-20">
+
+      {/* 1. Header / Banner Section */}
+      <div className="relative w-full h-[250px] md:h-[350px] bg-[#1a1a1a] overflow-hidden">
+        {/* Banner Image */}
+        <div className="absolute inset-0">
+          <img
+            src={profile.heroUrl}
+            alt="Banner"
+            className="w-full h-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212]" />
+        </div>
+
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute top-4 left-4 z-10 flex items-center justify-center w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-sm transition-all border border-white/10"
+        >
+          <ArrowLeft size={20} />
+        </button>
+
+        {/* Search Button (Global) */}
+        <button
+          onClick={() => navigate('/search')}
+          className="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full backdrop-blur-sm transition-all border border-white/10"
+        >
+          <Search size={20} />
+        </button>
+      </div>
+
+      {/* Profile Header Content (Centered & Overlapping) */}
+      <div className="relative flex flex-col items-center -mt-20 px-4 mb-8">
+
+        {/* Avatar */}
+        <div className="relative mb-4">
+          <img
+            src={profile.avatarUrl}
+            alt={profile.name}
+            className="w-40 h-40 md:w-48 md:h-48 rounded-full border-[6px] border-[#121212] shadow-2xl object-cover bg-[#262626]"
+          />
+          {/* Online Indicator */}
+          <div className="absolute bottom-3 right-3 w-6 h-6 bg-green-500 border-4 border-[#121212] rounded-full"></div>
+        </div>
+
+        {/* Info */}
+        <div className="text-center space-y-2 mb-6 max-w-2xl">
+          <div className="flex items-center justify-center gap-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+              {profile.name}
+            </h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/800px-Twitter_Verified_Badge.svg.png" className="w-6 h-6" alt="Verified" />
+          </div>
+          <p className="text-gray-400 text-lg font-medium">{profile.handle}</p>
+          {profile.bio && (
+            <p className="text-gray-300 text-sm md:text-base leading-relaxed pt-2">
+              {profile.bio}
+            </p>
+          )}
+        </div>
+
+        {/* Actions */}
+        <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-4">
+          <button className="flex-1 bg-[#0091ea] hover:bg-[#0081d0] text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+            <UploadCloud size={20} />
+            <span>Subscribe</span>
+          </button>
+          <button
+            onClick={handleFavorite}
+            className={`p-3 rounded-full border transition-all ${isFav
+              ? 'bg-[#1a1a1a] border-yellow-500 text-yellow-500 shadow-[0_0_15px_rgba(234,179,8,0.3)]'
+              : 'bg-[#1a1a1a] border-gray-700 hover:border-gray-500 text-white'
+              }`}
+          >
+            <Star size={22} fill={isFav ? "currentColor" : "none"} />
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-2 md:px-4">
+
+        {/* 2. Navigation Tabs */}
+        <div className="flex border-b border-[#333] mb-4 overflow-x-auto no-scrollbar">
+          {[
+            { id: 'all', label: `${profile.images.length} Posts` },
+            { id: 'image', label: 'Photos' },
+            { id: 'video', label: 'Videos' },
+            { id: 'tags', label: 'Tags' }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`
+                px-6 py-4 text-lg font-medium border-b-2 transition-colors whitespace-nowrap
+                ${activeTab === tab.id
+                  ? 'border-[#007bff] text-[#007bff]'
+                  : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'
+                }
+              `}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* 3. Filter Search (Local) */}
+        <div className="mb-4">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Filter posts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-[#262626] border border-[#333] text-gray-200 p-3 pl-4 pr-12 rounded focus:outline-none focus:border-[#444] placeholder-gray-600"
+            />
+            <div className="absolute right-0 top-0 h-full px-4 flex items-center justify-center text-gray-500 pointer-events-none">
+              <Search size={20} />
+            </div>
+          </div>
+        </div>
+
+        {/* 4. Pagination Info (Top) */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-4 text-sm text-gray-400">
+          <div className="mb-2 md:mb-0">
+            {totalImages > 0
+              ? `Showing ${startIndex + 1} - ${endIndex} of ${totalImages} ${activeTab === 'video' ? 'videos' : 'items'}`
+              : 'No content found'
+            }
+          </div>
+
+          <PaginationControls />
+        </div>
+
+        {/* 5. Post Grid */}
+        {displayImages.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-1 md:gap-4">
+            {displayImages.map((img, idx) => {
+              const globalIndex = profile.images.indexOf(img); // Get true index for lightbox
+              const isVideo = img.mediaType === 'video';
+              // FORCE ALL LOCKED: Ignore img.isLocked, force true unless unlocked.
+              const isLocked = !unlockedIds.has(img.id);
+              const isUnlocking = unlockingIds.has(img.id);
+              const errorSeconds = unlockErrors[img.id];
+
+              return (
+                <div
+                  key={`${img.id}-${idx}`}
+                  onClick={() => !isLocked && setLightboxIndex(globalIndex)}
+                  className={`
+                    relative group aspect-square bg-[#1a1a1a] cursor-pointer overflow-hidden border border-[#262626] 
+                    ${isLocked ? 'cursor-default' : 'hover:border-[#444]'}
+                    transition-all
+                  `}
+                >
+                  {/* Media Content Container */}
+                  <div className={`w-full h-full relative transition-all duration-300 ${isLocked ? 'filter blur-md opacity-75 pointer-events-none' : ''}`}>
+                    {isVideo ? (
+                      <div className="w-full h-full relative flex items-center justify-center bg-black">
+                        <video src={img.url} className="w-full h-full object-cover opacity-80" muted />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/40">
+                            <Play fill="white" className="text-white ml-1" size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={img.thumbnailUrl}
+                        alt={img.caption || "Post"}
+                        className={`w-full h-full object-cover transition-transform duration-500 ${!isLocked && 'group-hover:scale-105'}`}
+                        loading="lazy"
+                      />
+                    )}
+                  </div>
+
+                  {/* Locked Overlay */}
+                  {isLocked && (
+                    <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/40 p-4">
+                      <div className="mb-3 bg-black/40 p-3 rounded-full border border-white/10 backdrop-blur-sm">
+                        <Lock size={32} className="text-white" />
+                      </div>
+
+                      <button
+                        onClick={(e) => handleUnlock(e, img.id)}
+                        disabled={isUnlocking}
+                        className={`
+                           px-4 py-2 rounded-full font-bold text-sm shadow-lg
+                           flex items-center gap-2 transition-all transform hover:scale-105
+                           ${isUnlocking
+                            ? 'bg-gray-600 text-gray-300 cursor-wait'
+                            : 'bg-green-500 hover:bg-green-600 text-white'
+                          }
+                         `}
+                      >
+                        {isUnlocking ? (
+                          <>
+                            <Loader2 size={16} className="animate-spin" />
+                            Verifying...
+                          </>
+                        ) : (
+                          "Free Unlock"
+                        )}
+                      </button>
+
+                      {/* Unlocking Status */}
+                      {isUnlocking && (
+                        <span className="text-xs text-green-400 mt-2 font-medium animate-pulse">
+                          Checking...
+                        </span>
+                      )}
+
+                      {/* Wait Countdown */}
+                      {errorSeconds !== undefined && (
+                        <div className="mt-2 flex flex-col gap-1 text-xs text-rose-400 font-bold bg-black/80 px-3 py-2 rounded-lg border border-rose-500/30 text-center max-w-[160px]">
+                          <div className="flex items-center gap-1 justify-center">
+                            <AlertCircle size={12} className="shrink-0" />
+                            <span>Time spent: {errorSeconds.spent}s</span>
+                          </div>
+                          <span className="text-[11px]">Need {errorSeconds.remaining}s more outside!</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Top Overlay: Caption (Only if unlocked) */}
+                  {!isLocked && (
+                    <div className="absolute top-0 left-0 right-0 p-3 bg-gradient-to-b from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <p className="text-gray-100 text-sm md:text-base font-medium line-clamp-2 drop-shadow-md leading-tight">
+                        {img.caption || "No description provided..."}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Bottom Overlay: Metadata (Only if unlocked) */}
+                  {!isLocked && (
+                    <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end min-h-[60px]">
+                      <div className="text-xs text-gray-300 font-mono mb-1">
+                        {getRandomDate(idx)}
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-gray-400">
+                        {isVideo ? (
+                          <>
+                            <Play size={12} fill="currentColor" />
+                            <span>Video</span>
+                          </>
+                        ) : (
+                          <>
+                            <Paperclip size={12} />
+                            <span>Image</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Hover Effect Highlight */}
+                  {!isLocked && <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity" />}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="py-20 text-center text-gray-500">
+            {activeTab === 'video' ? 'No videos found.' : 'No items found.'}
+          </div>
+        )}
+
+        {/* Bottom Pagination */}
+        <div className="flex justify-center mt-8 mb-12">
+          <PaginationControls />
+        </div>
+
+      </div>
+
+      {/* Lightbox Integration */}
+      <Lightbox
+        images={profile.images} // Pass ALL images to allow full navigation
+        selectedIndex={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onChangeIndex={setLightboxIndex}
+      />
+    </div>
+  );
+};
