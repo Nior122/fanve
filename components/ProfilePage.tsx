@@ -88,6 +88,7 @@ export const ProfilePage = () => {
           ...attempt,
           leftAtTime: Date.now()
         };
+        console.log(`🚪 User left page - Timer started for media: ${attempt.id}`);
       }
     };
 
@@ -98,6 +99,10 @@ export const ProfilePage = () => {
       // Calculate time spent outside during this visit
       const timeSpentOutside = Date.now() - attempt.leftAtTime;
       const newCumulativeTime = attempt.cumulativeTimeOutside + timeSpentOutside;
+
+      console.log(`🔙 User returned to page`);
+      console.log(`⏱️  This visit: ${(timeSpentOutside / 1000).toFixed(2)}s`);
+      console.log(`📊 Cumulative total: ${(newCumulativeTime / 1000).toFixed(2)}s / 4.00s`);
 
       // Update cumulative time
       unlockAttemptRef.current = {
@@ -117,6 +122,7 @@ export const ProfilePage = () => {
 
       if (newCumulativeTime >= REQUIRED_WAIT_MS) {
         // Success: Unlock
+        console.log(`✅ UNLOCKED! Media ${id} is now accessible`);
         setUnlockedIds(prev => new Set(prev).add(id));
         setUnlockErrors(prev => {
           const next = { ...prev };
@@ -129,6 +135,7 @@ export const ProfilePage = () => {
         // Failure: Show how much time was spent and how much is remaining
         const secondsSpent = Math.floor(newCumulativeTime / 1000);
         const secondsRemaining = Math.ceil((REQUIRED_WAIT_MS - newCumulativeTime) / 1000);
+        console.log(`❌ Still locked - Need ${secondsRemaining}s more outside`);
         setUnlockErrors(prev => ({
           ...prev,
           [id]: { spent: secondsSpent, remaining: secondsRemaining }
@@ -166,6 +173,9 @@ export const ProfilePage = () => {
 
   const handleUnlock = (e: React.MouseEvent, imgId: string) => {
     e.stopPropagation(); // Prevent lightbox opening
+
+    console.log(`🎯 Unlock initiated for media: ${imgId}`);
+    console.log(`⏰ Cumulative timer reset to 0s - Waiting for user to leave page...`);
 
     // Clear previous errors for this ID
     setUnlockErrors(prev => {
@@ -570,10 +580,11 @@ export const ProfilePage = () => {
 
       {/* Lightbox Integration */}
       <Lightbox
-        images={profile.images} // Pass ALL images to allow full navigation
+        images={profile.images}
         selectedIndex={lightboxIndex}
         onClose={() => setLightboxIndex(null)}
         onChangeIndex={setLightboxIndex}
+        unlockedIds={unlockedIds}
       />
     </div>
   );
