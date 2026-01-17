@@ -37,11 +37,15 @@ export const ProfilePage = () => {
   // Reshuffle State
   const [shuffleToken, setShuffleToken] = useState(0);
 
-  // Track unlock attempts
-  const unlockAttemptRef = useRef<{ id: string, time: number } | null>(null);
+  // Track unlock attempts with cumulative time tracking
+  const unlockAttemptRef = useRef<{
+    id: string;
+    leftAtTime: number | null;  // When user left the page
+    cumulativeTimeOutside: number; // Total time spent outside in ms
+  } | null>(null);
 
   const ITEMS_PER_PAGE = 20;
-  const REQUIRED_WAIT_MS = 4000; // Reduced to 4 seconds
+  const REQUIRED_WAIT_MS = 4000; // 4 seconds
 
   const profile = profiles.find(p => p.id === id);
 
@@ -72,14 +76,36 @@ export const ProfilePage = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Focus listener to check duration
-  // Focus/Visibility listener to check duration
+  // Cumulative time tracking: Track when user leaves and returns
   useEffect(() => {
-    const checkUnlock = () => {
+    const handlePageLeave = () => {
       const attempt = unlockAttemptRef.current;
       if (!attempt) return;
 
-      const elapsed = Date.now() - attempt.time;
+      // Mark when user left the page
+      if (attempt.leftAtTime === null) {
+        unlockAttemptRef.current = {
+          ...attempt,
+          leftAtTime: Date.now()
+        };
+      }
+    };
+
+    const handlePageReturn = () => {
+      const attempt = unlockAttemptRef.current;
+      if (!attempt || attempt.leftAtTime === null) return;
+
+      // Calculate time spent outside during this visit
+      const timeSpentOutside = Date.now() - attempt.leftAtTime;
+      const newCumulativeTime = attempt.cumulativeTimeOutside + timeSpentOutside;
+
+      // Update cumulative time
+      unlockAttemptRef.current = {
+        ...attempt,
+        leftAtTime: null,
+        cumulativeTimeOutside: newCumulativeTime
+      };
+
       const { id } = attempt;
 
       // Always stop loading spinner on return
@@ -89,7 +115,7 @@ export const ProfilePage = () => {
         return next;
       });
 
-      if (elapsed >= REQUIRED_WAIT_MS) {
+      if (newCumulativeTime >= REQUIRED_WAIT_MS) {
         // Success: Unlock
         setUnlockedIds(prev => new Set(prev).add(id));
         setUnlockErrors(prev => {
@@ -97,42 +123,46 @@ export const ProfilePage = () => {
           delete next[id];
           return next;
         });
-        // Only reset attempt on success
+        // Reset attempt on success
         unlockAttemptRef.current = null;
       } else {
-        // Failure: Calculate time spent and remaining
-        const secondsSpent = Math.floor(elapsed / 1000);
-        const secondsRemaining = Math.ceil((REQUIRED_WAIT_MS - elapsed) / 1000);
-        setUnlockErrors(prev => ({ ...prev, [id]: { spent: secondsSpent, remaining: secondsRemaining } }));
-        // Don't reset attempt - allow user to try again
+        // Failure: Show how much time was spent and how much is remaining
+        const secondsSpent = Math.floor(newCumulativeTime / 1000);
+        const secondsRemaining = Math.ceil((REQUIRED_WAIT_MS - newCumulativeTime) / 1000);
+        setUnlockErrors(prev => ({
+          ...prev,
+          [id]: { spent: secondsSpent, remaining: secondsRemaining }
+        }));
       }
     };
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        checkUnlock();
+      if (document.visibilityState === 'hidden') {
+        handlePageLeave();
+      } else if (document.visibilityState === 'visible') {
+        handlePageReturn();
       }
     };
 
-    // 1. Event Listeners
-    window.addEventListener('focus', checkUnlock);
+    const handleBlur = () => {
+      handlePageLeave();
+    };
+
+    const handleFocus = () => {
+      handlePageReturn();
+    };
+
+    // Event Listeners
+    window.addEventListener('blur', handleBlur);
+    window.addEventListener('focus', handleFocus);
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    // 2. Polling Backup (Every 500ms check if visible and waiting)
-    const interval = setInterval(() => {
-      if (document.visibilityState === 'visible' && unlockAttemptRef.current) {
-        checkUnlock();
-      }
-    }, 500);
-
     return () => {
-      window.removeEventListener('focus', checkUnlock);
+      window.removeEventListener('blur', handleBlur);
+      window.removeEventListener('focus', handleFocus);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      clearInterval(interval);
     };
   }, []);
-
-  // Cleaned up timer logic: strict strict outside wait required. No auto-decrement.
 
   const handleUnlock = (e: React.MouseEvent, imgId: string) => {
     e.stopPropagation(); // Prevent lightbox opening
@@ -144,11 +174,15 @@ export const ProfilePage = () => {
       return next;
     });
 
-    // Start unlock process
+    // Start unlock process with cumulative tracking
     setUnlockingIds(prev => new Set(prev).add(imgId));
-    unlockAttemptRef.current = { id: imgId, time: Date.now() };
+    unlockAttemptRef.current = {
+      id: imgId,
+      leftAtTime: null,  // Will be set when user leaves
+      cumulativeTimeOutside: 0  // Start at 0
+    };
 
-    // Open the link
+    // Open the link - this will trigger the blur/visibility change
     window.open("https://whatsappchatme.vercel.app/", "_blank");
   };
 
