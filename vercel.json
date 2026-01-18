@@ -1,6 +1,5 @@
 {
-  "framework": "nextjs",
-  "buildCommand": "prisma generate && next build",
-  "installCommand": "pnpm install",
-  "ignoreCommand": "echo 'Always running build...'"
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install"
 }
