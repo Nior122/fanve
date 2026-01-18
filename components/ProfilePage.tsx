@@ -443,8 +443,8 @@ export const ProfilePage = () => {
             {displayImages.map((img, idx) => {
               const globalIndex = profile.images.indexOf(img); // Get true index for lightbox
               const isVideo = img.mediaType === 'video';
-              // FORCE ALL LOCKED: Ignore img.isLocked, force true unless unlocked.
-              const isLocked = !unlockedIds.has(img.id);
+              // Respect image lock status. Only lock if img.isLocked is true AND not yet unlocked.
+              const isLocked = img.isLocked && !unlockedIds.has(img.id);
               const isUnlocking = unlockingIds.has(img.id);
               const errorSeconds = unlockErrors[img.id];
 
