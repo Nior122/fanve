@@ -179,6 +179,7 @@ export const ImageGallery = ({ images, userHasAccess }: ImageGalleryProps) => {
         selectedIndex={selectedIndex}
         onClose={() => setSelectedIndex(null)}
         onChangeIndex={setSelectedIndex}
+        unlockedIds={unlockedIds}
       />
     </>
   );
