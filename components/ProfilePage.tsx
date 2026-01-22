@@ -462,7 +462,12 @@ export const ProfilePage = () => {
                   <div className={`w-full h-full relative transition-all duration-300 ${isLocked ? 'filter blur-md opacity-75 pointer-events-none' : ''}`}>
                     {isVideo ? (
                       <div className="w-full h-full relative flex items-center justify-center bg-black">
-                        <video src={img.url} className="w-full h-full object-cover opacity-80" muted />
+                        <img
+                          src={img.thumbnailUrl}
+                          alt={img.caption || "Video thumbnail"}
+                          className="w-full h-full object-cover opacity-80"
+                          loading="lazy"
+                        />
                         <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                           <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/40">
                             <Play fill="white" className="text-white ml-1" size={20} />
