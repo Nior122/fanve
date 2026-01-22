@@ -143,7 +143,6 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
             muted
             playsInline
             loop
-            referrerPolicy="no-referrer"
             className="max-w-full max-h-[85vh] shadow-2xl rounded-sm"
           />
         ) : (
