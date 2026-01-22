@@ -1276,8 +1276,8 @@ const EBONIES_RAW_URLS = [
 const EBONIES_IMAGES: Image[] = EBONIES_RAW_URLS.map((url, index) => {
   const isVideo = url.includes('.mp4');
 
-  // Use a known working image as the thumbnail for all videos to avoid 404s
-  const thumbnailUrl = isVideo ? "https://pbs.twimg.com/media/Gy-4PabboAA_a90.jpg:large" : url;
+  // For videos, replace .mp4 with .jpg to get thumbnail
+  const thumbnailUrl = isVideo ? url.replace(/\.mp4.*$/, '.jpg') : url;
 
   return {
     id: `ebonies-${String(index + 1).padStart(3, '0')}`,
