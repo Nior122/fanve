@@ -451,7 +451,15 @@ export const ProfilePage = () => {
               return (
                 <div
                   key={`${img.id}-${idx}`}
-                  onClick={() => !isLocked && setLightboxIndex(globalIndex)}
+                  onClick={() => {
+                    if (isLocked) return;
+                    // Open videos in new tab, images in Lightbox
+                    if (isVideo) {
+                      window.open(img.url, '_blank');
+                    } else {
+                      setLightboxIndex(globalIndex);
+                    }
+                  }}
                   className={`
                     relative group aspect-square bg-[#1a1a1a] cursor-pointer overflow-hidden border border-[#262626] 
                     ${isLocked ? 'cursor-default' : 'hover:border-[#444]'}
