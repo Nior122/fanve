@@ -133,7 +133,11 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
 
         {isVideo ? (
           <video
-            src={currentImage.url}
+            src={
+              currentImage.url.includes('video.twimg.com')
+                ? `/api/video-proxy?url=${encodeURIComponent(currentImage.url)}`
+                : currentImage.url
+            }
             controls
             autoPlay
             muted
