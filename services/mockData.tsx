@@ -1278,7 +1278,7 @@ const EBONIES_IMAGES: Image[] = EBONIES_RAW_URLS.map((url, index) => {
   return {
     id: `ebonies-${String(index + 1).padStart(3, '0')}`,
     url,
-    thumbnailUrl: url,
+    thumbnailUrl: isVideo ? url.replace('.mp4', '.jpg') : url,
     caption: `Public Adventure ${index + 1} ${isVideo ? '🎥' : '📸'}`,
     width: 800,
     height: isVideo ? 1280 : 1000,

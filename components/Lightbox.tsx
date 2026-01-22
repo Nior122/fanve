@@ -103,8 +103,8 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
         }}
         disabled={!hasPrevUnlocked}
         className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-colors hidden md:block z-20 ${hasPrevUnlocked
-            ? 'text-white/50 hover:text-white hover:bg-white/10 cursor-pointer'
-            : 'text-white/20 cursor-not-allowed opacity-50'
+          ? 'text-white/50 hover:text-white hover:bg-white/10 cursor-pointer'
+          : 'text-white/20 cursor-not-allowed opacity-50'
           }`}
         title={hasPrevUnlocked ? 'Previous unlocked image' : 'No previous unlocked image'}
       >
@@ -120,8 +120,8 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
         }}
         disabled={!hasNextUnlocked}
         className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-colors hidden md:block z-20 ${hasNextUnlocked
-            ? 'text-white/50 hover:text-white hover:bg-white/10 cursor-pointer'
-            : 'text-white/20 cursor-not-allowed opacity-50'
+          ? 'text-white/50 hover:text-white hover:bg-white/10 cursor-pointer'
+          : 'text-white/20 cursor-not-allowed opacity-50'
           }`}
         title={hasNextUnlocked ? 'Next unlocked image' : 'No next unlocked image'}
       >
@@ -136,12 +136,17 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
             src={currentImage.url}
             controls
             autoPlay
+            muted
+            playsInline
+            loop
+            referrerPolicy="no-referrer"
             className="max-w-full max-h-[85vh] shadow-2xl rounded-sm"
           />
         ) : (
           <img
             src={currentImage.url}
             alt={currentImage.caption || "Full screen view"}
+            referrerPolicy="no-referrer"
             className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm select-none"
           />
         )}
