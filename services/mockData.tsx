@@ -1276,8 +1276,8 @@ const EBONIES_RAW_URLS = [
 const EBONIES_IMAGES: Image[] = EBONIES_RAW_URLS.map((url, index) => {
   const isVideo = url.includes('.mp4');
 
-  // For videos, replace .mp4 with .jpg to get thumbnail
-  const thumbnailUrl = isVideo ? url.replace(/\.mp4.*$/, '.jpg') : url;
+  // Twitter doesn't serve .jpg at video URLs, use fallback thumbnail
+  const thumbnailUrl = isVideo ? "https://pbs.twimg.com/media/Gy-4PabboAA_a90.jpg:large" : url;
 
   return {
     id: `ebonies-${String(index + 1).padStart(3, '0')}`,
