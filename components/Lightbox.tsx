@@ -139,8 +139,7 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
                 : currentImage.url
             }
             controls
-            autoPlay
-            muted
+            preload="none"
             playsInline
             loop
             className="max-w-full max-h-[85vh] shadow-2xl rounded-sm"
