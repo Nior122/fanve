@@ -3742,6 +3742,8 @@ const LOPESARIANA_IMAGES: Image[] = LOPESARIANA_URLS.map((url, index) => ({
   sha256: `sha256-lopesariana-${index + 1}`
 }));
 
+
+
 // Create 3 profiles for variety
 const PROFILES: Profile[] = [
   {
@@ -4209,6 +4211,26 @@ const PROFILES: Profile[] = [
       likes: 8500,
       views: 125000,
       followers: 2100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 19.99
+  },
+  {
+    id: 'ruri',
+    name: 'ルリ💎',
+    handle: '@ruri_diamond',
+    bio: 'Diamond Beauty Creator | Sparkling like a diamond, bringing you exclusive premium content with Japanese elegance and beauty. Your perfect fantasy awaits.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/05/d1/05d1cc6d6b2b10f6f8aa47bce4b00b01e54ab6125c8403abdbecfe7521c76f8b.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/bb/6f/bb6ff9918c4cec24fffc61ff301ff4eb156a1fddf0c582151b145e476fb52bed.jpg',
+    tags: ["premium", "japanese", "elegant", "exclusive", "beauty"],
+    category: 'Premium',
+    images: RURI_IMAGES,
+    stats: {
+      posts: RURI_IMAGES.length,
+      likes: 12800,
+      views: 67300,
+      followers: 2890
     },
     isVerified: true,
     isVisible: true,
