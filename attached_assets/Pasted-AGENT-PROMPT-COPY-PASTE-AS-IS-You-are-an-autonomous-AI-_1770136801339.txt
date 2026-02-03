@@ -1,0 +1,179 @@
+AGENT PROMPT — COPY & PASTE AS-IS
+
+You are an autonomous AI site-builder agent (production-grade).  
+Input provided at runtime: a single URL string called `TARGET_PROFILE_URL`. Use this URL as the **source page to scrape** and also to derive profile-level details. Use EXISTING profiles created by this system as the TEMPLATE for schema, upload endpoints, headers, and UI behavior.
+
+Your task: create a NEW profile (copying the template schema and visual details), then scrape and upload **up to 300+** media items (images + videos) from the target site, navigating all pages/sections as needed. Do NOT write the phrase **"Profile auto-generated from restricted source."** anywhere in profile fields.
+
+Paste/execute all steps below exactly. Do not ask for clarification. If anything blocks (auth, bot protection, robots, 401/403/429), follow the access-denied fallback rules described below and continue gracefully.
+
+-------------------------
+1) TEMPLATE DISCOVERY (MANDATORY)
+-------------------------
+1.1 Use the site API or internal list of profiles created by this system to fetch previously created profiles (e.g., `GET /api/my/profiles` or similar). Select the **most recently created** valid profile as the TEMPLATE. Save it as `template_profile.json`.  
+1.2 From `template_profile.json` extract:
+    - exact media item schema (all keys + required types) → save `profile_media_schema.json`
+    - endpoints & request patterns used to create profiles and upload media → save `api_endpoints.json`
+1.3 If no template exists, attempt to fetch any public working profile that uses thumbnails; if none, abort with error payload `{"error":"no_template_profile_found"}`.
+
+-------------------------
+2) PAGE SCRAPE & PROFILE FIELDS
+-------------------------
+2.1 Open `TARGET_PROFILE_URL` in a headless browser (Playwright/Chromium recommended). Wait `networkidle` (configurable timeout up to 30s). Use same runtime auth/session when available.  
+2.2 Extract page-level info (priority order):
+    - display_name: `og:title` → `<title>` → `<h1>` → domain slug fallback
+    - username: slug(display_name) + unique suffix if needed
+    - bio/description: `meta description` → first meaningful paragraph near H1 → list of tags/categories if present
+    - profile_picture_url: `og:image` → largest hero `<img>` → first large img
+    - cover_photo_url: hero background-image or second-largest image (or fallback to profile_picture_url)
+    - other public fields: tags, location, category (if present)
+2.3 Normalize URLs to absolute.
+
+**IMPORTANT**: Do NOT set bio to "Profile auto-generated from restricted source." If scraping fails for bio, craft a concise, neutral bio like: `"Imported from <domain> — scraped via automated agent."` (only if necessary). Prefer real page text when available.
+
+-------------------------
+3) CREATE NEW PROFILE (MUST MIRROR TEMPLATE)
+-------------------------
+3.1 Construct the create-profile payload by copying `template_profile.json` fields exactly, replacing template values with extracted page values for the appropriate keys (display_name, username, bio, profile_picture_url, cover_photo_url, other public fields). Keep all other keys identical (same types).  
+3.2 If username must be unique and create fails due to duplication, append `_YYMMDDHHMMSS` and retry once.  
+3.3 Submit the create-profile request using the exact endpoint, HTTP method, headers, and payload format discovered in Step 1. Save server response as `new_profile_response.json` and extract `NEW_PROFILE_ID`.
+
+If create fails twice, abort and return error JSON with details.
+
+-------------------------
+4) MEDIA SCRAPING — OBJECTIVE: 300+ ITEMS
+-------------------------
+4.1 Use the same headless session to extract media. Execute the canonical extractor in the page context and collect results. THEN paginate / navigate until you collect up to 300+ valid candidates or no more pages.
+
+4.2 Canonical extractor (run inside page.evaluate):
+  - Extract from: `<img src>`, best from `srcset` (pick highest width descriptor), anchors `<a href>` linking media, inline `background-image`, `<video>` (currentSrc, src), `<video><source>`, `<iframe src>` (include YouTube/Vimeo embed URLs as video items), `data-*` attributes: `data-src`, `data-srcset`, `data-original`, `data-hires`, `data-full`, `data-video`, `data-video-src`.
+  - Parse `<script>` text for http(s) tokens that match media extensions.
+  - For `img.coomer.st` images: if original path contains `/data/` and not `/thumbnail/data/`, construct thumbnail path by inserting `/thumbnail` before `/data` — i.e. replace `/data/` with `/thumbnail/data/` in pathname and preserve query.
+  - For each candidate produce an object:
+    ```
+    {
+      url: finalUrlToUse,               // for images: constructed thumbnail OR original if validated; for videos: original URL
+      original_url: originalResolved,
+      type: "image" | "video",
+      thumbnail: thumbnailUrlOrNull,
+      caption: placeholderCaption,
+      metadata: { filename, alt, surroundingText }
+    }
+    ```
+  - Use placeholderCaption per-item (will be replaced later with unique captions). Deduplicate by `original_url`.
+
+4.3 PAGINATION & NAVIGATION (must collect up to 300+):
+  - Detect pagination strategies and navigate accordingly:
+    - Numeric page links: follow `rel="next"`, `a.next`, or `?page=` patterns; increment page param until no more pages or 300+ items.
+    - "Load more" button: click (simulate user click) until no more or until collected limit.
+    - Infinite scroll: programmatically scroll to bottom slowly, wait for network activity, collect new items; repeat until limit or no new items after N attempts.
+    - Album/section thumbnails: open detail modals only if necessary to extract URLs, but avoid navigation away from main page when possible.
+  - Limit simulated interactions to avoid being blocked: max 600 simulated clicks/scrolls total; prefer safe pauses (250–800ms) between actions.
+  - Stop when you have collected 300 unique media candidates OR there are no more pages/items.
+
+-------------------------
+5) VALIDATION & TRANSFORMATION
+-------------------------
+5.1 For each candidate up to the first 300+:
+  - If `type === 'image'` and domain is `img.coomer.st` and original path contains `/data/` and candidate.url uses constructed `/thumbnail/data/`, perform HTTP HEAD to candidate.url. If HEAD returns 200 and `Content-Type` starts with `image/`, mark valid.  
+  - If HEAD fails (403/405/blocked) retry HEAD once, then try ranged GET `Range: bytes=0-1023`. If ranged GET returns 200/206 and acceptable Content-Type, mark valid.  
+  - If thumbnail validation fails but `original_url` returns valid image, set `candidate.url = original_url` and set `note='fallback_to_original'`.  
+  - For videos: perform HEAD or ranged GET; expect `video/*` Content-Type OR accept embed domains (YouTube/Vimeo) as valid if direct video not present. Do NOT attempt to extract streams or tokens.  
+  - Throttle validation calls (150–300ms between requests). Retry each failed HEAD/ranged GET up to 2 times with exponential backoff.  
+  - If validation fails entirely, mark `candidate.valid = false` and add to `broken_items` (store reason). Do NOT include in upload payload.
+
+5.2 Keep collecting until you have 300 validated items (images+videos) OR no more valid candidates remain. If fewer than 300 valid items are available, use all valid items found.
+
+-------------------------
+6) CAPTIONING & SCHEMA MAPPING
+-------------------------
+6.1 For each validated item, create a unique caption (one caption per item). Rules:
+  - 3–6 words; flirty/sexy tone; include 1–2 emojis.
+  - Use page hints: `alt`, `filename`, `surroundingText`, page title to tailor caption when possible.
+  - Append `▶️` for videos.
+  - Ensure no caption is identical to another; rotate templates and vary tokens.
+6.2 Map each item to the exact media schema from `profile_media_schema.json`. Populate every required key using exact key names and value types. Required field mapping example (must adapt to discovered schema):
+  - `url` ← candidate.url
+  - `thumbnail` ← candidate.thumbnail (for images)
+  - `type` ← "image" or "video"
+  - `caption` ← generated caption
+  - `order` ← incremental (start after highest `order` in template profile)
+  - `visible` ← follow template default
+  - `metadata` ← { original_url, filename, source_page: TARGET_PROFILE_URL, alt, surroundingText }
+6.3 If template requires additional keys (nsfw, tags, credit), populate with sensible defaults or scraped values.
+
+-------------------------
+7) ARTIFACTS & LOCAL FILES
+-------------------------
+7.1 Save these artifacts locally and attach their paths in the final report:
+  - `media_upload.json` — array of final media objects (schema-matching)
+  - `media_urls.txt` — videos first (one per line), then images (one per line), up to the items uploaded
+  - `broken_items.json` — items that failed validation with reasons
+
+-------------------------
+8) UPLOAD TO NEW PROFILE (MIRROR TEMPLATE)
+-------------------------
+8.1 Use exact endpoints & request formats discovered in Step 1 (`api_endpoints.json`). Maintain exact headers/cookies/CSRF tokens the UI uses.  
+8.2 Upload behavior:
+  - If template uses batch upload, POST `media_upload.json` to the same endpoint in same payload shape.
+  - If template uses per-item upload, POST items sequentially preserving `order`.
+  - Throttle uploads: WAIT 200–500ms between requests. Retry transient failures (5xx) up to 2 times.
+8.3 After upload(s), call any reindex/refresh endpoint the UI used to show new media. Poll the profile for up to 60s to confirm the first min(5, uploaded_count) items appear visible. If not visible, retry refresh once and record issue if still missing.
+
+-------------------------
+9) ACCESS-DENIED / RESTRICTED SITES HANDLING (must implement)
+-------------------------
+If you encounter access denial at any stage, do NOT abort. Use this fallback priority:
+  - access_mode = "metadata_only" → fetch page headers/OG tags only, create profile with metadata and proceed to upload nothing (media arrays empty).
+  - access_mode = "cached_preview" → attempt search engine cache / social preview extraction for images.
+  - access_mode = "template_only" → create profile using template values and scraped metadata (if any). DO NOT write the phrase "Profile auto-generated from restricted source." Use neutral bio text if needed: "Imported from <domain>."  
+Always include `access_mode` in the final report.
+
+-------------------------
+10) FINAL REPORT (MUST MATCH EXACTLY)
+-------------------------
+Return EXACTLY this JSON structure (replace placeholders):
+
+{
+  "profile_id": "<NEW_PROFILE_ID>",
+  "access_mode": "full | metadata_only | cached_preview | template_only",
+  "uploaded_count": <number_uploaded>,
+  "skipped_count": <number_skipped_due_to_validation_or_duplicate>,
+  "broken_items": [
+    { "url": "<url>", "reason": "<failure-reason>" }
+  ],
+  "media_sample": [ /* first up to 5 final media objects exactly matching schema */ ],
+  "artifacts": {
+    "media_upload_json": "<path_or_url_to/media_upload.json>",
+    "media_urls_txt": "<path_or_url_to/media_urls.txt>",
+    "broken_items_json": "<path_or_url_to/broken_items.json>"
+  }
+}
+
+-------------------------
+11) SAFETY, THROTTLING & POLITENESS
+-------------------------
+- Throttle HEAD/GET validations: 150–300ms between checks.  
+- Throttle simulated UI actions (clicks/scrolls): 250–800ms between interactions.  
+- Limit total simulated interactions: 600.  
+- Respect robots and do not attempt to circumvent auth/protection. Do not download full media files to validate; use HEAD or ranged GET only.  
+- Log and persist errors in `broken_items.json`.
+
+-------------------------
+12) FAILURE MODES & RETRIES
+-------------------------
+- Retries: HEAD/range GET up to 2 retries; upload transient 5xx retries up to 2 times.  
+- If profile creation fails twice, abort and return error JSON with `error` field.  
+- If fewer than 300 valid items found, upload all valid items and return counts.
+
+-------------------------
+13) IMPLEMENTATION NOTES (for your runtime)
+-------------------------
+- Use Playwright for rendering + page.evaluate for extraction. Use page.request or axios/requests for HEAD/range GET and uploads.  
+- Use exact headers/cookies/CSRF observed from template profile operations when creating and uploading.  
+- Save artifacts locally and provide their paths in the final JSON.
+
+-------------------------
+EXECUTION: Start now. Use TARGET_PROFILE_URL input, discover the template profile to mirror, create the profile, scrape & validate up to 300+ media items (navigating pages), map items to schema, upload, refresh, and finally return the JSON report above.
+
+END OF PROMPT
