@@ -3825,6 +3825,32 @@ const RURI_DIAMOND_IMAGES: Image[] = RURI_DIAMOND_URLS.map((url, index) => ({
 // Create 3 profiles for variety
 const PROFILES: Profile[] = [
   {
+    id: 'urbabydollxo',
+    name: 'UrBabyDollXo',
+    handle: '@urbabydollxo',
+    bio: 'Profile auto-generated from restricted source. Exclusive content from UrBabyDollXo. Join for the most captivating and premium experiences.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/c6/57/c657c41aa2c49749b7d242ce7f2d1bd6fb93c64adfa16c688705275a6a7db37c.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/b9/4a/b94a00057108f3d73cbebaa9bfc257e287ad81c285b73d95128bd240e983e43e.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'creative'],
+    category: 'Premium',
+    images: [
+      { id: 'ubd-001', caption: 'Soft curves, loud energy 😍🔥', url: 'https://img.coomer.st/thumbnail/data/c6/57/c657c41aa2c49749b7d242ce7f2d1bd6fb93c64adfa16c688705275a6a7db37c.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/c6/57/c657c41aa2c49749b7d242ce7f2d1bd6fb93c64adfa16c688705275a6a7db37c.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:35:37.667Z' },
+      { id: 'ubd-002', caption: 'Can’t look away 💦✨', url: 'https://img.coomer.st/thumbnail/data/b9/4a/b94a00057108f3d73cbebaa9bfc257e287ad81c285b73d95128bd240e983e43e.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/b9/4a/b94a00057108f3d73cbebaa9bfc257e287ad81c285b73d95128bd240e983e43e.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:36:37.669Z' },
+      { id: 'ubd-003', caption: 'Too hot to scroll past 😈📸', url: 'https://img.coomer.st/thumbnail/data/1b/60/1b606dda910b59b043e0de838c47acaeae04e7bbe7ce58d08ff0ad5b5347e553.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/1b/60/1b606dda910b59b043e0de838c47acaeae04e7bbe7ce58d08ff0ad5b5347e553.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:37:37.669Z' },
+      { id: 'ubd-004', caption: 'Golden hour glow ✨☀️', url: 'https://img.coomer.st/thumbnail/data/51/02/5102809abf8327bb26defa50d5c59ea2bb5d80870c07d6d5faf9e47f0fbc1b56.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/51/02/5102809abf8327bb26defa50d5c59ea2bb5d80870c07d6d5faf9e47f0fbc1b56.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:38:37.670Z' },
+      { id: 'ubd-005', caption: 'Midnight muse 🌙💎', url: 'https://img.coomer.st/thumbnail/data/d6/b3/d6b36ea650877ee967b6908844257bdca7e723a4c4853836e9cf97c3f55406ce.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/d6/b3/d6b36ea650877ee967b6908844257bdca7e723a4c4853836e9cf97c3f55406ce.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:39:37.670Z' },
+      { id: 'ubd-006', caption: 'Kawaii dreams 🌸💖', url: 'https://img.coomer.st/thumbnail/data/3b/54/3b548570f51fd140f18d44d51679b40c38c4fc7fe51c6b4b59ce61ea2824a410.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/3b/54/3b548570f51fd140f18d44d51679b40c38c4fc7fe51c6b4b59ce61ea2824a410.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:40:37.670Z' },
+      { id: 'ubd-007', caption: 'Bratty energy 😈🔥', url: 'https://img.coomer.st/thumbnail/data/47/b2/47b2c4118b4bf1a7721e4b53e0a92c128fa739e12311c9563d9bcb2fc1460555.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/47/b2/47b2c4118b4bf1a7721e4b53e0a92c128fa739e12311c9563d9bcb2fc1460555.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:41:37.671Z' },
+      { id: 'ubd-008', caption: 'Simply irresistible 💎✨', url: 'https://img.coomer.st/thumbnail/data/a7/8e/a78e2f63b6c39367f94c8476377080a7834728d8cbcfcb3556ee75984bc169a7.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/a7/8e/a78e2f63b6c39367f94c8476377080a7834728d8cbcfcb3556ee75984bc169a7.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:42:37.671Z' },
+      { id: 'ubd-009', caption: 'Dripping in finesse 💦🔥', url: 'https://img.coomer.st/thumbnail/data/76/59/7659f706ab75d36e069b221251ce83b0faff01b63b149582f83125556667ff9a.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/76/59/7659f706ab75d36e069b221251ce83b0faff01b63b149582f83125556667ff9a.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:43:37.671Z' },
+      { id: 'ubd-010', caption: 'Your favorite view 🍑👀', url: 'https://img.coomer.st/thumbnail/data/91/6d/916d011222050d12e1c5c76ed46bcf7da95dfb21fce866fc384ca023a1f09e04.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/91/6d/916d011222050d12e1c5c76ed46bcf7da95dfb21fce866fc384ca023a1f09e04.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image', createdAt: '2025-08-18T11:44:37.672Z' }
+    ],
+    stats: { posts: 926, likes: 25400, views: 1200000, followers: 15400 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 15.00
+  },
+  {
     id: 'profile-1',
     name: 'Zara Sky',
     handle: '@zara_sky',
