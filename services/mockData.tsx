@@ -481,7 +481,7 @@ const THORRIANDJAX_PROFILE: Profile = {
   avatarUrl: 'https://img.coomer.st/icons/fansly/285377949010505728',
   heroUrl: 'https://img.coomer.st/banners/fansly/285377949010505728',
   tags: ["fansly", "imported", "exclusive"],
-  category: 'Fansly',
+  category: 'Premium',
   images: THORRIANDJAX_IMAGES,
   stats: {
     posts: 1389,
