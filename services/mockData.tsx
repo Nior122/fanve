@@ -79,6 +79,56 @@ const RURI_IMAGES: Image[] = (ruriData as any[]).map((item) => ({
   mediaType: item.mediaType as MediaType
 }));
 
+// Meenfox Data
+const MEENFOX_FULL_DATA = [
+  { i: "meenfox-001", t: "Soft curves, loud energy 😍🔥", d: "Can’t look away 💦✨", u: "https://img.coomer.st/thumbnail/data/59/14/59142b11961b6705e530c59da14da9962a6713a9a93dd85ad48dce670a0bbd3a.jpg", dt: "2024-05-20T10:00:00.000Z", l: 850, v: 4500 },
+  { i: "meenfox-002", t: "Can’t look away 💦✨", d: "Too hot to scroll past 😈📸", u: "https://img.coomer.st/thumbnail/data/c5/5c/c55c698bd253bd57e46a3a0dfa10251b78d87219798a63902a6e5bcb6b3b5c45.jpg", dt: "2024-05-19T10:00:00.000Z", l: 720, v: 3800 },
+  { i: "meenfox-003", t: "Too hot to scroll past 😈📸", d: "Sweet obsession 🍭", u: "https://img.coomer.st/thumbnail/data/1a/3c/1a3c27783da37678751dc6e9f0a55930c87cfed0e8e5a0747ba260cf81722c95.jpg", dt: "2024-05-18T10:00:00.000Z", l: 640, v: 3100 },
+  { i: "meenfox-004", t: "Midnight temptation 🌙", d: "Passion unleashed 💥", u: "https://img.coomer.st/thumbnail/data/9b/54/9b546555aca1330227dc6d32ed98f3b4e81b55cccd39e55cab76b49362b9313e.jpg", dt: "2024-05-17T10:00:00.000Z", l: 910, v: 5200 },
+  { i: "meenfox-005", t: "Radiant goddess ☀️", d: "Angelic sin 😈", u: "https://img.coomer.st/thumbnail/data/3c/e0/3ce096e9575c85fa25ed3dd05aa1b39e37eb4461b2d806d0d2e1ace9b10c6d4f.jpg", dt: "2024-05-16T10:00:00.000Z", l: 580, v: 2900 },
+  { i: "meenfox-006", t: "Pure seduction 💕", d: "Irresistible charm ✨", u: "https://img.coomer.st/thumbnail/data/78/2e/782e8c025b1cf9a994fdceeb8a1a0ff37affa16f7a37c71c6621ff119f6ec9f3.jpg", dt: "2024-05-15T10:00:00.000Z", l: 770, v: 4100 },
+  { i: "meenfox-007", t: "Exotic temptress 🌺", d: "Stunning elegance 👑", u: "https://img.coomer.st/thumbnail/data/0b/11/0b11a92451cdf7ac83548f49ee2c2a11d9db50b62f05c01f113534c95446afcc.jpg", dt: "2024-05-14T10:00:00.000Z", l: 830, v: 4600 },
+  { i: "meenfox-008", t: "Hot and ready 🌡️", d: "Heavenly curves 👸", u: "https://img.coomer.st/thumbnail/data/9c/eb/9ceb52d06401759d522b06314a678c5ed9b6d2519872ab1702d1a92466bd69dc.jpg", dt: "2024-05-13T10:00:00.000Z", l: 690, v: 3400 },
+  { i: "meenfox-009", t: "Sinful desires 😈", d: "Captivating allure 💫", u: "https://img.coomer.st/thumbnail/data/90/68/9068e73d7823951fb69f88997ef4ed8384eed78dc37ae1ad9625cbb477cf3e59.jpg", dt: "2024-05-12T10:00:00.000Z", l: 950, v: 5800 },
+  { i: "meenfox-010", t: "Wild and free 🦋", d: "Exotic paradise 🏝️", u: "https://img.coomer.st/thumbnail/data/18/36/1836b64cbacea1788b1e691043f07a5179a72b209019c2666d2408ea18721ccd.jpg", dt: "2024-05-11T10:00:00.000Z", l: 610, v: 3000 },
+];
+
+const MEENFOX_IMAGES: Image[] = MEENFOX_FULL_DATA.map((item) => ({
+  id: item.i,
+  url: item.u,
+  thumbnailUrl: item.u,
+  caption: item.t,
+  width: 800,
+  height: 1000,
+  isLocked: false,
+  isVisible: true,
+  mediaType: 'image',
+  sourceUrl: item.u,
+  createdAt: item.dt,
+  sha256: `sha256-${item.i}`
+}));
+
+const MEENFOX_PROFILE: Profile = {
+  id: "meenfox",
+  name: "Meenfox",
+  handle: "@meenfox",
+  bio: "Just a fox playing around 🦊✨ | OnlyFans model | Content creator",
+  avatarUrl: "https://img.coomer.st/thumbnail/data/59/14/59142b11961b6705e530c59da14da9962a6713a9a93dd85ad48dce670a0bbd3a.jpg",
+  heroUrl: "https://img.coomer.st/thumbnail/data/c5/5c/c55c698bd253bd57e46a3a0dfa10251b78d87219798a63902a6e5bcb6b3b5c45.jpg",
+  tags: ["fox", "cosplay", "gaming", "onlyfans"],
+  category: "OnlyFans",
+  images: MEENFOX_IMAGES,
+  stats: {
+    posts: 485,
+    likes: 15400,
+    views: 89000,
+    followers: 12000
+  },
+  isVerified: true,
+  isVisible: true,
+  pricePerMonth: 0
+};
+
 // Bishoujomom images
 const BISHOUJOMOM_URLS = [
   "https://img.coomer.st/thumbnail/data/08/15/0815fe36666e60f1d485c2e515e0c20628201b1666ad537e61a109331ef04fb3.jpg",
@@ -4511,7 +4561,8 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99
-  }
+  },
+  MEENFOX_PROFILE
 ];
 
 
