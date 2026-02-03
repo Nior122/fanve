@@ -5551,7 +5551,8 @@ const PROFILES: Profile[] = [
     isVisible: true,
     pricePerMonth: 12.99
   },
-  MEENFOX_PROFILE
+  MEENFOX_PROFILE,
+  THORRIANDJAX_PROFILE
 ];
 
 
