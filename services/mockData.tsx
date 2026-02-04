@@ -5237,7 +5237,7 @@ const PROFILES: Profile[] = [
     id: 'anaimiya',
     name: 'Anaimiya',
     handle: '@anaimiya',
-    bio: 'Profile auto-generated from restricted source. Exclusive content from Anaimiya. Join for the most captivating and premium experiences.',
+    bio: ' Exclusive content from Anaimiya. Join for the most captivating and premium experiences.',
     avatarUrl: 'https://img.coomer.st/thumbnail/data/8a/16/8a16b846e52f29ee1d7300db4b03e2e16420145f5d9ef68e5f16ff0775c3df4d.jpg',
     heroUrl: 'https://img.coomer.st/thumbnail/data/9c/82/9c8278c5ed6253c5c34efc23019ed2790de89eb2c6c28e5b49f58b48a322765b.jpg',
     tags: [
@@ -5262,7 +5262,7 @@ const PROFILES: Profile[] = [
   id: 'rosebeck',
   name: 'RoseBeck',
   handle: '@rosebeck',
-  bio: 'Profile auto-generated from restricted source. Exclusive content from RoseBeck. Join for the most captivating and premium experiences.',
+  bio: ' Exclusive content from RoseBeck. Join for the most captivating and premium experiences.',
   avatarUrl: 'https://img.coomer.st/thumbnail/data/ff/b8/ffb802160a9c72f38899da1f2a7c9787987f591d743e9470e90e1c3ee907a4e8.jpg',
   heroUrl: 'https://img.coomer.st/thumbnail/data/86/b9/86b929798e46d355b318ff1cbb969e03abbc84c7ecf001ca4d142a194e9fd999.jpg',
   tags: [
