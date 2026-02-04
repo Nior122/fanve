@@ -5515,7 +5515,7 @@ const PROFILES: Profile[] = [
     id: 'emma_ruby',
     name: 'Emma Ruby',
     handle: '@emma_ruby',
-    bio: 'Profile auto-generated from restricted source.',
+    bio: 'Your virtual  girlfriend bringing intimate and exclusive content. Experience the perfect blend of sensuality and companionship with personalized attention .',
     avatarUrl: 'https://img.coomer.st/thumbnail/data/ac/9d/ac9d060cc4fa9ac42a14e7690427405a531c303058070ce6c4bc25e357eb85cb.jpg',
     heroUrl: 'https://img.coomer.st/thumbnail/data/e0/82/e082c52a7912fa55441ebebcfbc9d6d7e0031291117c8c1a8e4e7c7e6dbd10a4.jpg',
     tags: ['Premium', 'Exclusive', 'Hot', 'Intimate', 'OnlyFans'],
