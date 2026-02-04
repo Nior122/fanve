@@ -5170,7 +5170,7 @@ const PROFILES: Profile[] = [
     id: 'urbabydollxo',
     name: 'UrBabyDollXo',
     handle: '@urbabydollxo',
-    bio: 'Profile auto-generated from restricted source. Exclusive content from UrBabyDollXo. Join for the most captivating and premium experiences.',
+    bio: 'Exclusive content from UrBabyDollXo. Join for the most captivating and premium experiences.',
     avatarUrl: 'https://img.coomer.st/thumbnail/data/c6/57/c657c41aa2c49749b7d242ce7f2d1bd6fb93c64adfa16c688705275a6a7db37c.jpg',
     heroUrl: 'https://img.coomer.st/thumbnail/data/b9/4a/b94a00057108f3d73cbebaa9bfc257e287ad81c285b73d95128bd240e983e43e.jpg',
     tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'creative'],
@@ -5555,9 +5555,10 @@ const PROFILES: Profile[] = [
     id: 'me1adinha',
     name: 'me1adinha',
     handle: '@me1adinha',
-    bio: 'Profile auto-generated from restricted source. Exclusive content from me1adinha. Join for the most captivating and premium experiences.',
+    bio: 'Exclusive content from me1adinha. Join for the most captivating and premium experiences.',
     avatarUrl: 'https://img.coomer.st/thumbnail/data/30/77/30776a9cd3c0daa54d846eb0764c2734a214beb8a4c9f61367cbfa353f5e2e75.jpg',
     heroUrl: 'https://img.coomer.st/thumbnail/data/29/37/29378e362904597afb396d2d598ad6332b9aada384ec4bd25913d9369a68578b.jpg',
+    
     tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'creative'],
     category: 'Premium',
     images: [
