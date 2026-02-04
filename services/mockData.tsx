@@ -5167,6 +5167,212 @@ const URBABYDOLLXO_IMAGES: Image[] = URBABYDOLLXO_URLS.map((url, index) => ({
 
 const PROFILES: Profile[] = [
   {
+  id: 'rosebeck',
+  name: 'RoseBeck',
+  handle: '@rosebeck',
+  bio: 'Profile auto-generated from restricted source. Exclusive content from RoseBeck. Join for the most captivating and premium experiences.',
+  avatarUrl: 'https://img.coomer.st/thumbnail/data/ff/b8/ffb802160a9c72f38899da1f2a7c9787987f591d743e9470e90e1c3ee907a4e8.jpg',
+  heroUrl: 'https://img.coomer.st/thumbnail/data/86/b9/86b929798e46d355b318ff1cbb969e03abbc84c7ecf001ca4d142a194e9fd999.jpg',
+  tags: [
+    'onlyfans',
+    'premium',
+    'exclusive',
+    'beauty',
+    'creative'
+  ],
+  category: 'Premium',
+  images: [
+    {
+      id: 'rb-001',
+      caption: 'Sassy & Classy 💅✨',
+      url: 'https://img.coomer.st/thumbnail/data/ff/b8/ffb802160a9c72f38899da1f2a7c9787987f591d743e9470e90e1c3ee907a4e8.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/ff/b8/ffb802160a9c72f38899da1f2a7c9787987f591d743e9470e90e1c3ee907a4e8.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-002',
+      caption: 'Simply irresistible 💎✨',
+      url: 'https://img.coomer.st/thumbnail/data/86/b9/86b929798e46d355b318ff1cbb969e03abbc84c7ecf001ca4d142a194e9fd999.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/86/b9/86b929798e46d355b318ff1cbb969e03abbc84c7ecf001ca4d142a194e9fd999.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-003',
+      caption: 'Can’t look away 💦✨',
+      url: 'https://img.coomer.st/thumbnail/data/89/89/8989cae2e4912156ae3f828cb0dacab8f28bb376d1139a303cf729a418107be1.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/89/89/8989cae2e4912156ae3f828cb0dacab8f28bb376d1139a303cf729a418107be1.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-004',
+      caption: 'Kawaii dreams 🌸💖',
+      url: 'https://img.coomer.st/thumbnail/data/82/33/8233064bc5f8dcce582f94ce3c1cbdd73788b6ff275f2e7d4f778ddd93c39237.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/82/33/8233064bc5f8dcce582f94ce3c1cbdd73788b6ff275f2e7d4f778ddd93c39237.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-005',
+      caption: 'Lust & Luxury 🥂👠',
+      url: 'https://img.coomer.st/thumbnail/data/35/9d/359d70beef09ab3b8dc917191cbef67015b18ab624fac21145b1cc65c6db937b.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/35/9d/359d70beef09ab3b8dc917191cbef67015b18ab624fac21145b1cc65c6db937b.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-006',
+      caption: 'Pure magic ✨🔮',
+      url: 'https://img.coomer.st/thumbnail/data/2e/fc/2efcb8f6a2bc85e3f216c02fb3873f0c62a430e06e7546fbd886747d4d8854df.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/2e/fc/2efcb8f6a2bc85e3f216c02fb3873f0c62a430e06e7546fbd886747d4d8854df.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-007',
+      caption: 'Dripping in finesse 💦🔥',
+      url: 'https://img.coomer.st/thumbnail/data/13/ce/13ce594d26592b85b393f1c3f7b6eea426bb7578e010ba4344ed3fcb14ebd5b1.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/13/ce/13ce594d26592b85b393f1c3f7b6eea426bb7578e010ba4344ed3fcb14ebd5b1.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-008',
+      caption: 'Your favorite view 🍑👀',
+      url: 'https://img.coomer.st/thumbnail/data/d6/9d/d69d8067bc3372703bf6cec13e08b91be901d6fb9145a9d63585cf759ec7d953.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/d6/9d/d69d8067bc3372703bf6cec13e08b91be901d6fb9145a9d63585cf759ec7d953.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-009',
+      caption: 'Too hot to scroll past 😈📸',
+      url: 'https://img.coomer.st/thumbnail/data/0a/d9/0ad9195c3bddbe1eb236cdc4a275c027a9c1da5f3c0a4fd1ca4902d3bef91a42.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/0a/d9/0ad9195c3bddbe1eb236cdc4a275c027a9c1da5f3c0a4fd1ca4902d3bef91a42.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-010',
+      caption: 'Sweet addiction 🍭💎',
+      url: 'https://img.coomer.st/thumbnail/data/1b/8a/1b8af606594626a11e8bf441dc60f09efadbc5dfda2421ec536e51603bb93625.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/1b/8a/1b8af606594626a11e8bf441dc60f09efadbc5dfda2421ec536e51603bb93625.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-011',
+      caption: 'Golden hour glow ✨☀️',
+      url: 'https://img.coomer.st/thumbnail/data/26/c1/26c1d56e9d8c2a88bb7efcb25b3a6812cabef9b7d8f52293b3724b5cb9f6a88d.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/26/c1/26c1d56e9d8c2a88bb7efcb25b3a6812cabef9b7d8f52293b3724b5cb9f6a88d.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-012',
+      caption: 'Dripping in finesse 💦🔥',
+      url: 'https://img.coomer.st/thumbnail/data/fd/29/fd2907bea8a9f4198cddd4c919a0a932ddbd5e98a0609fdec329657350c5f485.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/fd/29/fd2907bea8a9f4198cddd4c919a0a932ddbd5e98a0609fdec329657350c5f485.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-013',
+      caption: 'Bratty energy 😈🔥',
+      url: 'https://img.coomer.st/thumbnail/data/6d/6c/6d6c65088923594eca82fa6da040a55a591e05c7ac2c5c91610ca194fbbe85ec.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/6d/6c/6d6c65088923594eca82fa6da040a55a591e05c7ac2c5c91610ca194fbbe85ec.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-014',
+      caption: 'Can’t look away 💦✨',
+      url: 'https://img.coomer.st/thumbnail/data/d0/86/d0867522fb7e85b5f47857924837659584396a3ec12f9c71eb60549e36ab80aa.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/d0/86/d0867522fb7e85b5f47857924837659584396a3ec12f9c71eb60549e36ab80aa.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    },
+    {
+      id: 'rb-015',
+      caption: 'Soft curves, loud energy 😍🔥',
+      url: 'https://img.coomer.st/thumbnail/data/c1/16/c116e55ec5fda8fcc73ab0cdfdbb5672877e639e03b522ece0fea9b794713ac6.jpg',
+      thumbnailUrl: 'https://img.coomer.st/thumbnail/data/c1/16/c116e55ec5fda8fcc73ab0cdfdbb5672877e639e03b522ece0fea9b794713ac6.jpg',
+      width: 800,
+      height: 1200,
+      isLocked: false,
+      isVisible: true,
+      mediaType: 'image',
+      createdAt: '2025-11-20T11:35:37.667Z'
+    }
+  ],
+  stats: {
+    posts: 1224,
+    likes: 35400,
+    views: 1500000,
+    followers: 25400
+  },
+  isVerified: true,
+  isVisible: true
+},
+  {
     id: 'urbabydollxo',
     name: 'UrBabyDollXo',
     handle: '@urbabydollxo',
