@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Profile, User, UserRole, Image, MediaType } from '../types';
 import ruriData from './ruriData.json';
 import nicolebunData from './nicolebunData.json';
+import mankoprincessData from './mankoprincessData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -76,6 +77,11 @@ const MOCK_IMAGES: Image[] = BELLE_FULL_DATA.map((item, index) => {
 });
 
 const RURI_IMAGES: Image[] = (ruriData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const MANKO_IMAGES: Image[] = (mankoprincessData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10111,6 +10117,21 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 15.00
+  },
+  {
+    id: 'mankoprincess',
+    name: 'mankoprincess',
+    handle: '@mankoprincess',
+    bio: 'Exclusive content from mankoprincess. Join for the most captivating and premium experiences.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/89/35/89354a6f04fca0b4c49d2a7d603125fa3c7effb873541b42c7d042be2b5f113b.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/e6/c8/e6c8fd4513e405cf93d332568d727fef3e96ce33d8f1cf277f0d091847d5cf9f.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'creative'],
+    category: 'Premium',
+    images: MANKO_IMAGES,
+    stats: { posts: MANKO_IMAGES.length, likes: 35400, views: 1800000, followers: 24500 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 19.99
   },
   {
     id: 'profile-1',
