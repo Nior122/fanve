@@ -10092,11 +10092,10 @@ const PROFILES: Profile[] = [
     heroUrl: 'https://img.coomer.st/thumbnail/data/78/a5/78a5b6872625a92186dc22556266b2922a30c9033a8b96601a403c212361023d.jpg',
     tags: ['model', 'exclusive', 'onlyfans'],
     category: 'Featured',
-    images: nicolebunData,
+    images: nicolebunData as Image[],
     stats: { posts: nicolebunData.length, likes: 12500, views: 150000, followers: 538 },
     isVerified: true,
-    isVisible: true,
-    access_mode: 'cached_preview'
+    isVisible: true
   },
   {
     id: 'urbabydollxo',
