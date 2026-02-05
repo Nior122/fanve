@@ -10086,6 +10086,21 @@ const PROFILES: Profile[] = [
   isVisible: true
 },
   {
+    id: 'nicolebun',
+    name: 'Nicole Bun',
+    handle: '@nicolebun',
+    bio: 'Profile auto-generated from restricted source.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/7d/cc/7dccc39339f8b735adbc752c21aae1ed8dbea9ba09cf8b0b8eeea62e274c0c65.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/78/a5/78a5b6872625a92186dc22556266b2922a30c9033a8b96601a403c212361023d.jpg',
+    tags: ['model', 'exclusive', 'onlyfans'],
+    category: 'Featured',
+    images: nicolebunData,
+    stats: { posts: nicolebunData.length, likes: 12500, views: 150000, followers: 538 },
+    isVerified: true,
+    isVisible: true,
+    access_mode: 'cached_preview'
+  },
+  {
     id: 'urbabydollxo',
     name: 'UrBabyDollXo',
     handle: '@urbabydollxo',
