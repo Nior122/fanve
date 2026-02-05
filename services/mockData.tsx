@@ -10635,7 +10635,31 @@ const PROFILES: Profile[] = [
     pricePerMonth: 12.99
   },
   MEENFOX_PROFILE,
-  THORRIANDJAX_PROFILE
+  THORRIANDJAX_PROFILE,
+  {
+    id: 'bambidoe',
+    name: 'Bambidoe',
+    handle: '@bambidoe',
+    bio: 'Premium exclusive content creator bringing you the hottest and most intimate moments. Subscribe for personalized experiences and content you won\'t find anywhere else. 🔥💎',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/01/a4/01a4143118c4d3bb9af20aa33ac5291810fa1bd10456e78d5ec2f92b803dfa1e.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/06/bd/06bd4f9908b92cf3c702ccadbac172ba206a26b2dd838e0569ed05e55a3b13c9.jpg',
+    tags: ['Premium', 'Exclusive', 'OnlyFans', 'Hot', 'Intimate'],
+    category: 'Premium',
+    images: [
+      { id: 'bd-001', caption: 'Premium content 🔥', url: 'https://img.coomer.st/thumbnail/data/01/a4/01a4143118c4d3bb9af20aa33ac5291810fa1bd10456e78d5ec2f92b803dfa1e.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/01/a4/01a4143118c4d3bb9af20aa33ac5291810fa1bd10456e78d5ec2f92b803dfa1e.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image' as MediaType, createdAt: '2025-12-01T11:35:37.667Z' },
+      { id: 'bd-002', caption: 'Exclusive moments 💎', url: 'https://img.coomer.st/thumbnail/data/06/bd/06bd4f9908b92cf3c702ccadbac172ba206a26b2dd838e0569ed05e55a3b13c9.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/06/bd/06bd4f9908b92cf3c702ccadbac172ba206a26b2dd838e0569ed05e55a3b13c9.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image' as MediaType, createdAt: '2025-12-01T11:36:37.667Z' },
+      { id: 'bd-003', caption: 'Your favorite view 👀', url: 'https://img.coomer.st/thumbnail/data/13/ab/13ab8e270ece8cf357137edeb85be78c309cb12292df3a58fa4d1b50d3315d1a.jpg', thumbnailUrl: 'https://img.coomer.st/thumbnail/data/13/ab/13ab8e270ece8cf357137edeb85be78c309cb12292df3a58fa4d1b50d3315d1a.jpg', width: 800, height: 1200, isLocked: false, isVisible: true, mediaType: 'image' as MediaType, createdAt: '2025-12-01T11:37:37.667Z' }
+    ],
+    stats: {
+      posts: 3,
+      likes: 8500,
+      views: 45000,
+      followers: 1800
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 19.99
+  }
 ];
 
 
