@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Profile, User, UserRole, Image, MediaType } from '../types';
 import ruriData from './ruriData.json';
 import nicolebunData from './nicolebunData.json';
+import fanslyData from './fanslyData.json';
 import mankoprincessData from './mankoprincessData.json';
 import redheadwinterData from './redheadwinterData.json';
 import queenTahshaarData from './queenTahshaarData.json';
