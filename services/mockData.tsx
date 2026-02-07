@@ -4,6 +4,7 @@ import ruriData from './ruriData.json';
 import nicolebunData from './nicolebunData.json';
 import mankoprincessData from './mankoprincessData.json';
 import redheadwinterData from './redheadwinterData.json';
+import queenTahshaarData from './queenTahshaarData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -10153,6 +10154,21 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 14.99
+  },
+  {
+    id: 'queen_tahshaar',
+    name: 'Queen Tahshaar',
+    handle: '@queen_tahshaar',
+    bio: 'Profile auto-generated from restricted source.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/75/78/75789dc6482d8def4d30c0a550eaf598f4af2a61797ea60107d403265d6d7383.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/bb/0b/bb0b4e5215d257dbaa69b800e67fd51c632cc7eeac38707116f6857a0b18450e.jpg',
+    tags: ['onlyfans', 'exclusive', 'premium'],
+    category: 'Premium',
+    images: (queenTahshaarData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: queenTahshaarData.length, likes: 55000, views: 2500000, followers: 42000 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 19.99
   },
   {
     id: 'profile-1',
