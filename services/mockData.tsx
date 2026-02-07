@@ -3,6 +3,7 @@ import { Profile, User, UserRole, Image, MediaType } from '../types';
 import ruriData from './ruriData.json';
 import nicolebunData from './nicolebunData.json';
 import mankoprincessData from './mankoprincessData.json';
+import redheadwinterData from './redheadwinterData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -82,6 +83,11 @@ const RURI_IMAGES: Image[] = (ruriData as any[]).map((item) => ({
 }));
 
 const MANKO_IMAGES: Image[] = (mankoprincessData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const REDHEAD_IMAGES: Image[] = (redheadwinterData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10132,6 +10138,21 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 19.99
+  },
+  {
+    id: 'redheadwinter',
+    name: 'RedheadWinter',
+    handle: '@redheadwinter',
+    bio: 'Profile auto-generated from restricted source.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/7f/9e/7f9e77824071a006d0bb9ffde4f48534e5430fd85490b07b88256fdef459d7b3.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/8f/16/8f16aec8fc17ed417fef7d0eba0e6213fafa9f1122dea67ef3a51a1a63c7be9d.jpg',
+    tags: ['onlyfans', 'redhead', 'exclusive', 'premium'],
+    category: 'Premium',
+    images: REDHEAD_IMAGES,
+    stats: { posts: REDHEAD_IMAGES.length, likes: 45000, views: 2100000, followers: 32000 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99
   },
   {
     id: 'profile-1',
