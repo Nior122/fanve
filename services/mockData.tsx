@@ -10149,7 +10149,7 @@ const PROFILES: Profile[] = [
     tags: ['onlyfans', 'redhead', 'exclusive', 'premium'],
     category: 'Premium',
     images: REDHEAD_IMAGES,
-    stats: { posts: REDHEAD_IMAGES.length, likes: 45000, views: 2100000, followers: 32000 },
+    stats: { posts: 310, likes: 45000, views: 2100000, followers: 32000 },
     isVerified: true,
     isVisible: true,
     pricePerMonth: 14.99
