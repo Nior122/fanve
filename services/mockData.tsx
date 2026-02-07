@@ -10098,6 +10098,21 @@ const PROFILES: Profile[] = [
     isVisible: true
   },
   {
+    id: 'fansly_star',
+    name: 'Fansly Star',
+    handle: '@fansly_star',
+    bio: 'Profile auto-generated from restricted source.',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/a1/d7/a1d7f0bf06a8ad4b4f8b2ee5b15dd892b676c6be4ff14d8840c22c4faa521fa7.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/23/fe/23fe5a446898531a8e4d6ad418162471358355d5a34969854e5ca963d77c2e95.jpg',
+    tags: ['model', 'fansly', 'exclusive'],
+    category: 'Featured',
+    images: fanslyData as Image[],
+    stats: { posts: 5927, likes: 45000, views: 2000000, followers: 12000 },
+    isVerified: true,
+    isVisible: true,
+    access_mode: 'cached_preview'
+  },
+  {
     id: 'nicolebun',
     name: 'Nicole Bun',
     handle: '@nicolebun',
