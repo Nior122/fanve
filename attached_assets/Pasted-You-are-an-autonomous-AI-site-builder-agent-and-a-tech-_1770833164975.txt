@@ -1,0 +1,153 @@
+You are an autonomous AI site-builder agent and a tech professional.  
+You will be given one runtime input when invoked:
+
+- TARGET_PROFILE_URL  — a public URL of the page to import (the page that contains the media and profile info).
+
+Your mission: create a new site profile that **mirrors the exact structure and media-item schema of profiles previously created on this site**, scrape **all pages** (pagination / infinite scroll / load-more) for media (images **as thumbnails** and videos **untouched**), validate each item, and upload every valid item into the new profile using the same per-item schema so thumbnails display and videos play. Do NOT write "Profile auto-generated from restricted source." into bios. If you cannot extract a bio, leave it empty or use a short friendly line derived from the page title (e.g., "Imported from example.com"). Follow the site templates exactly.
+
+COPY-AND-PASTE: execute everything below automatically and deterministically. Do not prompt the human unless an unrecoverable blocking error occurs.
+
+-------------------------
+STEP 0 — PREPARATION (MANDATORY)
+-------------------------
+1. Identify the MOST RECENT profile created by this agent/account on the site and load its JSON (API or DOM exposed object). This is your authoritative template. Save it as `template_profile.json`.
+2. From `template_profile.json`, extract and save `profile_media_schema.json` (exact per-item keys, types) and `api_endpoints.json` (create-profile, upload-media endpoints, required headers, CSRF tokens, auth).
+3. If no prior profile exists, attempt to use a public working profile as fallback, but flag this in the report and continue.
+
+-------------------------
+STEP 1 — BUILD NEW PROFILE METADATA
+-------------------------
+1. Load TARGET_PROFILE_URL in a headless browser context (Playwright recommended), wait for JS to execute and networkidle, timeout 20s default.
+2. Extract:
+   - display_name: prefer `<meta property="og:title">` → `<title>` → `<h1>`
+   - username: slugify display_name, ensure uniqueness by appending `_ts<YYYYMMDDHHMMSS>` if API demands uniqueness
+   - bio/description: prefer `<meta name="description">` → first visible paragraph under H1. **If no bio found, set bio to an empty string (do not use the placeholder "Profile auto-generated from restricted source.").**
+   - profile_picture_url: prefer `<meta property="og:image">` → hero img → first large img
+   - cover_photo_url: hero background-image or second-largest image; if none, set equal to profile_picture_url
+   - other public fields: tags, categories, location if available
+3. Normalize all URLs to absolute.
+
+-------------------------
+STEP 2 — CREATE THE NEW PROFILE (MUST MATCH TEMPLATE)
+-------------------------
+1. Construct the create-profile payload by copying `template_profile.json` and replacing only the profile-level fields above.
+2. Preserve every other key exactly as the template (data types, nested objects). If the template includes server-only fields, omit them from the creation payload.
+3. Perform the create-profile request using the exact endpoint/method/headers discovered in `api_endpoints.json`. Handle CSRF and cookies exactly as the site expects.
+4. Retry once on transient failures (network/5xx). Store server response as `new_profile_response.json` and extract `NEW_PROFILE_ID`.
+
+-------------------------
+STEP 3 — FULL SITE PAGINATION & MEDIA COLLECTION
+-------------------------
+Goal: traverse the entire TARGET_PROFILE_URL resource to collect **all** available media, not just the first page.
+
+1. Use a loop that stops only when no new media is discovered after a full traversal round.
+2. Pagination strategies (try all, in this order):
+   a. If page has `<link rel="next" href="...">` follow it.
+   b. If page has clickable "Next", "Older", ".next", ".load-more" elements, click them (prevent default navigation if needed) and wait for networkidle.
+   c. If page uses infinite scroll, simulate scroll to bottom slowly (2000px increments) until no new network activity for 2s; repeat until stable.
+   d. If page uses numbered pages, detect page links and iterate them sequentially.
+   e. If the site exposes an API used by the UI for pagination (XHR/fetch calls), call that API directly with the same parameters to page through results (preferred when available).
+3. On each page/load event, run the canonical extractor (provided below) in the page context and accumulate returned items into `raw_media_candidates`. Deduplicate by `original_url`.
+4. Continue pagination until (a) no new `original_url` is found after a full traversal, or (b) you reach a hard max of 1000 items (configurable), whichever comes first.
+
+-------------------------
+STEP 4 — CANONICAL EXTRACTOR (RUN IN PAGE CONTEXT)
+-------------------------
+Run this exact snippet by `page.evaluate(...)` on each loaded page. It returns an array of objects `{ url, original_url, type, thumbnail, caption, metadata }`.
+
+```js
+(() => {
+  const base = location.href;
+  const resolve = u => { try { return new URL(u, base).href; } catch { return u; } };
+  const parseSrcset = s => {
+    if (!s) return null;
+    const parts = s.split(',').map(x => x.trim()).map(p => {
+      const t = p.split(/\s+/); const url = t[0]; let w = 0;
+      if (t[1] && t[1].endsWith('w')) w = parseInt(t[1]); else if (t[1] && t[1].endsWith('x')) w = parseFloat(t[1]) * 1000;
+      return { url, w };
+    }).filter(c=>c.url);
+    if (!parts.length) return null;
+    parts.sort((a,b)=>b.w-a.w);
+    return parts[0].url;
+  };
+  const extractBg = s => {
+    if (!s) return [];
+    const out=[]; const re=/url\((['"]?)(.*?)\1\)/g; let m;
+    while ((m=re.exec(s))!==null) if(m[2]) out.push(m[2]);
+    return out;
+  };
+  const looksLikeMedia = u => !!u && /\.(jpe?g|png|gif|webp|mp4|webm|mov|ogg|ogv|avif|bmp|svg)(\?|$)/i.test(u);
+  const seen = new Set(); const results = [];
+  const templates = ["Sultry queen ✨🔥","Midnight vibes 😈💋","Velvet curves 💫😍","Playful tease 😏🍒","Luxury mood 💎😉","Irresistible glow ✨😉","Tempting silhouette 😍🔥","Secret desire 💋🌙"];
+  const pickCaption = (meta, isVideo, idx) => {
+    const hint = meta && (meta.alt || meta.filename || meta.surroundingText);
+    if (hint) return (hint.toString().slice(0,36) + (isVideo ? ' ▶️' : '') );
+    return templates[idx % templates.length] + (isVideo ? ' ▶️' : '');
+  };
+  const push = (type, raw, el) => {
+    if (!raw) return;
+    const orig = resolve(raw);
+    if (!orig || seen.has(orig)) return; seen.add(orig);
+    let final = orig, thumbnail = null;
+    try {
+      const u = new URL(orig);
+      if (u.hostname === 'img.coomer.st') {
+        if (u.pathname.includes('/data/') && !u.pathname.includes('/thumbnail/')) {
+          thumbnail = `${u.origin}${u.pathname.replace('/data/','/thumbnail/data/')}${u.search||''}`;
+        } else if (u.pathname.includes('/thumbnail/data/')) {
+          thumbnail = orig;
+        }
+      }
+    } catch(e){}
+    if (type === 'image') final = thumbnail || orig;
+    const filename = orig.split('/').pop().split('?')[0] || null;
+    const surroundingText = (() => { try { return el && el.closest ? (el.closest('figure')?.innerText || el.parentElement?.innerText) : null; } catch {return null;} })();
+    const idx = results.length;
+    const caption = pickCaption({ alt: el && el.alt ? el.alt : null, filename, surroundingText }, type === 'video', idx);
+    results.push({
+      url: final,
+      original_url: orig,
+      type,
+      thumbnail: type === 'image' ? (thumbnail || final) : null,
+      caption,
+      metadata: { filename, alt: el && el.alt ? el.alt : null, surroundingText }
+    });
+  };
+  // images
+  document.querySelectorAll('img').forEach(img => {
+    const best = img.getAttribute('srcset') ? parseSrcset(img.getAttribute('srcset')) : null;
+    const s = best || img.getAttribute('src') || img.src;
+    if (s) push('image', s, img);
+    ['data-src','data-srcset','data-original','data-hires','data-full'].forEach(a => {
+      if (img.hasAttribute && img.hasAttribute(a)) { const v = img.getAttribute(a); if (v) push('image', a.endsWith('srcset')?parseSrcset(v):v, img); }
+    });
+  });
+  // background images
+  document.querySelectorAll('[style]').forEach(el => {
+    const bgs = extractBg(el.getAttribute('style')||'');
+    bgs.forEach(b => push('image', b, el));
+  });
+  // anchors linking media
+  document.querySelectorAll('a[href]').forEach(a => {
+    const h = a.getAttribute('href');
+    if (h && looksLikeMedia(h)) {
+      if (/\.(mp4|webm|mov|ogg|m3u8)/i.test(h)) push('video', h, a); else push('image', h, a);
+    }
+  });
+  // video tags & source tags
+  document.querySelectorAll('video').forEach(v => {
+    const s = v.currentSrc || v.getAttribute('src') || null;
+    if (s) push('video', s, v);
+    v.querySelectorAll('source').forEach(s2 => { if (s2.src) push('video', s2.src, s2); if (s2.getAttribute('srcset')) push('video', parseSrcset(s2.getAttribute('srcset')), s2); });
+    if (v.getAttribute('poster')) push('image', v.getAttribute('poster'), v);
+  });
+  document.querySelectorAll('source[src]').forEach(s => {
+    if (s.src) { if (/\.(mp4|webm|mov|ogg)/i.test(s.src)) push('video', s.src, s); else push('image', s.src, s); }
+  });
+  // lazy attrs on any element
+  const lazy = ['data-src','data-srcset','data-video','data-video-src','data-original','data-full','data-hires'];
+  document.querySelectorAll('*').forEach(el => {
+    lazy.forEach(a => { if (el.hasAttribute && el.hasAttribute(a)) { const v = el.getAttribute(a); if (!v) return; if (a.endsWith('srcset')) push('image', parseSrcset(v), el); else { if (/\.(mp4|webm|mov|ogg)/i.test(v)) push('video', v, el); else push('image', v, el); } } });
+  });
+  return results;
+})();
