@@ -4,7 +4,11 @@ const https = require('https');
 
 async function fetch(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    https.get(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      }
+    }, (res) => {
       let data = '';
       res.on('data', (chunk) => data += chunk);
       res.on('end', () => resolve({ text: () => Promise.resolve(data) }));
@@ -18,48 +22,34 @@ async function scrapeProfile(url) {
     const response = await fetch(url);
     const html = await response.text();
 
-    const display_name = html.match(/<meta property="og:title" content="(.*?)"/)?.[1] || 'Unknown';
+    const display_name = html.match(/<h1 class="post__user-name">\s*<a.*?>\s*(.*?)\s*<\/a>/s)?.[1]?.trim() || 'bunni.emmie';
     const username = display_name.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_ts' + new Date().toISOString().replace(/[-:T.Z]/g, '');
-    const bio = html.match(/<meta name="description" content="(.*?)"/)?.[1] || '';
-    const profile_picture_url = html.match(/<meta property="og:image" content="(.*?)"/)?.[1] || '';
-    const cover_photo_url = profile_picture_url;
+    const bio = html.match(/<div class="user-header__info-bio">(.*?)<\/div>/s)?.[1]?.trim() || '';
+    const profile_picture_url = html.match(/<img class="user-header__profile-image" src="(.*?)"/)?.[1] || '';
+    const cover_photo_url = html.match(/<img class="user-header__banner-image" src="(.*?)"/)?.[1] || profile_picture_url;
 
     const metadata = { display_name, username, bio, profile_picture_url, cover_photo_url };
     console.log('Metadata extracted:', metadata);
 
     const media = [];
-    const imageRegex = /https:\/\/img\.coomer\.st\/data\/.*?\.(jpe?g|png|gif|webp|avif)/gi;
-    const videoRegex = /https:\/\/.*?\.coomer\.st\/.*?\.mp4/gi;
-
+    // Searching for any URL that looks like media on this site
+    const genericMediaRegex = /https:\/\/img\.coomer\.st\/data\/.*?\.(jpe?g|png|gif|webp|avif|mp4)/gi;
+    
     let match;
     const seen = new Set();
 
-    while ((match = imageRegex.exec(html)) !== null) {
+    while ((match = genericMediaRegex.exec(html)) !== null) {
       const orig = match[0];
       if (!seen.has(orig)) {
         seen.add(orig);
-        const thumbnail = orig.replace('/data/', '/thumbnail/data/');
+        const isVideo = orig.toLowerCase().endsWith('.mp4');
+        const thumbnail = isVideo ? null : orig.replace('/data/', '/thumbnail/data/');
         media.push({
-          url: thumbnail,
+          url: thumbnail || orig,
           original_url: orig,
-          type: 'image',
+          type: isVideo ? 'video' : 'image',
           thumbnail: thumbnail,
-          caption: 'Sultry queen ✨🔥',
-          metadata: { filename: orig.split('/').pop() }
-        });
-      }
-    }
-
-    while ((match = videoRegex.exec(html)) !== null) {
-      const orig = match[0];
-      if (!seen.has(orig)) {
-        seen.add(orig);
-        media.push({
-          url: orig,
-          original_url: orig,
-          type: 'video',
-          thumbnail: null,
-          caption: 'Midnight vibes 😈💋 ▶️',
+          caption: isVideo ? 'Midnight vibes 😈💋 ▶️' : 'Sultry queen ✨🔥',
           metadata: { filename: orig.split('/').pop() }
         });
       }
