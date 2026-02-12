@@ -10749,12 +10749,13 @@ const PROFILES: Profile[] = [
     "heroUrl": "https://img.coomer.st/thumbnail/data/aa/86/aa86c1d513b36b38fb3cc06e1b0140b23c71aff8644a0e64789ef30137471b24.jpg",
     "pricePerMonth": 0,
     "tags": ["sexy", "exclusive", "hot"],
+    "category": "Featured",
     "stats": {
       "likes": 12500,
-      "subscribers": 450,
       "posts": 10,
       "views": 50000,
-      "followers": 1000
+      "followers": 1000,
+      "subscribers": 450
     },
     "images": CHERYL_BLOSS_IMAGES,
     "isVerified": true,

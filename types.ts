@@ -43,10 +43,12 @@ export interface Profile {
     likes: number;
     views: number;
     followers: number;
+    subscribers?: number;
   };
   isVerified: boolean;
   isVisible: boolean; // Public/Hidden
   pricePerMonth?: number; // Optional subscription model
+  access_mode?: string;
 }
 
 export interface AuthState {
