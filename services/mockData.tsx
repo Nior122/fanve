@@ -10819,6 +10819,7 @@ const PROFILES: Profile[] = [
     "avatarUrl": "https://img.coomer.st/thumbnail/data/8e/72/8e72372446a94f8ed4b292e5e5e7672a2b01305b723ac6f2872a3b7b1549ad67.jpg",
     "heroUrl": "https://img.coomer.st/thumbnail/data/aa/86/aa86c1d513b36b38fb3cc06e1b0140b23c71aff8644a0e64789ef30137471b24.jpg",
     "pricePerMonth": 0,
+    "category": "Featured",
     "tags": ["sexy", "exclusive", "hot"],
     "stats": {
       "likes": 12500,
