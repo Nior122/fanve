@@ -7,6 +7,7 @@ import mankoprincessData from './mankoprincessData.json';
 import redheadwinterData from './redheadwinterData.json';
 import queenTahshaarData from './queenTahshaarData.json';
 import cherylBlossData from './cheryl_blossData.json';
+import audreyAndSadieData from './audreyandsadieData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
