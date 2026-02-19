@@ -696,6 +696,76 @@ const BISHOUJOMOM_IMAGES: Image[] = BISHOUJOMOM_URLS.map((url, index) => ({
   sha256: `sha256-bishoujomom-${index + 1}`
 }));
 
+// Bunni Emmie Data
+const BUNNI_EMMIE_URLS = [
+  "https://img.coomer.st/thumbnail/data/bb/d6/bbd60c2cca16bca15553a3e4f98872122e59bac0d63c6dd96b57b9efb2d26dea.jpg",
+  "https://img.coomer.st/thumbnail/data/a0/bb/a0bbb59970461e721b5957992c60b87a0f460746a90560f021771353ca849714.jpg",
+  "https://img.coomer.st/thumbnail/data/9e/20/9e209e8b3c45537e3c60b3cecf2846a08ccc48366a75f83789ac708c15f45357.jpg",
+  "https://img.coomer.st/thumbnail/data/74/93/7493875c472d7b84b50e2d8281b051d53ddb589fcaba785db0a4c6ca7613a569.jpg",
+  "https://img.coomer.st/thumbnail/data/19/7b/197bc587cc3801956b90912c2bbb618ab584bcbfb1ff2efa9c64044e9fa357d3.jpg",
+  "https://img.coomer.st/thumbnail/data/a1/3f/a13f6524287580186cda16e5f14f7eff610b4b43785705ca2888a6dd4d677cae.jpg",
+  "https://img.coomer.st/thumbnail/data/e0/67/e067b4924733a72c99c2587d3caed0411cf03ef97bc20a411c03bfb283a184ab.jpg",
+  "https://img.coomer.st/thumbnail/data/cc/9d/cc9d60eab3669e6b1e2bf7b25916caff2770d414dd637b11caea18f2f136eef0.jpg",
+  "https://img.coomer.st/thumbnail/data/2e/0b/2e0b752956bf87479138f617b439a299924c450b8d8fa3b2eeec81763a4ac80b.jpg",
+  "https://img.coomer.st/thumbnail/data/0f/f4/0ff445ac6531c80a412e2a9f07ec5929ea0473efec2c81f38b9932c1beb36970.jpg",
+  "https://img.coomer.st/thumbnail/data/5f/ee/5fee736428366d0568bd3e01d1b1b87bc1ccf8232f3dd2da2ce1eda9cb2aea72.jpg",
+  "https://img.coomer.st/thumbnail/data/99/be/99be7698c2370b07a3d3d6ff6b08b59140ba10b25c555897f9229600f56d4176.jpg",
+  "https://img.coomer.st/thumbnail/data/22/e5/22e55f3bbeba3bb791e9a12491ec99e651652e42c60a2fca3b1e0b5458b98a4c.jpg",
+  "https://img.coomer.st/thumbnail/data/a9/e3/a9e3373c7b2db9c631607316bc4fdb37472cdf853340ded8c18522aecdebc5fc.jpg",
+  "https://img.coomer.st/thumbnail/data/f5/1f/f51f280a6a438ac4222fe8e65b745753145e2e0c31e9de35efa1fa5a861a1d3e.jpg",
+  "https://img.coomer.st/thumbnail/data/e3/00/e300280c7dd7dc7e616c1ac0f4041192c3a085ebfa21cc0168bdde60ddea0b5f.jpg",
+  "https://img.coomer.st/thumbnail/data/50/ac/50ac3fab1819cad7ea5dd2551f9da0bbc3490ad5df184ffa7d21deaa72f27e78.jpg",
+  "https://img.coomer.st/thumbnail/data/30/de/30de88d7d058683c1614e2c62db039b4435ffdf73630f756794fa6a6aaf8266f.jpg",
+  "https://img.coomer.st/thumbnail/data/f5/f5/f5f59f4a59779628e76e0d97af2b2c808da7a075ff8016d615a8b953c81b0e1e.jpg",
+  "https://img.coomer.st/thumbnail/data/58/b5/58b5251689f2f7e2d79ae7233f4aea602d90d1854da1413a63614eee33464bed.jpg",
+  "https://img.coomer.st/thumbnail/data/77/7f/777f87fe1c8570bdd4ae6524abdf43d5f5ae7358c05dd3c4fbe3bd8f09deedbd.jpg",
+  "https://img.coomer.st/thumbnail/data/21/4c/214c2538ad68ff29f2b786a08564e3c98dc5e60bb8a657c3a21cf6762695580f.jpg",
+  "https://img.coomer.st/thumbnail/data/de/c8/dec82e7fc3809d6c02a5e12ac66931df4ae83d16eb9a7b2e88124522fa6ab9bc.jpg",
+  "https://img.coomer.st/thumbnail/data/cd/31/cd318846433ceb4502c7f04190ad10e326704e52d573ae14b23b2c761da83883.jpg",
+  "https://img.coomer.st/thumbnail/data/b2/45/b24546c291aef0dc3beee6361e142ecd7fdcd826a93fe180737436e01bef2ede.jpg",
+  "https://img.coomer.st/thumbnail/data/5a/5b/5a5b70e118509b05762c3b1c9d9b6bda03f3570bc3c5bd748fcba0693b125d60.jpg",
+  "https://img.coomer.st/thumbnail/data/fd/86/fd867431430e2afa3fe268e5d55f5139ae6be02ac9fb9b314f9d6ce49d791a39.jpg",
+  "https://img.coomer.st/thumbnail/data/a4/37/a4370b3386f7306b341135c99e180ad4e4c0068e93598efa8e7c525c290fba0a.jpg",
+  "https://img.coomer.st/thumbnail/data/b2/75/b275b1bef668ba8fa1bc6ce01fb8ea0d3c05903baa8419aaff4cafa523.jpg",
+  "https://img.coomer.st/thumbnail/data/ce/eb/ceebd94562a2d2ba2da79551ad54f67ef2ede167cbba11d628fa55c2d3ee3598.jpg"
+];
+
+const BUNNI_EMMIE_IMAGES: Image[] = BUNNI_EMMIE_URLS.map((url, index) => ({
+  id: `bunni-emmie-${String(index + 1).padStart(3, '0')}`,
+  url,
+  thumbnailUrl: url,
+  caption: `🐰 Bunni Content ${index + 1} ✨`,
+  width: 800,
+  height: 1000,
+  isLocked: false,
+  isVisible: true,
+  mediaType: 'image' as MediaType,
+  sourceUrl: url,
+  createdAt: new Date(Date.now() - index * 3600000).toISOString(),
+  sha256: `sha256-bunni-emmie-${index + 1}`
+}));
+
+const BUNNI_EMMIE_PROFILE: Profile = {
+  id: 'bunni.emmie',
+  name: 'bunni.emmie',
+  handle: '@bunni.emmie',
+  bio: 'Bunni Emmie | OnlyFans model',
+  avatarUrl: 'https://img.coomer.st/icons/onlyfans/bunni.emmie',
+  heroUrl: 'https://img.coomer.st/banners/onlyfans/bunni.emmie',
+  tags: ["onlyfans", "bunni", "emmie"],
+  category: 'OnlyFans',
+  images: BUNNI_EMMIE_IMAGES,
+  stats: {
+    posts: 1000,
+    likes: 25000,
+    views: 100000,
+    followers: 10000
+  },
+  isVerified: true,
+  isVisible: true,
+  pricePerMonth: 0
+};
+
 // Create 3 profiles for variety
 const CHOCOLATE_URLS = [
   "https://img.coomer.st/thumbnail/data/00/da/00dae8c2dd238cf93e7ff77a913bc6d082e67baa595a16884322bed88a561b2e.jpg",
@@ -10716,6 +10786,7 @@ const PROFILES: Profile[] = [
   },
   MEENFOX_PROFILE,
   THORRIANDJAX_PROFILE,
+  BUNNI_EMMIE_PROFILE,
   {
     id: 'bambidoe',
     name: 'Bambidoe',
