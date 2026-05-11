@@ -7,6 +7,7 @@ import mankoprincessData from './mankoprincessData.json';
 import redheadwinterData from './redheadwinterData.json';
 import queenTahshaarData from './queenTahshaarData.json';
 import cherylBlossData from './cheryl_blossData.json';
+import sexyflowerwaterData from './sexyflowerwaterData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -122,6 +123,11 @@ const ANAIMIYA_IMAGES: Image[] = ANAIMIYA_FULL_DATA.map((item, index) => ({
 }));
 
 const CHERYL_BLOSS_IMAGES: Image[] = (cherylBlossData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const SEXYFLOWERWATER_IMAGES: Image[] = (sexyflowerwaterData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10831,6 +10837,27 @@ const PROFILES: Profile[] = [
     "images": CHERYL_BLOSS_IMAGES,
     "isVerified": true,
     "isVisible": true
+  },
+  {
+    id: 'sexyflowerwater',
+    name: 'sexyflowerwater',
+    handle: '@sexyflowerwater',
+    bio: 'Blooming beauty bringing you the hottest exclusive content 🌸🔥 | Fansly creator | 1,000+ posts of premium content | Your next obsession 💦✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/fa/97/fa974d9e21e79d8062fdf7187c64b2609bf8969d9a6c85afd2ce7b4192683ed2.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/4b/5c/4b5c8535b57ee2cd6925a80c57d878e5d336955bd7d3c976febcad2cb617c5e1.jpg',
+    tags: ['fansly', 'premium', 'exclusive', 'hot', 'floral', 'amateur'],
+    category: 'Fansly',
+    images: SEXYFLOWERWATER_IMAGES,
+    stats: {
+      posts: 1192,
+      likes: 38400,
+      views: 215000,
+      followers: 9800
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
+    access_mode: 'cached_preview'
   }
 ];
 
