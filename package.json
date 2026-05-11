@@ -5,26 +5,35 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "tsx server.ts",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "^1.37.0",
+    "@google/genai": "^1.52.0",
+    "@types/express": "^5.0.6",
+    "drizzle-zod": "^0.8.3",
+    "express": "^5.2.1",
     "lucide-react": "^0.263.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.0"
+    "p-limit": "^7.3.0",
+    "p-retry": "^7.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
+    "tsx": "^4.21.0",
+    "zod": "^4.4.3",
+    "zod-validation-error": "^5.0.0"
   },
   "devDependencies": {
-    "@types/node": "^25.0.5",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
+    "@types/node": "^25.6.2",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
     "@vercel/node": "^5.5.26",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "canvas": "^3.2.1",
     "node-fetch": "^3.3.2",
     "playwright-chromium": "^1.58.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21"
   }
 }

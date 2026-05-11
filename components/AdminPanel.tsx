@@ -7,8 +7,6 @@ import {
 } from 'lucide-react';
 import { useMockData } from '../services/mockData';
 import { Profile, Image, MediaType } from '../types';
-import { GoogleGenAI } from "@google/genai";
-
 // Types for the Automation AI Scraper
 interface ScrapeCandidate {
   id: string;
@@ -385,13 +383,19 @@ export const AdminPanel = () => {
   const generateBio = async () => {
     if (!formData.name) return;
     setIsGeneratingBio(true);
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents: `Write a seductive bio for ${formData.name}.`,
-    });
-    setFormData(prev => ({ ...prev, bio: response.text?.trim() || '' }));
-    setIsGeneratingBio(false);
+    try {
+      const response = await fetch('/api/generate-bio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name }),
+      });
+      const data = await response.json();
+      setFormData(prev => ({ ...prev, bio: data.bio || '' }));
+    } catch (error) {
+      console.error('Failed to generate bio:', error);
+    } finally {
+      setIsGeneratingBio(false);
+    }
   };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
