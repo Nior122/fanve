@@ -10,6 +10,7 @@ import cherylBlossData from './cheryl_blossData.json';
 import sexyflowerwaterData from './sexyflowerwaterData.json';
 import kittyxkumData from './kittyxkumData.json';
 import momomkunData from './momomkunData.json';
+import angelawhiteData from './angelawhiteData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -135,6 +136,11 @@ const SEXYFLOWERWATER_IMAGES: Image[] = (sexyflowerwaterData as any[]).map((item
 }));
 
 const MOMOKUN_IMAGES: Image[] = (momomkunData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const ANGELAWHITE_IMAGES: Image[] = (angelawhiteData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10873,6 +10879,27 @@ const PROFILES: Profile[] = [
       likes: 92000,
       views: 540000,
       followers: 38500
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'angelawhite',
+    name: 'Angela White',
+    handle: '@angelawhite',
+    bio: 'Award-winning adult star & OnlyFans creator 🏆💋 | 2,689 posts of premium exclusive content | Australia\'s hottest export 🇦🇺🔥 | Come play with me 💦😇',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/bc/cf/bccfd1f9807f78a28a12933789c8e5a74f113ff10d7234975239dae27fd5055d.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/7a/6a/7a6aedf670d60ed212da6f1b9d78a23099b0a30b03158aaf822258db4642eb09.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'award-winning', 'curvy', 'australian'],
+    category: 'OnlyFans',
+    images: ANGELAWHITE_IMAGES,
+    stats: {
+      posts: 4467,
+      likes: 284000,
+      views: 1820000,
+      followers: 124000
     },
     isVerified: true,
     isVisible: true,
