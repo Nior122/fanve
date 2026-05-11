@@ -11,6 +11,7 @@ import sexyflowerwaterData from './sexyflowerwaterData.json';
 import kittyxkumData from './kittyxkumData.json';
 import momomkunData from './momomkunData.json';
 import angelawhiteData from './angelawhiteData.json';
+import tentaclebimboData from './tentaclebimboData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -141,6 +142,11 @@ const MOMOKUN_IMAGES: Image[] = (momomkunData as any[]).map((item) => ({
 }));
 
 const ANGELAWHITE_IMAGES: Image[] = (angelawhiteData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const TENTACLEBIMBO_IMAGES: Image[] = (tentaclebimboData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10900,6 +10906,27 @@ const PROFILES: Profile[] = [
       likes: 284000,
       views: 1820000,
       followers: 124000
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'tentaclebimbo',
+    name: 'TentacleBimbo',
+    handle: '@tentaclebimbo',
+    bio: 'Your favorite otherworldly bimbo 🐙💜 | 1,234 posts of wild, weird & absolutely stunning content | Fansly exclusive 🔥 | Come get tangled up with me 😈✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/39/e6/39e65918de0f200a06d3ae40f9190ea3a3c491ce94ebbec43010cc1d2d361f18.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/bf/2a/bf2ac3e824a8609491bb8df31c7cec100c3788dceba04ff7430a0d4cca531bc9.jpg',
+    tags: ['fansly', 'premium', 'exclusive', 'curvy', 'alt', 'niche'],
+    category: 'Fansly',
+    images: TENTACLEBIMBO_IMAGES,
+    stats: {
+      posts: 1234,
+      likes: 67000,
+      views: 420000,
+      followers: 29800
     },
     isVerified: true,
     isVisible: true,
