@@ -8,6 +8,7 @@ import redheadwinterData from './redheadwinterData.json';
 import queenTahshaarData from './queenTahshaarData.json';
 import cherylBlossData from './cheryl_blossData.json';
 import sexyflowerwaterData from './sexyflowerwaterData.json';
+import kittyxkumData from './kittyxkumData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -131,6 +132,7 @@ const SEXYFLOWERWATER_IMAGES: Image[] = (sexyflowerwaterData as any[]).map((item
   ...item,
   mediaType: item.mediaType as MediaType
 }));
+
 
 // Meenfox Data
 const MEENFOX_FULL_DATA = [
@@ -4244,19 +4246,9 @@ const KITTYXKUM_URLS = [
   "https://img.coomer.st/thumbnail/data/ff/c4/ffc4989a163afaf23e4269cf5e814f6f387dcc9fd034c35753707e932c70199f.jpg",
 ];
 
-const KITTYXKUM_IMAGES: Image[] = KITTYXKUM_URLS.map((url, index) => ({
-  id: `kittyxkum-${String(index + 1).padStart(3, '0')}`,
-  url,
-  thumbnailUrl: url,
-  caption: `馃拵 Profile ${index + 1}`,
-  width: 800,
-  height: 1000,
-  isLocked: false,
-  isVisible: true,
-  mediaType: 'image' as MediaType,
-  sourceUrl: url,
-  createdAt: new Date(Date.now() - index * 3600000).toISOString(),
-  sha256: `sha256-kittyxkum-${index + 1}`
+const KITTYXKUM_IMAGES: Image[] = (kittyxkumData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
 }));
 
 const LOPESARIANA_URLS = [
@@ -10714,21 +10706,22 @@ const PROFILES: Profile[] = [
     id: 'kittyxkum',
     name: 'kittyxkum',
     handle: '@kittyxkum',
-    bio: 'Premium lifestyle content creator known for exclusive content and engaging personality. Specializing in high-quality content with a focus on authenticity and connection.',
-    avatarUrl: 'https://img.coomer.st/thumbnail/data/5b/77/5b7799fa266226f0bb6aafdf940607838cdc01cda1686f46766d0e18d9adfec2.jpg',
-    heroUrl: 'https://img.coomer.st/thumbnail/data/66/26/6626d3d01464b29c0bc6a72fae88a6f0239d2ceebb64debbb269d19d00e4c4ff.jpg',
-    tags: ['Premium', 'Lifestyle', 'Exclusive Content', 'OnlyFans', 'Popular'],
-    category: 'Lifestyle',
+    bio: 'Your favorite kitty bringing the heat 🐱🔥 | Fansly exclusive | 1,000+ posts of premium content | Come play with me 💦😈',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/f5/19/f51934371179ca67aaf73d3858130df7f4237f7d01f1f0872a009787e43314dd.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/f9/d2/f9d2d0d21d1aa3f7e6d435bda9030564cdbede884f16c03e3bb3e201cbc47d57.jpg',
+    tags: ['fansly', 'premium', 'exclusive', 'kitty', 'cute', 'hot'],
+    category: 'Fansly',
     images: KITTYXKUM_IMAGES,
     stats: {
-      posts: KITTYXKUM_IMAGES.length,
-      likes: 15672,
-      views: 98456,
-      followers: 2847
+      posts: 1195,
+      likes: 44200,
+      views: 278000,
+      followers: 11300
     },
     isVerified: true,
     isVisible: true,
-    pricePerMonth: 19.99
+    pricePerMonth: 12.99,
+    access_mode: 'cached_preview'
   },
   {
     id: 'lopesariana',
@@ -10858,7 +10851,7 @@ const PROFILES: Profile[] = [
     isVisible: true,
     pricePerMonth: 14.99,
     access_mode: 'cached_preview'
-  }
+  },
 ];
 
 
