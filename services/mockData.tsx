@@ -14,6 +14,7 @@ import angelawhiteData from './angelawhiteData.json';
 import tentaclebimboData from './tentaclebimboData.json';
 import midoribugData from './midoribugData.json';
 import islamoonData from './islamoonData.json';
+import lilydaisyphillipsData from './lilydaisyphillipsData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -159,6 +160,11 @@ const MIDORIBUG_IMAGES: Image[] = (midoribugData as any[]).map((item) => ({
 }));
 
 const ISLAMOON_IMAGES: Image[] = (islamoonData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const LILYDAISY_IMAGES: Image[] = (lilydaisyphillipsData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10939,6 +10945,27 @@ const PROFILES: Profile[] = [
       likes: 89000,
       views: 520000,
       followers: 43200
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'lilydaisyphillips',
+    name: 'lilydaisyphillips',
+    handle: '@lilydaisyphillips',
+    bio: 'Daisy fresh & dangerously cute 🌼💋 | 4,017 posts of exclusive content | OnlyFans since 2021 🌸 | Blooming into your new obsession — subscribe before the petals fall 🌺🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/ed/6d/ed6d2ecbd493aa93889b7ae919300396471756b503218151d71b5bb17c42bf33.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/98/ca/98caf9dac937376446efcb4ba147c9dcc2336a9323c122c269551b6ab6cc4384.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'petite', 'brunette', 'cute'],
+    category: 'OnlyFans',
+    images: LILYDAISY_IMAGES,
+    stats: {
+      posts: 4017,
+      likes: 112000,
+      views: 680000,
+      followers: 58400
     },
     isVerified: true,
     isVisible: true,
