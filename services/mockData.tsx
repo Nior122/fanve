@@ -12,6 +12,7 @@ import kittyxkumData from './kittyxkumData.json';
 import momomkunData from './momomkunData.json';
 import angelawhiteData from './angelawhiteData.json';
 import tentaclebimboData from './tentaclebimboData.json';
+import midoribugData from './midoribugData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -147,6 +148,11 @@ const ANGELAWHITE_IMAGES: Image[] = (angelawhiteData as any[]).map((item) => ({
 }));
 
 const TENTACLEBIMBO_IMAGES: Image[] = (tentaclebimboData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const MIDORIBUG_IMAGES: Image[] = (midoribugData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10906,6 +10912,27 @@ const PROFILES: Profile[] = [
       likes: 284000,
       views: 1820000,
       followers: 124000
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'midoribug',
+    name: 'midoribug',
+    handle: '@midoribug',
+    bio: 'Your favourite green-coded girl 🌿💚 | 2,288 posts of exclusive content on OnlyFans | Active since 2022 🌱 | Soft vibes, wild content — come explore 🍃✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/e5/71/e5718ae85d8d91ef5f78a6c6f5de32783eb354759d7357bded83b332d5b06f39.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/ab/f9/abf931edfa08b988e17efeff3ac8e7d7e15fb3000f9b3fa378ad5ea46acdc780.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'petite', 'alt', 'soft-girl'],
+    category: 'OnlyFans',
+    images: MIDORIBUG_IMAGES,
+    stats: {
+      posts: 2288,
+      likes: 54000,
+      views: 310000,
+      followers: 21500
     },
     isVerified: true,
     isVisible: true,
