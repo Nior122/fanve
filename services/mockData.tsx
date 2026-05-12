@@ -13,6 +13,7 @@ import momomkunData from './momomkunData.json';
 import angelawhiteData from './angelawhiteData.json';
 import tentaclebimboData from './tentaclebimboData.json';
 import midoribugData from './midoribugData.json';
+import islamoonData from './islamoonData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -153,6 +154,11 @@ const TENTACLEBIMBO_IMAGES: Image[] = (tentaclebimboData as any[]).map((item) =>
 }));
 
 const MIDORIBUG_IMAGES: Image[] = (midoribugData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const ISLAMOON_IMAGES: Image[] = (islamoonData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10912,6 +10918,27 @@ const PROFILES: Profile[] = [
       likes: 284000,
       views: 1820000,
       followers: 124000
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'isla-moon',
+    name: 'isla-moon',
+    handle: '@isla-moon',
+    bio: 'Your celestial fantasy 🌙✨ | 2,879 posts of exclusive content | OnlyFans since 2022 🌕 | Moonlit, magical & made for your eyes only 💫🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/9e/d0/9ed08a327f77813946f76ff3cc21a133d49e13e215a8b7888c440d02ff3455a4.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/1c/e2/1ce2a2bc7d37924607f3d6cf00ef60ab60d0aa47a5446805ee25012a9851cd58.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'petite', 'brunette', 'aesthetic'],
+    category: 'OnlyFans',
+    images: ISLAMOON_IMAGES,
+    stats: {
+      posts: 2879,
+      likes: 89000,
+      views: 520000,
+      followers: 43200
     },
     isVerified: true,
     isVisible: true,
