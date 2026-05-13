@@ -38,6 +38,7 @@ import paigesteelexxxData from './paigesteelexxxData.json';
 import lunaaokiData from './lunaaokiData.json';
 import emilylynneData from './emilylynneData.json';
 import catgirlData from './catgirlData.json';
+import whoahannahjoData from './whoahannahjoData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11425,6 +11426,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'whoahannahjo',
+    name: 'Hannah Jo',
+    handle: '@whoahannahjo',
+    bio: 'Whoa... just whoa 😮💋 | Your sun-kissed obsession | 1,200+ posts of pure fire | OnlyFans since 2022 | Country girl with a wild side 🌾🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/5b/08/5b0826ac5213de0fbfaaf7fad061504a4f96850134ddf07f5ec1cdb0b9e138b4.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/c4/59/c459536cce40fe0115a7703007f011438420e2551d3f6070f37e2fb2bc1d7102.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (whoahannahjoData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1220, likes: 48600, views: 2100000, followers: 29400 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 11.99,
     access_mode: 'cached_preview'
   },
   {
