@@ -40,6 +40,7 @@ import emilylynneData from './emilylynneData.json';
 import catgirlData from './catgirlData.json';
 import whoahannahjoData from './whoahannahjoData.json';
 import foreplayData from './foreplayData.json';
+import dolliebearData from './dolliebearData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11424,6 +11425,22 @@ const PROFILES: Profile[] = [
       views: 870000,
       followers: 71800
     },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'dolliebear',
+    name: 'Dollie Bear',
+    handle: '@dollie.bear',
+    bio: 'Dollie by name, dynamite by nature 🧸🔥 | 600+ posts of sweetly sinful content | OnlyFans since 2022 | Too precious, too dangerous 🐻💋',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/1f/f0/1ff04f979d941454273bde724883176fe1ea46c1789cdd2004673cb7fe1c0355.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/81/ca/81ca4334691cc4a756572a4e7eb9e70348ba824d11e85b1c87d43b7efc49f196.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'cute', 'model'],
+    category: 'Premium',
+    images: (dolliebearData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 601, likes: 22400, views: 980000, followers: 14700 },
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
