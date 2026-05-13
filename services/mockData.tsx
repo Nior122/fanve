@@ -17,6 +17,7 @@ import islamoonData from './islamoonData.json';
 import lilydaisyphillipsData from './lilydaisyphillipsData.json';
 import naomiiichannelData from './naomiiichannelData.json';
 import hot4lexiData from './hot4lexiData.json';
+import jessicanigrivipData from './jessicanigrivipData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -177,6 +178,11 @@ const NAOMIIICHANNEL_IMAGES: Image[] = (naomiiichannelData as any[]).map((item) 
 }));
 
 const HOT4LEXI_IMAGES: Image[] = (hot4lexiData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const JESSICANIGRIVIP_IMAGES: Image[] = (jessicanigrivipData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11062,6 +11068,27 @@ const PROFILES: Profile[] = [
       likes: 98000,
       views: 610000,
       followers: 51400
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'jessicanigrivip',
+    name: 'jessicanigrivip',
+    handle: '@jessicanigrivip',
+    bio: 'Jessica Nigri — your ultimate fantasy, unlocked 🔓🔥 | 524 posts of premium exclusive content | OnlyFans since 2022 🌙 | Bold, breathtaking & built for your eyes only 😈💋✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/jessicanigrivip',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/jessicanigrivip',
+    tags: ['onlyfans', 'premium', 'exclusive', 'cosplay', 'curvy', 'brunette'],
+    category: 'OnlyFans',
+    images: JESSICANIGRIVIP_IMAGES,
+    stats: {
+      posts: 524,
+      likes: 134000,
+      views: 890000,
+      followers: 76200
     },
     isVerified: true,
     isVisible: true,
