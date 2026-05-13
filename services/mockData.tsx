@@ -31,6 +31,7 @@ import sooyensuData from './sooyensuData.json';
 import kassiopeia1Data from './kassiopeia1Data.json';
 import vladislava661Data from './vladislava661Data.json';
 import whiptraxData from './whiptraxData.json';
+import stephoshiriData from './stephoshiriData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11418,6 +11419,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'stephoshiri',
+    name: 'stephoshiri',
+    handle: '@stephoshiri',
+    bio: 'Your obsession starts here 🔥💋 | Premium exclusive content | 1,600+ posts of pure heat | OnlyFans creator since 2022',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/19/41/19414f79616b5f6a25113b2e082e7dcd2a29a503bee1f8f10a4d95360ab397db.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/aa/da/aadac18977b78cccba335ee56347f6d397dec6ea86d2b049a9b9ccc5eecbe0de.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (stephoshiriData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1622, likes: 52000, views: 2400000, followers: 31800 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
     access_mode: 'cached_preview'
   },
   {
