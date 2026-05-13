@@ -48,6 +48,7 @@ import delightfulhugData from './delightfulhugData.json';
 import hot404foundData from './hot404foundData.json';
 import prosexxData from './prosexxData.json';
 import lovebyelenitaData from './lovebyelenitaData';
+import miss_dxxxData from './miss_dxxxData';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11705,6 +11706,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 11.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'miss_dxxx',
+    name: 'miss_dxxx',
+    handle: '@miss_dxxx',
+    bio: '2,573 posts of unfiltered desire 🔥 | Your new favourite obsession — small tiddies, big tease, zero limits 😈 | Golden hour nudes, sauna sessions, GF content & more 💋 | Subscribe and let me ruin your day in the best way possible 😏💦',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/b8/2b/b82bb36174daa07b82376a4c22b0a9d0311a2e3f7a722fdb6306d559f86b7a34.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/92/ef/92ef27954aba7d393be255deaf42ae757d646b36329274410bed2971761cfa37.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'gfe', 'amateur'],
+    category: 'Premium',
+    images: miss_dxxxData,
+    stats: { posts: 2573, likes: 94000, views: 3800000, followers: 61000 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
     access_mode: 'cached_preview'
   },
   {
