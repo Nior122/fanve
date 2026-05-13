@@ -27,6 +27,7 @@ import leahgoeswildeData from './leahgoeswildeData.json';
 import loveangelicaxvipData from './loveangelicaxvipData.json';
 import demoraavariceData from './demoraavariceData.json';
 import thelittlejuicerData from './thelittlejuicerData.json';
+import sooyensuData from './sooyensuData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -237,6 +238,11 @@ const DEMORAAVARICE_IMAGES: Image[] = (demoraavariceData as any[]).map((item) =>
 }));
 
 const THELITTLEJUICER_IMAGES: Image[] = (thelittlejuicerData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const SOOYENSU_IMAGES: Image[] = (sooyensuData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11248,6 +11254,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'sooyensu',
+    name: 'sooyensu',
+    handle: '@sooyensu',
+    bio: 'Softly devastating and impossibly addictive 🌸🔥 | 1,260 posts of exclusive content | Fansly since 2023 🌙 | K-beauty meets untamed energy — one look and you\'re hooked 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/fansly/458617977609138176',
+    heroUrl: 'https://img.coomer.st/banners/fansly/458617977609138176',
+    tags: ['fansly', 'premium', 'exclusive', 'asian', 'petite', 'aesthetic'],
+    category: 'Fansly',
+    images: SOOYENSU_IMAGES,
+    stats: {
+      posts: 1260,
+      likes: 104000,
+      views: 680000,
+      followers: 57200
     },
     isVerified: true,
     isVisible: true,
