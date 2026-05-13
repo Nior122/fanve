@@ -15,6 +15,7 @@ import tentaclebimboData from './tentaclebimboData.json';
 import midoribugData from './midoribugData.json';
 import islamoonData from './islamoonData.json';
 import lilydaisyphillipsData from './lilydaisyphillipsData.json';
+import naomiiichannelData from './naomiiichannelData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -165,6 +166,11 @@ const ISLAMOON_IMAGES: Image[] = (islamoonData as any[]).map((item) => ({
 }));
 
 const LILYDAISY_IMAGES: Image[] = (lilydaisyphillipsData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const NAOMIIICHANNEL_IMAGES: Image[] = (naomiiichannelData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11008,6 +11014,27 @@ const PROFILES: Profile[] = [
       likes: 67000,
       views: 420000,
       followers: 29800
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'naomiiichannel',
+    name: 'Naomiii Channel',
+    handle: '@naomiiichannel',
+    bio: 'Your new favorite obsession 🔥💋 | 491 posts of exclusive content | OnlyFans creator since 2022 🌙 | Seductive, playful & absolutely worth it — don\'t keep me waiting 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/naomiiichannel',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/naomiiichannel',
+    tags: ['onlyfans', 'premium', 'exclusive', 'brunette', 'curvy', 'seductive'],
+    category: 'OnlyFans',
+    images: NAOMIIICHANNEL_IMAGES,
+    stats: {
+      posts: 491,
+      likes: 74000,
+      views: 430000,
+      followers: 32600
     },
     isVerified: true,
     isVisible: true,
