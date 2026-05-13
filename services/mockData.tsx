@@ -47,6 +47,7 @@ import mikomihokinaData from './mikomihokinaData.json';
 import delightfulhugData from './delightfulhugData.json';
 import hot404foundData from './hot404foundData.json';
 import prosexxData from './prosexxData.json';
+import lovebyelenitaData from './lovebyelenitaData';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11704,6 +11705,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 11.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'lovebyelenita',
+    name: 'Love by Elenita',
+    handle: '@lovebyelenita',
+    bio: 'Tu nena latina favorita 🌶️💋 | 2,085 posts of raw, unfiltered passion | Spiderman de corazón — aquí para ayudarte con todo 😈🔥 | Subscribe and let me show you what you\'ve been missing 💦✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/ab/e9/abe9cb1665c03d3c1ce420d51f592145dec3f5c452892aa21be3863bf73830b0.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/42/ad/42ad119acc789ba36701d262a98b39d5c89bfca48a7409dd6fc2127bf12669ac.jpg',
+    tags: ['onlyfans', 'latina', 'premium', 'exclusive', 'amateur'],
+    category: 'Premium',
+    images: lovebyelenitaData,
+    stats: { posts: 2085, likes: 87400, views: 3200000, followers: 52000 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 12.99,
     access_mode: 'cached_preview'
   },
 ];
