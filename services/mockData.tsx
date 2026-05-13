@@ -39,6 +39,7 @@ import lunaaokiData from './lunaaokiData.json';
 import emilylynneData from './emilylynneData.json';
 import catgirlData from './catgirlData.json';
 import whoahannahjoData from './whoahannahjoData.json';
+import foreplayData from './foreplayData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11426,6 +11427,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'foreplay',
+    name: 'Foreplay',
+    handle: '@foreplay',
+    bio: 'The slow burn you\'ve been craving 🕯️💋 | 1,200+ posts of pure tension | OnlyFans since 2023 | Every frame is the warm-up 🎬🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/b4/b5/b4b54bcb47c5af85414df16111532f6f74ec96dbc3f9eccd0c9553fe700307f2.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/bf/69/bf6925cb5e885160a5d48742b3d7698028b6acd4b064a15484b3350cf19a2498.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (foreplayData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1205, likes: 43200, views: 1900000, followers: 26100 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 13.99,
     access_mode: 'cached_preview'
   },
   {
