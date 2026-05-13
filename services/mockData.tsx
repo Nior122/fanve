@@ -33,6 +33,7 @@ import vladislava661Data from './vladislava661Data.json';
 import whiptraxData from './whiptraxData.json';
 import stephoshiriData from './stephoshiriData.json';
 import zartprickelndData from './zartprickelndData.json';
+import lizyhsanData from './lizyhsanData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11420,6 +11421,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'lizyhsan',
+    name: 'lizyhsan',
+    handle: '@lizyhsan',
+    bio: 'Sweet face, wild heart 🌸🔥 | Premium exclusive content | Your new obsession starts here 💋 | OnlyFans since 2025',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/df/e3/dfe3c08ac0f5ca4ceb914f26937ad61f9f7214e35edd2762ad5eee0cd879d3e3.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/e9/b4/e9b47df2dfb2e7409054cf7e906a0401815644c38d7155357f8ea5aceffea6ea.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (lizyhsanData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 91, likes: 18700, views: 820000, followers: 11200 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 11.99,
     access_mode: 'cached_preview'
   },
   {
