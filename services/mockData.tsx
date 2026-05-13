@@ -29,6 +29,7 @@ import demoraavariceData from './demoraavariceData.json';
 import thelittlejuicerData from './thelittlejuicerData.json';
 import sooyensuData from './sooyensuData.json';
 import kassiopeia1Data from './kassiopeia1Data.json';
+import vladislava661Data from './vladislava661Data.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -249,6 +250,11 @@ const SOOYENSU_IMAGES: Image[] = (sooyensuData as any[]).map((item) => ({
 }));
 
 const KASSIOPEIA1_IMAGES: Image[] = (kassiopeia1Data as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const VLADISLAVA661_IMAGES: Image[] = (vladislava661Data as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11260,6 +11266,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'vladislava_661',
+    name: 'vladislava_661',
+    handle: '@vladislava_661',
+    bio: 'Vladislava — Eastern European fire meets global obsession 🌹🔥 | 546 posts of exclusive content | OnlyFans since 2024 🌙 | Ice queen on the surface, pure heat underneath ❄️😈',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/vladislava_661',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/vladislava_661',
+    tags: ['onlyfans', 'premium', 'exclusive', 'european', 'model', 'elegant'],
+    category: 'OnlyFans',
+    images: VLADISLAVA661_IMAGES,
+    stats: {
+      posts: 546,
+      likes: 87000,
+      views: 540000,
+      followers: 44600
     },
     isVerified: true,
     isVisible: true,
