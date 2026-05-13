@@ -18,6 +18,7 @@ import lilydaisyphillipsData from './lilydaisyphillipsData.json';
 import naomiiichannelData from './naomiiichannelData.json';
 import hot4lexiData from './hot4lexiData.json';
 import jessicanigrivipData from './jessicanigrivipData.json';
+import annaplusoneData from './annaplusoneData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -183,6 +184,11 @@ const HOT4LEXI_IMAGES: Image[] = (hot4lexiData as any[]).map((item) => ({
 }));
 
 const JESSICANIGRIVIP_IMAGES: Image[] = (jessicanigrivipData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const ANNAPLUSONE_IMAGES: Image[] = (annaplusoneData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11089,6 +11095,27 @@ const PROFILES: Profile[] = [
       likes: 134000,
       views: 890000,
       followers: 76200
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'annaplusone',
+    name: 'annaplusone',
+    handle: '@annaplusone',
+    bio: 'Anna + one more reason to stay 🔥💋 | 3,214 posts of premium exclusive content | OnlyFans since 2022 🌙 | Fearless, flirty & completely irresistible — you\'ve been warned 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/annaplusone',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/annaplusone',
+    tags: ['onlyfans', 'premium', 'exclusive', 'brunette', 'petite', 'flirty'],
+    category: 'OnlyFans',
+    images: ANNAPLUSONE_IMAGES,
+    stats: {
+      posts: 3214,
+      likes: 118000,
+      views: 740000,
+      followers: 63500
     },
     isVerified: true,
     isVisible: true,
