@@ -43,6 +43,7 @@ import foreplayData from './foreplayData.json';
 import dolliebearData from './dolliebearData.json';
 import catkitty21Data from './catkitty21Data.json';
 import haileyrosexxxData from './haileyrosexxxData.json';
+import mikomihokinaData from './mikomihokinaData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11636,6 +11637,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'mikomihokina',
+    name: 'Miko Mihokina',
+    handle: '@mikomihokina',
+    bio: 'Cosplay queen meets your wildest fantasy 🎮👸 | Anime, gaming & exclusive content | 2,000+ posts of pure heat | OnlyFans creator since 2022',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/51/79/5179d6db39bb9b23cb8c0e0741437d74856d7e80ffeeb4e2596a4121273d7cdd.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/cf/17/cf17a8e67b5f73470ddf8a6feb9e0f46817abf06dfd97689188f886a40f137b8.jpg',
+    tags: ['onlyfans', 'cosplay', 'gaming', 'premium', 'exclusive'],
+    category: 'Premium',
+    images: (mikomihokinaData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 2041, likes: 67000, views: 3100000, followers: 42500 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 15.99,
     access_mode: 'cached_preview'
   },
 ];
