@@ -35,6 +35,7 @@ import stephoshiriData from './stephoshiriData.json';
 import zartprickelndData from './zartprickelndData.json';
 import lizyhsanData from './lizyhsanData.json';
 import paigesteelexxxData from './paigesteelexxxData.json';
+import lunaaokiData from './lunaaokiData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11422,6 +11423,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'lunaaoki',
+    name: 'Luna Aoki',
+    handle: '@LunaAoki',
+    bio: 'Moonlit goddess with a dark side 🌙💋 | Premium Fansly content | 640+ posts of pure desire | Your nightly obsession awaits ✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/bb/28/bb28e584f3301589869d4f390e775f5f2d711db6637f1425ca857aae7ad5fd61.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/e7/1f/e71ff3f5d037c663b3890790df62db68da6e19cbe07afa91421223b6be9ee59e.jpg',
+    tags: ['fansly', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (lunaaokiData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 640, likes: 29800, views: 1350000, followers: 17600 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 12.99,
     access_mode: 'cached_preview'
   },
   {
