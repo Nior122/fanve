@@ -30,6 +30,7 @@ import thelittlejuicerData from './thelittlejuicerData.json';
 import sooyensuData from './sooyensuData.json';
 import kassiopeia1Data from './kassiopeia1Data.json';
 import vladislava661Data from './vladislava661Data.json';
+import whiptraxData from './whiptraxData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11417,6 +11418,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'whiptrax',
+    name: 'whiptrax',
+    handle: '@whiptrax',
+    bio: 'Your favorite workout obsession 💪🔥 | Fitness & exclusive content | Over 1,000 posts of pure fire | OnlyFans creator since 2021',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/3d/ae/3dae1b954d04de73317b9abb34d1d69b226dd3a768d80c439b8fb5ba00bd1810.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/cf/37/cf3720d5075d13975de885cc78a6400e3c28b4495b4ca8dfdfc275701beb5eda.jpg',
+    tags: ['onlyfans', 'fitness', 'exclusive', 'premium', 'workout'],
+    category: 'Premium',
+    images: (whiptraxData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1044, likes: 38500, views: 1750000, followers: 22300 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 12.99,
     access_mode: 'cached_preview'
   },
 ];
