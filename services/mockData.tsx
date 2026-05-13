@@ -24,6 +24,7 @@ import effycutiexxData from './effycutiexxData.json';
 import bunnycritterData from './bunnycritterData.json';
 import louisakhovanskiData from './louisakhovanskiData.json';
 import leahgoeswildeData from './leahgoeswildeData.json';
+import loveangelicaxvipData from './loveangelicaxvipData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -219,6 +220,11 @@ const LOUISAKHOVANSKI_IMAGES: Image[] = (louisakhovanskiData as any[]).map((item
 }));
 
 const LEAHGOESWILDE_IMAGES: Image[] = (leahgoeswildeData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const LOVEANGELICAXVIP_IMAGES: Image[] = (loveangelicaxvipData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11230,6 +11236,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'loveangelicaxvip',
+    name: 'loveangelicaxvip',
+    handle: '@loveangelicaxvip',
+    bio: 'Your favorite angel just fell from heaven 😇💋 | 680 posts of exclusive content | OnlyFans since 2022 🌙 | Angelic on the outside, wildly addictive on the inside — come see for yourself 🔥✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/loveangelicaxvip',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/loveangelicaxvip',
+    tags: ['onlyfans', 'premium', 'exclusive', 'angel', 'latina', 'cute'],
+    category: 'OnlyFans',
+    images: LOVEANGELICAXVIP_IMAGES,
+    stats: {
+      posts: 680,
+      likes: 98000,
+      views: 610000,
+      followers: 52400
     },
     isVerified: true,
     isVisible: true,
