@@ -21,6 +21,7 @@ import jessicanigrivipData from './jessicanigrivipData.json';
 import annaplusoneData from './annaplusoneData.json';
 import alekssecretData from './alekssecretData.json';
 import effycutiexxData from './effycutiexxData.json';
+import bunnycritterData from './bunnycritterData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -201,6 +202,11 @@ const ALEKSSECRET_IMAGES: Image[] = (alekssecretData as any[]).map((item) => ({
 }));
 
 const EFFYCUTIEXX_IMAGES: Image[] = (effycutiexxData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const BUNNYCRITTER_IMAGES: Image[] = (bunnycritterData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11170,6 +11176,27 @@ const PROFILES: Profile[] = [
       likes: 91000,
       views: 570000,
       followers: 48700
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'bunnycritter',
+    name: 'bunnycritter',
+    handle: '@bunnycritter',
+    bio: 'Your favourite little bunny with a wild side 🐰🔥 | 387 posts of exclusive content | OnlyFans since 2024 🌙 | Soft, playful & dangerously cute — hop in 😈💋✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/bunnycritter',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/bunnycritter',
+    tags: ['onlyfans', 'premium', 'exclusive', 'petite', 'cute', 'playful'],
+    category: 'OnlyFans',
+    images: BUNNYCRITTER_IMAGES,
+    stats: {
+      posts: 387,
+      likes: 61000,
+      views: 380000,
+      followers: 29400
     },
     isVerified: true,
     isVisible: true,
