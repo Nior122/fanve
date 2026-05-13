@@ -1,0 +1,140 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Helvetica",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#99DDFF",
+    "secondary": "#FF0000",
+    "accent": "#0000CC",
+    "background": "#0A0E10",
+    "textPrimary": "#99DDFF",
+    "link": "#3B4151"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Helvetica",
+      "heading": "Helvetica"
+    },
+    "fontStacks": {
+      "heading": [
+        "Helvetica",
+        "sans-serif"
+      ],
+      "body": [
+        "Helvetica",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Helvetica",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "32px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "input": {
+      "background": "#3B3E44",
+      "textColor": "#F2F2F2",
+      "borderColor": null,
+      "borderRadius": "5px",
+      "borderRadiusCorners": {
+        "topLeft": "5px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "5px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#0000CC",
+      "textColor": "#7DB3E8",
+      "borderColor": "#99DDFF",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#282A2E",
+      "textColor": "#99DDFF",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "favicon": "https://coomer.st/assets/favicon-CPB6l7kH.ico",
+    "ogImage": "//img.coomer.st}/icons/onlyfans/emmafiore"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "No suitable brand logo was found. The candidates are either too large (likely banners) or small icons not representing the brand 'Coomer'.",
+    "confidence": 0.2,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 5,
+      "text": "1",
+      "reasoning": "Button #5 has a vibrant blue background (#0000CC), which stands out as the primary call-to-action color. It is distinct from the other buttons and likely intended to draw attention."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Register",
+      "reasoning": "Button #0 ('Register') is a common secondary action and has a different background color (#282A2E) from the primary button, making it suitable as a secondary CTA."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "bold",
+    "energy": "high",
+    "targetAudience": "adult content consumers"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.9,
+    "overall": 0.9
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "No suitable brand logo was found. The candidates are either too large (likely banners) or small icons not representing the brand 'Coomer'.",
+        "confidence": 0.2
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

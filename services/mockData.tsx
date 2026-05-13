@@ -49,6 +49,7 @@ import hot404foundData from './hot404foundData.json';
 import prosexxData from './prosexxData.json';
 import lovebyelenitaData from './lovebyelenitaData';
 import miss_dxxxData from './miss_dxxxData';
+import emmafioреData from './emmafioreData';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11738,6 +11739,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'emmafiore',
+    name: 'emmafiore',
+    handle: '@emmafiore',
+    bio: 'Your sweet bilingual girl next door 🌸💕 | 1,435 posts of cute, spicy content | Feet, GFE, amateur vibes & more 👣🔥 | Tu chica favorita, aquí para ti — suscríbete y te hago feliz 😘✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/emmafiore',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/b0/9b/b09b1afb4983768beb85af83ac98d94cdd60a3b02847f331da23ef086fd0165a.jpg',
+    tags: ['onlyfans', 'latina', 'feet', 'gfe', 'amateur'],
+    category: 'Premium',
+    images: emmafioреData,
+    stats: { posts: 1435, likes: 62000, views: 2400000, followers: 38000 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
     access_mode: 'cached_preview'
   },
 ];
