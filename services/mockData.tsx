@@ -28,6 +28,7 @@ import loveangelicaxvipData from './loveangelicaxvipData.json';
 import demoraavariceData from './demoraavariceData.json';
 import thelittlejuicerData from './thelittlejuicerData.json';
 import sooyensuData from './sooyensuData.json';
+import kassiopeia1Data from './kassiopeia1Data.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -243,6 +244,11 @@ const THELITTLEJUICER_IMAGES: Image[] = (thelittlejuicerData as any[]).map((item
 }));
 
 const SOOYENSU_IMAGES: Image[] = (sooyensuData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const KASSIOPEIA1_IMAGES: Image[] = (kassiopeia1Data as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11254,6 +11260,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'kassiopeia1',
+    name: 'Kassiopeia1',
+    handle: '@kassiopeia1',
+    bio: 'Celestial beauty, earthly obsession 🌟🔥 | 1,230 posts of exclusive content | Fansly since 2023 🌙 | She\'s the myth, the muse & the moment — impossible to look away 👑😈',
+    avatarUrl: 'https://img.coomer.st/icons/fansly/433671787146911744',
+    heroUrl: 'https://img.coomer.st/banners/fansly/433671787146911744',
+    tags: ['fansly', 'premium', 'exclusive', 'curvy', 'goddess', 'regal'],
+    category: 'Fansly',
+    images: KASSIOPEIA1_IMAGES,
+    stats: {
+      posts: 1230,
+      likes: 119000,
+      views: 745000,
+      followers: 63800
     },
     isVerified: true,
     isVisible: true,
