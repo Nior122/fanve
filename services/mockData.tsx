@@ -44,6 +44,7 @@ import dolliebearData from './dolliebearData.json';
 import catkitty21Data from './catkitty21Data.json';
 import haileyrosexxxData from './haileyrosexxxData.json';
 import mikomihokinaData from './mikomihokinaData.json';
+import delightfulhugData from './delightfulhugData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11653,6 +11654,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 15.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'delightfulhug',
+    name: 'Delightful Hug',
+    handle: '@delightfulhug',
+    bio: 'Your step mommy, rope bunny & cosplay queen 🐰🪢 | Streaming live on OF | Titty Tuesdays, Hump Days & filthy surprises daily | OnlyFans creator 💕',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/be/ac/beac7f442c56ac72c2aa9f93ecddbb1e972076fa517ddface129846eec5115d2.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/66/58/66587e97accc67ed3bdd3b88b8859d1b54902b9ea30afe689d8f635746c596e3.jpg',
+    tags: ['onlyfans', 'cosplay', 'streaming', 'mommy', 'premium'],
+    category: 'Premium',
+    images: (delightfulhugData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1284, likes: 48000, views: 2400000, followers: 31200 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 12.99,
     access_mode: 'cached_preview'
   },
 ];
