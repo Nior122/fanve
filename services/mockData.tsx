@@ -32,6 +32,7 @@ import kassiopeia1Data from './kassiopeia1Data.json';
 import vladislava661Data from './vladislava661Data.json';
 import whiptraxData from './whiptraxData.json';
 import stephoshiriData from './stephoshiriData.json';
+import zartprickelndData from './zartprickelndData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11419,6 +11420,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'zartprickelnd',
+    name: 'zartprickelnd',
+    handle: '@zartprickelnd',
+    bio: 'Prickly on the outside, sinful on the inside 🌵💋 | Premium exclusive content | 1,900+ posts of pure desire | OnlyFans creator since 2022',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/eb/ba/ebba4f7ce9014a647d3fa1a37cfee6c88e7a40ff034625c61340f4f069fa938b.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/66/11/66115c5c0f039eaf28dfedaed90b4393a9f3cb7b6f48bcbf999b1a6152e7ff82.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (zartprickelndData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1945, likes: 61000, views: 2900000, followers: 38400 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 16.99,
     access_mode: 'cached_preview'
   },
   {
