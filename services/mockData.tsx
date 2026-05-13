@@ -23,6 +23,7 @@ import alekssecretData from './alekssecretData.json';
 import effycutiexxData from './effycutiexxData.json';
 import bunnycritterData from './bunnycritterData.json';
 import louisakhovanskiData from './louisakhovanskiData.json';
+import leahgoeswildeData from './leahgoeswildeData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -213,6 +214,11 @@ const BUNNYCRITTER_IMAGES: Image[] = (bunnycritterData as any[]).map((item) => (
 }));
 
 const LOUISAKHOVANSKI_IMAGES: Image[] = (louisakhovanskiData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const LEAHGOESWILDE_IMAGES: Image[] = (leahgoeswildeData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11224,6 +11230,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'leahgoeswilde',
+    name: 'leahgoeswilde',
+    handle: '@leahgoeswilde',
+    bio: 'Leah goes wilde and she never looks back 🔥💋 | 1,825 posts of exclusive content | OnlyFans since 2021 🌙 | Untamed, unapologetic & unforgettable — you\'ve been warned 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/leahgoeswilde',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/leahgoeswilde',
+    tags: ['onlyfans', 'premium', 'exclusive', 'wild', 'curvy', 'blonde'],
+    category: 'OnlyFans',
+    images: LEAHGOESWILDE_IMAGES,
+    stats: {
+      posts: 1825,
+      likes: 143000,
+      views: 870000,
+      followers: 71800
     },
     isVerified: true,
     isVisible: true,
