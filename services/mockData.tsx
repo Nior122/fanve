@@ -34,6 +34,7 @@ import whiptraxData from './whiptraxData.json';
 import stephoshiriData from './stephoshiriData.json';
 import zartprickelndData from './zartprickelndData.json';
 import lizyhsanData from './lizyhsanData.json';
+import paigesteelexxxData from './paigesteelexxxData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11421,6 +11422,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'paigesteelexxx',
+    name: 'Paige Steele',
+    handle: '@paigesteelexxx',
+    bio: 'Your wildest fantasy made real 🔥💋 | Premium content | 1,000+ posts of pure heat | OnlyFans OG since 2022',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/e1/d8/e1d875bfd32fcb6d146ad80c6ae1b81a6141164d1b1f5722d82b6806a05ac893.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/a7/07/a70757aa9dd3573e5a65bbab4085e37aaede7d0d90c00b98f8a4c856da663cf2.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'blonde', 'model'],
+    category: 'Premium',
+    images: (paigesteelexxxData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1034, likes: 44200, views: 2100000, followers: 28600 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 13.99,
     access_mode: 'cached_preview'
   },
   {
