@@ -19,6 +19,7 @@ import naomiiichannelData from './naomiiichannelData.json';
 import hot4lexiData from './hot4lexiData.json';
 import jessicanigrivipData from './jessicanigrivipData.json';
 import annaplusoneData from './annaplusoneData.json';
+import alekssecretData from './alekssecretData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -189,6 +190,11 @@ const JESSICANIGRIVIP_IMAGES: Image[] = (jessicanigrivipData as any[]).map((item
 }));
 
 const ANNAPLUSONE_IMAGES: Image[] = (annaplusoneData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const ALEKSSECRET_IMAGES: Image[] = (alekssecretData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11116,6 +11122,27 @@ const PROFILES: Profile[] = [
       likes: 118000,
       views: 740000,
       followers: 63500
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'alekssecret',
+    name: 'alekssecret',
+    handle: '@alekssecret',
+    bio: 'Aleks and all her secrets 🔐🔥 | 541 posts of premium exclusive content | OnlyFans creator since 2023 🌙 | Mysterious, magnetic & made to leave you wanting more 😈💋✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/alekssecret',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/alekssecret',
+    tags: ['onlyfans', 'premium', 'exclusive', 'brunette', 'mysterious', 'seductive'],
+    category: 'OnlyFans',
+    images: ALEKSSECRET_IMAGES,
+    stats: {
+      posts: 541,
+      likes: 82000,
+      views: 510000,
+      followers: 44300
     },
     isVerified: true,
     isVisible: true,
