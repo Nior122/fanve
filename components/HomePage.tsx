@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useMockData } from '../services/mockData';
 import { Profile } from '../types';
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+
+function shuffleArray<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export const HomePage = ({ showFavoritesOnly }: { showFavoritesOnly?: boolean }) => {
   const { profiles, user } = useMockData();
@@ -10,10 +19,25 @@ export const HomePage = ({ showFavoritesOnly }: { showFavoritesOnly?: boolean })
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 50;
 
-  let filteredProfiles = profiles;
+  let baseProfiles = profiles;
   if (showFavoritesOnly && user) {
-    filteredProfiles = profiles.filter(p => user.favorites.includes(p.id));
+    baseProfiles = profiles.filter(p => user.favorites.includes(p.id));
   }
+
+  const [shuffledProfiles, setShuffledProfiles] = useState<Profile[]>(() => shuffleArray(baseProfiles));
+  const baseRef = useRef(baseProfiles);
+  baseRef.current = baseProfiles;
+
+  useEffect(() => {
+    setShuffledProfiles(shuffleArray(baseRef.current));
+    const interval = setInterval(() => {
+      setShuffledProfiles(shuffleArray(baseRef.current));
+      setCurrentPage(1);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [showFavoritesOnly]);
+
+  const filteredProfiles = shuffledProfiles;
 
   // Pagination logic
   const totalItems = filteredProfiles.length;

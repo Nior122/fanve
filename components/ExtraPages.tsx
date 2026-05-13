@@ -111,7 +111,6 @@ export const HashtagsPage = () => {
 
 export const MorePage = () => {
   const menuItems = [
-    { label: 'Account Settings', icon: Settings, path: '/settings' },
     { label: 'Help & Support', icon: HelpCircle, path: '/help' },
     { label: 'Terms of Service', icon: FileText, path: '/terms' },
     { label: 'Privacy Policy', icon: Shield, path: '/privacy' },

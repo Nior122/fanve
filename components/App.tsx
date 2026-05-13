@@ -86,16 +86,7 @@ const Navbar = () => {
                   <LogOut size={18} />
                 </button>
               </div>
-            ) : (
-              <Link 
-                to="/auth" 
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center space-x-2 w-full bg-blue-600 text-white py-2.5 rounded-xl font-medium hover:bg-blue-700 transition-colors"
-              >
-                <User size={18} />
-                <span>Sign In</span>
-              </Link>
-            )}
+            ) : null}
           </div>
         </div>
       </nav>
