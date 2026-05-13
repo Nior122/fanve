@@ -42,6 +42,7 @@ import whoahannahjoData from './whoahannahjoData.json';
 import foreplayData from './foreplayData.json';
 import dolliebearData from './dolliebearData.json';
 import catkitty21Data from './catkitty21Data.json';
+import haileyrosexxxData from './haileyrosexxxData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11461,6 +11462,21 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99
+  },
+  {
+    id: 'haileyrosexxx',
+    name: 'Hailey Rose',
+    handle: '@haileyrosexxx',
+    bio: 'Your wild rose 🌹🔥 | 200+ posts of unfiltered fun | OnlyFans since 2022 | Outdoor adventures & studio shoots 😈✈️',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/f3/8d/f38de9e0a7e537861c9e36280fe5c6b970b95b2a77763951d543255ebffac782.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/c2/b8/c2b85932912d164ef5bb26fe16fc530d654a9052663f299d6efdecc9b0ab86f2.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'adventure', 'model'],
+    category: 'Featured',
+    images: (haileyrosexxxData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 202, likes: 15400, views: 720000, followers: 9800 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99
   },
   {
     id: 'foreplay',
