@@ -46,6 +46,7 @@ import haileyrosexxxData from './haileyrosexxxData.json';
 import mikomihokinaData from './mikomihokinaData.json';
 import delightfulhugData from './delightfulhugData.json';
 import hot404foundData from './hot404foundData.json';
+import prosexxData from './prosexxData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11687,6 +11688,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'prosexx',
+    name: 'Prosexx',
+    handle: '@prosexx',
+    bio: 'ur gamer gf & ur mommy 🎮💦 | backshots, car sex, secretary roleplay & everything in between | pookie bear privileges available | OF creator ;)',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/fc/8f/fc8f4dfc56acfa9ad006f20cd9f55caaf3dc67060f993563ae419532420f17aa.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/90/c2/90c26d3cbe8f916836d70c3f3f1b6adfe82dbf580a0bbe70a526f6b27e621f5d.jpg',
+    tags: ['onlyfans', 'gaming', 'roleplay', 'mommy', 'premium'],
+    category: 'Premium',
+    images: (prosexxData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 743, likes: 52000, views: 2100000, followers: 28900 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 11.99,
     access_mode: 'cached_preview'
   },
 ];
