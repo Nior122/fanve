@@ -22,6 +22,7 @@ import annaplusoneData from './annaplusoneData.json';
 import alekssecretData from './alekssecretData.json';
 import effycutiexxData from './effycutiexxData.json';
 import bunnycritterData from './bunnycritterData.json';
+import louisakhovanskiData from './louisakhovanskiData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -207,6 +208,11 @@ const EFFYCUTIEXX_IMAGES: Image[] = (effycutiexxData as any[]).map((item) => ({
 }));
 
 const BUNNYCRITTER_IMAGES: Image[] = (bunnycritterData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const LOUISAKHOVANSKI_IMAGES: Image[] = (louisakhovanskiData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11197,6 +11203,27 @@ const PROFILES: Profile[] = [
       likes: 61000,
       views: 380000,
       followers: 29400
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'louisakhovanski',
+    name: 'louisakhovanski',
+    handle: '@louisakhovanski',
+    bio: 'Louisa Khovanski — bold, beautiful & unapologetically herself 🔥💋 | 1,045 posts of premium exclusive content | OnlyFans since 2022 🌙 | Curves that stop traffic & content that keeps you coming back 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/louisakhovanski',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/louisakhovanski',
+    tags: ['onlyfans', 'premium', 'exclusive', 'curvy', 'bold', 'brunette'],
+    category: 'OnlyFans',
+    images: LOUISAKHOVANSKI_IMAGES,
+    stats: {
+      posts: 1045,
+      likes: 156000,
+      views: 920000,
+      followers: 82100
     },
     isVerified: true,
     isVisible: true,
