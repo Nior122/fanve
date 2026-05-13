@@ -25,6 +25,7 @@ import bunnycritterData from './bunnycritterData.json';
 import louisakhovanskiData from './louisakhovanskiData.json';
 import leahgoeswildeData from './leahgoeswildeData.json';
 import loveangelicaxvipData from './loveangelicaxvipData.json';
+import demoraavariceData from './demoraavariceData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -225,6 +226,11 @@ const LEAHGOESWILDE_IMAGES: Image[] = (leahgoeswildeData as any[]).map((item) =>
 }));
 
 const LOVEANGELICAXVIP_IMAGES: Image[] = (loveangelicaxvipData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const DEMORAAVARICE_IMAGES: Image[] = (demoraavariceData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11236,6 +11242,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'demoraavarice',
+    name: 'demoraavarice',
+    handle: '@demoraavarice',
+    bio: 'Demora Avarice — dark, divine & dangerously addictive 🖤🔥 | 1,239 posts of exclusive content | OnlyFans since 2022 🌙 | The chaos you\'ve been craving and the obsession you can\'t shake 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/demoraavarice',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/demoraavarice',
+    tags: ['onlyfans', 'premium', 'exclusive', 'dark', 'alt', 'goth'],
+    category: 'OnlyFans',
+    images: DEMORAAVARICE_IMAGES,
+    stats: {
+      posts: 1239,
+      likes: 112000,
+      views: 730000,
+      followers: 61500
     },
     isVerified: true,
     isVisible: true,
