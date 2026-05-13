@@ -37,6 +37,7 @@ import lizyhsanData from './lizyhsanData.json';
 import paigesteelexxxData from './paigesteelexxxData.json';
 import lunaaokiData from './lunaaokiData.json';
 import emilylynneData from './emilylynneData.json';
+import catgirlData from './catgirlData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11424,6 +11425,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'catgirl',
+    name: 'catgirl',
+    handle: '@catgirl',
+    bio: 'Paws up, purr louder 🐾💋 | Your favorite feline fantasy | 1,300+ posts of pure heat | OnlyFans since 2022 | Nine lives, infinite temptation 😼🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/be/14/be146f7d3cb63d62f64bec354bfaccd5fb0fbcc90e17d39fb43592ddc2fbf3f1.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/92/42/9242b5c3e379a3e7a8fc9214d670635618a3652f721872f74190265df2b3bb0a.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'cosplay', 'model'],
+    category: 'Premium',
+    images: (catgirlData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 1381, likes: 57300, views: 2700000, followers: 36800 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
     access_mode: 'cached_preview'
   },
   {
