@@ -20,6 +20,7 @@ import hot4lexiData from './hot4lexiData.json';
 import jessicanigrivipData from './jessicanigrivipData.json';
 import annaplusoneData from './annaplusoneData.json';
 import alekssecretData from './alekssecretData.json';
+import effycutiexxData from './effycutiexxData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -195,6 +196,11 @@ const ANNAPLUSONE_IMAGES: Image[] = (annaplusoneData as any[]).map((item) => ({
 }));
 
 const ALEKSSECRET_IMAGES: Image[] = (alekssecretData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const EFFYCUTIEXX_IMAGES: Image[] = (effycutiexxData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11143,6 +11149,27 @@ const PROFILES: Profile[] = [
       likes: 82000,
       views: 510000,
       followers: 44300
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'effycutiexx',
+    name: 'effycutiexx',
+    handle: '@effycutiexx',
+    bio: 'Effy — cutie on the outside, fire on the inside 🔥🎀 | 1,209 posts of exclusive content | OnlyFans since 2021 🌙 | Sweet, spicy & completely addictive — don\'t say I didn\'t warn you 😈💋✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/effycutiexx',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/effycutiexx',
+    tags: ['onlyfans', 'premium', 'exclusive', 'petite', 'cute', 'spicy'],
+    category: 'OnlyFans',
+    images: EFFYCUTIEXX_IMAGES,
+    stats: {
+      posts: 1209,
+      likes: 91000,
+      views: 570000,
+      followers: 48700
     },
     isVerified: true,
     isVisible: true,
