@@ -45,6 +45,7 @@ import catkitty21Data from './catkitty21Data.json';
 import haileyrosexxxData from './haileyrosexxxData.json';
 import mikomihokinaData from './mikomihokinaData.json';
 import delightfulhugData from './delightfulhugData.json';
+import hot404foundData from './hot404foundData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11670,6 +11671,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'hot404found',
+    name: 'Hot404Found',
+    handle: '@hot404found',
+    bio: 'Error 404: clothes not found 🐱💦 | Morning sex series, colour light nudes & roleplay | Roommate, tutor, stepdad — your fantasy, my content | OF creator ✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/61/e9/61e91e3a01227515467dec8fb38530aa7d55dad9b96ce04c2302227cc1afc0d8.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/2f/da/2fdad55c37c6d6fc37bf4e92cebc6cbaa72b53f637ff476002869886f3cadebe.jpg',
+    tags: ['onlyfans', 'roleplay', 'morning', 'cosplay', 'premium'],
+    category: 'Premium',
+    images: (hot404foundData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 876, likes: 39000, views: 1900000, followers: 24700 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
     access_mode: 'cached_preview'
   },
 ];
