@@ -26,6 +26,7 @@ import louisakhovanskiData from './louisakhovanskiData.json';
 import leahgoeswildeData from './leahgoeswildeData.json';
 import loveangelicaxvipData from './loveangelicaxvipData.json';
 import demoraavariceData from './demoraavariceData.json';
+import thelittlejuicerData from './thelittlejuicerData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -231,6 +232,11 @@ const LOVEANGELICAXVIP_IMAGES: Image[] = (loveangelicaxvipData as any[]).map((it
 }));
 
 const DEMORAAVARICE_IMAGES: Image[] = (demoraavariceData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const THELITTLEJUICER_IMAGES: Image[] = (thelittlejuicerData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11242,6 +11248,27 @@ const PROFILES: Profile[] = [
       likes: 156000,
       views: 920000,
       followers: 82100
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'thelittlejuicer',
+    name: 'Thelittlejuicer',
+    handle: '@thelittlejuicer',
+    bio: 'Freshly squeezed & dangerously addictive 🍋🔥 | 1,540 posts of exclusive content | Fansly since 2023 🌙 | Sweet, juicy & completely yours — come get a taste 💦😈',
+    avatarUrl: 'https://img.coomer.st/icons/fansly/347914002094895104',
+    heroUrl: 'https://img.coomer.st/banners/fansly/347914002094895104',
+    tags: ['fansly', 'premium', 'exclusive', 'petite', 'cute', 'juicy'],
+    category: 'Fansly',
+    images: THELITTLEJUICER_IMAGES,
+    stats: {
+      posts: 1540,
+      likes: 127000,
+      views: 790000,
+      followers: 66300
     },
     isVerified: true,
     isVisible: true,
