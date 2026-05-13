@@ -366,7 +366,7 @@ export const ProfilePage = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-4">
+        <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-3">
           <button className="flex-1 bg-[#0091ea] hover:bg-[#0081d0] text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
             <UploadCloud size={20} />
             <span>Subscribe</span>
@@ -380,6 +380,26 @@ export const ProfilePage = () => {
           >
             <Star size={22} fill={isFav ? "currentColor" : "none"} />
           </button>
+        </div>
+        <div className="flex items-center gap-3 w-full max-w-sm justify-center mb-4">
+          <a
+            href="https://pinterest-rho-neon.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+          >
+            <span>📩</span>
+            <span>Message</span>
+          </a>
+          <a
+            href="https://loadingup.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+          >
+            <span>📞</span>
+            <span>Call Me</span>
+          </a>
         </div>
       </div>
 
