@@ -36,6 +36,7 @@ import zartprickelndData from './zartprickelndData.json';
 import lizyhsanData from './lizyhsanData.json';
 import paigesteelexxxData from './paigesteelexxxData.json';
 import lunaaokiData from './lunaaokiData.json';
+import emilylynneData from './emilylynneData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11423,6 +11424,22 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'emilylynne',
+    name: 'Emily Lynne',
+    handle: '@emilylynne',
+    bio: 'Your favorite girl next door with a wild side 🔥💋 | 9,400+ posts of pure heat | OnlyFans OG since 2021 | Come play with me 😈✨',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/99/5c/995c5739a86261003b531ac8132e63cc32bc528ff899dcc1ed1500ef09158b4a.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/97/2a/972ada69c33f0568183f8cb96bcc9742730e147b7513bb0a606490b9187c1446.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'beauty', 'model'],
+    category: 'Premium',
+    images: (emilylynneData as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 9484, likes: 128000, views: 6200000, followers: 84500 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 19.99,
     access_mode: 'cached_preview'
   },
   {
