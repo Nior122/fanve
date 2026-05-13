@@ -16,6 +16,7 @@ import midoribugData from './midoribugData.json';
 import islamoonData from './islamoonData.json';
 import lilydaisyphillipsData from './lilydaisyphillipsData.json';
 import naomiiichannelData from './naomiiichannelData.json';
+import hot4lexiData from './hot4lexiData.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -171,6 +172,11 @@ const LILYDAISY_IMAGES: Image[] = (lilydaisyphillipsData as any[]).map((item) =>
 }));
 
 const NAOMIIICHANNEL_IMAGES: Image[] = (naomiiichannelData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const HOT4LEXI_IMAGES: Image[] = (hot4lexiData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -11035,6 +11041,27 @@ const PROFILES: Profile[] = [
       likes: 74000,
       views: 430000,
       followers: 32600
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 9.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'hot4lexi',
+    name: 'hot4lexi',
+    handle: '@hot4lexi',
+    bio: 'Lexi, your hottest OnlyFans obsession 🔥💋 | 1,210 posts of premium content | Creating since 2022 🌙 | Sultry, daring & made to leave you breathless — come find out why 😈✨',
+    avatarUrl: 'https://img.coomer.st/icons/onlyfans/hot4lexi',
+    heroUrl: 'https://img.coomer.st/banners/onlyfans/hot4lexi',
+    tags: ['onlyfans', 'premium', 'exclusive', 'blonde', 'curvy', 'hot'],
+    category: 'OnlyFans',
+    images: HOT4LEXI_IMAGES,
+    stats: {
+      posts: 1210,
+      likes: 98000,
+      views: 610000,
+      followers: 51400
     },
     isVerified: true,
     isVisible: true,
