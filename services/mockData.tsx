@@ -41,6 +41,7 @@ import catgirlData from './catgirlData.json';
 import whoahannahjoData from './whoahannahjoData.json';
 import foreplayData from './foreplayData.json';
 import dolliebearData from './dolliebearData.json';
+import catkitty21Data from './catkitty21Data.json';
 
 // Subset of data for demo purposes from the Belle Delphine dataset
 const BELLE_FULL_DATA = [
@@ -11445,6 +11446,21 @@ const PROFILES: Profile[] = [
     isVisible: true,
     pricePerMonth: 9.99,
     access_mode: 'cached_preview'
+  },
+  {
+    id: 'catkitty21',
+    name: 'CatKitty21',
+    handle: '@catkitty21',
+    bio: 'Your favourite kitty 🐱💕 | 2,000+ posts of purr-fect content | OnlyFans since 2022 | Come play with me 😈🔥',
+    avatarUrl: 'https://img.coomer.st/thumbnail/data/e7/62/e7629bcc71660caab1200f45b50838c10b5a10acd44860d94b69e9ea20f18f17.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/cd/29/cd29b376dda6e589a83614f0b54149d51d22e79558c55d7724ebed5fa0b18951.jpg',
+    tags: ['onlyfans', 'premium', 'exclusive', 'cute', 'petite'],
+    category: 'Featured',
+    images: (catkitty21Data as any[]).map(item => ({ ...item, mediaType: item.mediaType as MediaType })),
+    stats: { posts: 2075, likes: 38500, views: 1750000, followers: 28400 },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 12.99
   },
   {
     id: 'foreplay',
