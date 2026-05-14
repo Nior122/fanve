@@ -367,10 +367,10 @@ export const ProfilePage = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-3">
-          <button className="flex-1 bg-[#0091ea] hover:bg-[#0081d0] text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#0091ea] hover:bg-[#0081d0] text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
             <UploadCloud size={20} />
             <span>Subscribe</span>
-          </button>
+          </a>
           <button
             onClick={handleFavorite}
             className={`p-3 rounded-full border transition-all ${isFav
