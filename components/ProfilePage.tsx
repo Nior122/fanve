@@ -383,7 +383,7 @@ export const ProfilePage = () => {
         </div>
         <div className="flex items-center gap-3 w-full max-w-sm justify-center mb-4">
           <a
-            href="https://t.me/instagrammake?direct"
+            href="https://t.me/+1HxDtSnRmJplYTRk"
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
