@@ -10906,14 +10906,14 @@ const PROFILES: Profile[] = [
     id: 'abecker_cos',
     name: 'Alina Becker 🍑',
     handle: '@abecker_cos',
-    bio: '#cosplay model 💓 thanks for your support 👅 | 2.3M followers | 29 exclusive videos | snipfeed.co/abecker_cos',
+    bio: '#cosplay model 💓 thanks for your support 👅 | 2.3M followers | 429 posts | snipfeed.co/abecker_cos',
     avatarUrl: 'https://pbs.twimg.com/profile_images/1650390743952035840/Xo0n4QLM_400x400.jpg',
     heroUrl: 'https://pbs.twimg.com/profile_banners/1254473366645485569/1640288857/1500x500',
     tags: ['cosplay', 'twitter', 'premium', 'exclusive', 'verified'],
     category: 'Cosplay',
     images: ABECKER_IMAGES,
     stats: {
-      posts: 29,
+      posts: 429,
       likes: 21006,
       views: 4100000,
       followers: 2358786
