@@ -10,6 +10,7 @@ import cherylBlossData from './cheryl_blossData.json';
 import sexyflowerwaterData from './sexyflowerwaterData.json';
 import kittyxkumData from './kittyxkumData.json';
 import yinyleonData from './yinyleonData.json';
+import abeckerData from './abeckerData.json';
 import momomkunData from './momomkunData.json';
 import angelawhiteData from './angelawhiteData.json';
 import tentaclebimboData from './tentaclebimboData.json';
@@ -4399,6 +4400,11 @@ const KITTYXKUM_IMAGES: Image[] = (kittyxkumData as any[]).map((item) => ({
 }));
 
 const YINYLEON_IMAGES: Image[] = (yinyleonData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const ABECKER_IMAGES: Image[] = (abeckerData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10890,6 +10896,27 @@ const PROFILES: Profile[] = [
       likes: 721,
       views: 3200000,
       followers: 1347210
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'abecker_cos',
+    name: 'Alina Becker 🍑',
+    handle: '@abecker_cos',
+    bio: '#cosplay model 💓 thanks for your support 👅 | 2.3M followers | 29 exclusive videos | snipfeed.co/abecker_cos',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1650390743952035840/Xo0n4QLM_400x400.jpg',
+    heroUrl: 'https://pbs.twimg.com/profile_banners/1254473366645485569/1640288857/1500x500',
+    tags: ['cosplay', 'twitter', 'premium', 'exclusive', 'verified'],
+    category: 'Cosplay',
+    images: ABECKER_IMAGES,
+    stats: {
+      posts: 29,
+      likes: 21006,
+      views: 4100000,
+      followers: 2358786
     },
     isVerified: true,
     isVisible: true,
