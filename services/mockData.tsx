@@ -9,6 +9,7 @@ import queenTahshaarData from './queenTahshaarData.json';
 import cherylBlossData from './cheryl_blossData.json';
 import sexyflowerwaterData from './sexyflowerwaterData.json';
 import kittyxkumData from './kittyxkumData.json';
+import yinyleonData from './yinyleonData.json';
 import momomkunData from './momomkunData.json';
 import angelawhiteData from './angelawhiteData.json';
 import tentaclebimboData from './tentaclebimboData.json';
@@ -4393,6 +4394,11 @@ const KITTYXKUM_URLS = [
 ];
 
 const KITTYXKUM_IMAGES: Image[] = (kittyxkumData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
+}));
+
+const YINYLEON_IMAGES: Image[] = (yinyleonData as any[]).map((item) => ({
   ...item,
   mediaType: item.mediaType as MediaType
 }));
@@ -10867,6 +10873,27 @@ const PROFILES: Profile[] = [
     isVerified: true,
     isVisible: true,
     pricePerMonth: 12.99,
+    access_mode: 'cached_preview'
+  },
+  {
+    id: 'yinyleon_only1',
+    name: 'YINYLEON',
+    handle: '@yinyleon_only1',
+    bio: 'I DO NOT HAVE TELEGRAM. 🔥 | 1.3M+ followers on X | Exclusive content on OnlyFans | instagram.com/yinyleonofficial',
+    avatarUrl: 'https://pbs.twimg.com/profile_images/1978856708983103492/A_TxRlpR_400x400.jpg',
+    heroUrl: 'https://pbs.twimg.com/profile_banners/1173030166383058945/1680647854/1500x500',
+    tags: ['twitter', 'premium', 'exclusive', 'asian', 'verified'],
+    category: 'Premium',
+    images: YINYLEON_IMAGES,
+    stats: {
+      posts: 487,
+      likes: 721,
+      views: 3200000,
+      followers: 1347210
+    },
+    isVerified: true,
+    isVisible: true,
+    pricePerMonth: 14.99,
     access_mode: 'cached_preview'
   },
   {
