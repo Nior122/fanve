@@ -10852,14 +10852,14 @@ const PROFILES: Profile[] = [
     id: 'kittyxkum',
     name: 'kit',
     handle: '@kittyxkum',
-    bio: 'kit || infp || 152 cm 🐱🔥 | Premium exclusive content | 346 posts of pure heat | Come play with me 💦😈 | kittiexoxo.com',
+    bio: 'kit || infp || 152 cm 🐱🔥 | Premium exclusive content | 280 posts of pure heat | Come play with me 💦😈 | kittiexoxo.com',
     avatarUrl: 'https://pbs.twimg.com/profile_images/2034723572225126400/-cW0t473_400x400.jpg',
     heroUrl: 'https://pbs.twimg.com/profile_banners/936815461303508992/1773950888/1500x500',
     tags: ['twitter', 'premium', 'exclusive', 'kitty', 'cute', 'hot'],
     category: 'Premium',
     images: KITTYXKUM_IMAGES,
     stats: {
-      posts: 346,
+      posts: 280,
       likes: 244200,
       views: 2780000,
       followers: 2531777
