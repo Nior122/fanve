@@ -40,6 +40,12 @@ export const ProfilePage = () => {
   // Live visitor counter
   const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 180) + 120);
 
+  // Flaunting button counts (generated once, stable per session)
+  const fmtK = (n: number) => n >= 1000 ? (n / 1000).toFixed(1) + 'K' : n.toString();
+  const [subCount]  = useState(() => fmtK(Math.floor(Math.random() * 60000) + 18000));
+  const [msgCount]  = useState(() => fmtK(Math.floor(Math.random() * 30000) + 8000));
+  const [callCount] = useState(() => fmtK(Math.floor(Math.random() * 20000) + 5000));
+
   // Social proof toast
   const NAMES = [
     'Ashley','Mia','Jordan','Tyler','Brianna','Kayla','Marcus','Destiny','Chris','Aaliyah',
@@ -436,9 +442,12 @@ export const ProfilePage = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-3">
-          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="animate-wobble flex-1 bg-red-700 hover:bg-red-600 text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-red-900/40 flex items-center justify-center gap-2">
-            <UploadCloud size={20} />
-            <span>Subscribe</span>
+          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="animate-wobble flex-1 bg-red-700 hover:bg-red-600 text-white py-2 rounded-full font-bold text-base transition-colors shadow-lg shadow-red-900/40 flex flex-col items-center justify-center gap-0">
+            <div className="flex items-center gap-2">
+              <UploadCloud size={18} />
+              <span>Subscribe</span>
+            </div>
+            <span className="text-[11px] font-semibold text-red-200 tracking-wide">{subCount} subscribers</span>
           </a>
           <button
             onClick={handleFavorite}
@@ -455,19 +464,25 @@ export const ProfilePage = () => {
             href="https://t.me/+1HxDtSnRmJplYTRk"
             target="_blank"
             rel="noopener noreferrer"
-            className="animate-zoom-in flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+            className="animate-zoom-in flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-2 rounded-full font-bold text-base transition-colors flex flex-col items-center justify-center gap-0"
           >
-            <span>📩</span>
-            <span>Message</span>
+            <div className="flex items-center gap-2">
+              <span>📩</span>
+              <span>Message</span>
+            </div>
+            <span className="text-[11px] font-semibold text-gray-400 tracking-wide">{msgCount} received</span>
           </a>
           <a
             href="https://loadingup.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="animate-shake flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+            className="animate-shake flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-2 rounded-full font-bold text-base transition-colors flex flex-col items-center justify-center gap-0"
           >
-            <span>📞</span>
-            <span>Call Me</span>
+            <div className="flex items-center gap-2">
+              <span>📞</span>
+              <span>Call Me</span>
+            </div>
+            <span className="text-[11px] font-semibold text-gray-400 tracking-wide">{callCount} called</span>
           </a>
         </div>
       </div>
