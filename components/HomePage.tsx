@@ -17,7 +17,7 @@ export const HomePage = ({ showFavoritesOnly }: { showFavoritesOnly?: boolean })
   const { profiles, user } = useMockData();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
-  const ITEMS_PER_PAGE = 50;
+  const ITEMS_PER_PAGE = 20;
 
   let baseProfiles = profiles;
   if (showFavoritesOnly && user) {
