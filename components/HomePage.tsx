@@ -229,19 +229,28 @@ const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date 
       {/* Content */}
       <div className="relative h-full flex items-center px-4 py-4 gap-4">
         {/* Avatar */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 relative">
           <img
             src={profile.avatarUrl}
             alt={profile.name}
             className="w-40 h-40 md:w-44 md:h-44 avatar-rounded-square object-cover border-2 border-white/10 shadow-lg"
             loading="lazy"
           />
+          {/* Online dot on avatar */}
+          <span className="absolute bottom-2 right-2 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-black"></span>
+          </span>
         </div>
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <div className="mb-2">
+          <div className="mb-2 flex items-center gap-2">
             <span className="badge-onlyfans">OnlyFans</span>
+            <span className="flex items-center gap-1 text-xs font-semibold text-green-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
+              Online
+            </span>
           </div>
           <h3 className="text-white font-semibold text-lg md:text-xl mb-1 truncate group-hover:text-red-400 transition-colors">
             {profile.handle.replace('@', '')}
