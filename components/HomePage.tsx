@@ -243,7 +243,7 @@ const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date 
           <div className="mb-2">
             <span className="badge-onlyfans">OnlyFans</span>
           </div>
-          <h3 className="text-white font-semibold text-lg md:text-xl mb-1 truncate group-hover:text-cyan-400 transition-colors">
+          <h3 className="text-white font-semibold text-lg md:text-xl mb-1 truncate group-hover:text-red-400 transition-colors">
             {profile.handle.replace('@', '')}
           </h3>
           <p className="text-gray-400 text-sm">

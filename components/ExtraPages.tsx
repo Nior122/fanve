@@ -4,16 +4,14 @@ import { Search, Hash, ChevronRight, Settings, HelpCircle, FileText, Shield, Arr
 import { useMockData } from '../services/mockData';
 import { Profile } from '../types';
 
-// Reusing ProfileCard for consistency, or we could export it from HomePage if we refactored
-// Fix: Typed as React.FC to allow 'key' prop
 const SimpleProfileCard: React.FC<{ profile: Profile }> = ({ profile }) => (
-  <Link to={`/profile/${profile.id}`} className="flex items-center gap-4 p-4 bg-white rounded-xl border hover:shadow-md transition-shadow">
+  <Link to={`/profile/${profile.id}`} className="flex items-center gap-4 p-4 bg-[#0a0a0a] rounded-xl border border-red-900/30 hover:border-red-700/50 hover:bg-[#110000] transition-all">
     <img src={profile.avatarUrl} alt={profile.name} className="w-12 h-12 rounded-full object-cover" />
     <div className="flex-1 min-w-0">
-      <h3 className="font-bold text-slate-900 truncate">{profile.name}</h3>
+      <h3 className="font-bold text-white truncate">{profile.name}</h3>
       <p className="text-sm text-gray-500 truncate">{profile.handle}</p>
     </div>
-    <ChevronRight size={20} className="text-gray-300" />
+    <ChevronRight size={20} className="text-red-700" />
   </Link>
 );
 
@@ -32,16 +30,16 @@ export const SearchPage = () => {
   }, [profiles, query]);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 pb-24">
-      <h1 className="text-2xl font-bold mb-6">Search</h1>
+    <div className="min-h-screen bg-black max-w-2xl mx-auto px-4 py-6 pb-24">
+      <h1 className="text-2xl font-bold mb-6 text-white">Search</h1>
       
       <div className="relative mb-8">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-700" size={20} />
         <input 
           autoFocus
           type="text"
           placeholder="Search for creators or posts..."
-          className="w-full pl-10 pr-4 py-3 bg-white border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+          className="w-full pl-10 pr-4 py-3 bg-[#0a0a0a] border border-red-900/40 rounded-xl focus:ring-2 focus:ring-red-700 outline-none text-white placeholder-gray-600"
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
@@ -57,8 +55,8 @@ export const SearchPage = () => {
         ))}
 
         {!query && (
-          <div className="text-center text-gray-400 py-12">
-            <Search size={48} className="mx-auto mb-4 opacity-20" />
+          <div className="text-center text-gray-600 py-12">
+            <Search size={48} className="mx-auto mb-4 opacity-20 text-red-700" />
             <p>Type to find your favorite creators</p>
           </div>
         )}
@@ -70,7 +68,6 @@ export const SearchPage = () => {
 export const HashtagsPage = () => {
   const { profiles } = useMockData();
   
-  // aggregate tags
   const allTags = useMemo(() => {
     const counts: Record<string, number> = {};
     profiles.forEach(p => {
@@ -82,26 +79,26 @@ export const HashtagsPage = () => {
   }, [profiles]);
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 pb-24">
-      <h1 className="text-2xl font-bold mb-6">Trending Hashtags</h1>
+    <div className="min-h-screen bg-black max-w-2xl mx-auto px-4 py-6 pb-24">
+      <h1 className="text-2xl font-bold mb-6 text-white">Trending Hashtags</h1>
       
-      <div className="space-y-2">
+      <div className="space-y-0 rounded-xl overflow-hidden border border-red-900/30">
         {allTags.map(([tag, count]) => (
           <Link 
             key={tag}
-            to={`/?search=${tag}`} // Redirects to home with search filter logic
-            className="flex items-center justify-between p-4 bg-white border-b border-gray-100 hover:bg-gray-50 transition-colors first:rounded-t-xl last:rounded-b-xl last:border-0"
+            to={`/?search=${tag}`}
+            className="flex items-center justify-between p-4 bg-[#0a0a0a] border-b border-red-900/20 hover:bg-[#110000] transition-colors last:border-0"
           >
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-red-900/30 text-red-500 flex items-center justify-center">
                 <Hash size={20} />
               </div>
               <div>
-                <span className="font-bold text-slate-900 block">#{tag}</span>
+                <span className="font-bold text-white block">#{tag}</span>
                 <span className="text-xs text-gray-500">{count} {count === 1 ? 'post' : 'posts'}</span>
               </div>
             </div>
-            <ArrowRight size={18} className="text-gray-300" />
+            <ArrowRight size={18} className="text-red-800" />
           </Link>
         ))}
       </div>
@@ -117,28 +114,28 @@ export const MorePage = () => {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 pb-24">
-      <h1 className="text-2xl font-bold mb-6">More</h1>
+    <div className="min-h-screen bg-black max-w-2xl mx-auto px-4 py-6 pb-24">
+      <h1 className="text-2xl font-bold mb-6 text-white">More</h1>
       
-      <div className="bg-white rounded-xl border overflow-hidden">
+      <div className="bg-[#0a0a0a] rounded-xl border border-red-900/30 overflow-hidden">
         {menuItems.map((item, i) => {
           const Icon = item.icon;
           return (
             <button 
               key={item.label}
-              className={`w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors ${i !== menuItems.length - 1 ? 'border-b border-gray-100' : ''}`}
+              className={`w-full flex items-center justify-between p-4 hover:bg-[#110000] transition-colors ${i !== menuItems.length - 1 ? 'border-b border-red-900/20' : ''}`}
             >
               <div className="flex items-center gap-4">
-                <Icon size={20} className="text-gray-600" />
-                <span className="font-medium text-slate-900">{item.label}</span>
+                <Icon size={20} className="text-red-700" />
+                <span className="font-medium text-gray-200">{item.label}</span>
               </div>
-              <ChevronRight size={18} className="text-gray-300" />
+              <ChevronRight size={18} className="text-red-900" />
             </button>
           );
         })}
       </div>
       
-      <div className="mt-8 text-center text-xs text-gray-400">
+      <div className="mt-8 text-center text-xs text-gray-600">
         <p>FanDirectory v1.0.0</p>
         <p>© 2024 FanDirectory Inc.</p>
       </div>

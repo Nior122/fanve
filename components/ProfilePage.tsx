@@ -258,8 +258,8 @@ export const ProfilePage = () => {
         min-w-[32px] h-8 px-3 flex items-center justify-center text-sm font-medium border
         transition-colors duration-200
         ${active
-          ? 'bg-[#007bff] border-[#007bff] text-white'
-          : 'bg-[#262626] border-[#333] text-gray-300 hover:bg-[#333] hover:text-white'
+          ? 'bg-red-700 border-red-700 text-white'
+          : 'bg-[#1a0000] border-red-900/40 text-gray-300 hover:bg-red-900/30 hover:text-white'
         }
         ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
       `}
@@ -367,7 +367,7 @@ export const ProfilePage = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-3">
-          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="flex-1 bg-[#0091ea] hover:bg-[#0081d0] text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="flex-1 bg-red-700 hover:bg-red-600 text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-red-900/40 flex items-center justify-center gap-2">
             <UploadCloud size={20} />
             <span>Subscribe</span>
           </a>
@@ -406,7 +406,7 @@ export const ProfilePage = () => {
       <div className="max-w-[1600px] mx-auto px-2 md:px-4">
 
         {/* 2. Navigation Tabs */}
-        <div className="flex border-b border-[#333] mb-4 overflow-x-auto no-scrollbar">
+        <div className="flex border-b border-red-900/40 mb-4 overflow-x-auto no-scrollbar">
           {[
             { id: 'all', label: `${profile.images.length} Posts` },
             { id: 'image', label: 'Photos' },
@@ -419,8 +419,8 @@ export const ProfilePage = () => {
               className={`
                 px-6 py-4 text-lg font-medium border-b-2 transition-colors whitespace-nowrap
                 ${activeTab === tab.id
-                  ? 'border-[#007bff] text-[#007bff]'
-                  : 'border-transparent text-gray-400 hover:text-white hover:border-gray-600'
+                  ? 'border-red-600 text-red-500'
+                  : 'border-transparent text-gray-400 hover:text-white hover:border-red-900'
                 }
               `}
             >

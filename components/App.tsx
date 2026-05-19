@@ -26,24 +26,24 @@ const Navbar = () => {
   return (
     <>
       {/* Mobile Header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white border-b px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black border-b border-red-900/50 px-4 py-3 flex items-center justify-between">
+        <Link to="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-400">
           FanDirectory
         </Link>
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-600">
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-red-500">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Sidebar / Drawer */}
       <nav className={`
-        fixed inset-y-0 left-0 z-40 w-64 bg-white border-r transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-40 w-64 bg-black border-r border-red-900/40 transform transition-transform duration-300 ease-in-out
         md:translate-x-0 md:static md:h-screen
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="flex flex-col h-full">
           <div className="p-6 hidden md:block">
-            <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">
+            <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-400">
               FanDirectory
             </Link>
           </div>
@@ -59,8 +59,8 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${
                     isActive 
-                      ? 'bg-blue-50 text-blue-600 font-medium' 
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-red-900/30 text-red-400 font-medium' 
+                      : 'text-gray-400 hover:bg-red-900/20 hover:text-red-400'
                   }`}
                 >
                   <Icon size={20} />
@@ -70,19 +70,19 @@ const Navbar = () => {
             })}
           </div>
 
-          <div className="p-4 border-t">
+          <div className="p-4 border-t border-red-900/40">
             {user ? (
               <div className="flex items-center justify-between px-4 py-3">
                 <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                  <div className="w-8 h-8 rounded-full bg-red-900/40 flex items-center justify-center text-red-400 font-bold">
                     {user.email[0].toUpperCase()}
                   </div>
                   <div className="text-sm">
-                    <p className="font-medium text-gray-900">{user.email.split('@')[0]}</p>
+                    <p className="font-medium text-gray-200">{user.email.split('@')[0]}</p>
                     <p className="text-xs text-gray-500 capitalize">{user.role.toLowerCase()}</p>
                   </div>
                 </div>
-                <button onClick={logout} className="text-gray-400 hover:text-red-500">
+                <button onClick={logout} className="text-gray-500 hover:text-red-500">
                   <LogOut size={18} />
                 </button>
               </div>
@@ -94,7 +94,7 @@ const Navbar = () => {
       {/* Overlay for mobile */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          className="fixed inset-0 bg-black/70 z-30 md:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -105,7 +105,7 @@ const Navbar = () => {
 // Layout Wrapper
 const Layout = ({ children }: { children?: React.ReactNode }) => {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-black">
       <Navbar />
       <main className="flex-1 w-full max-w-full md:max-w-[calc(100vw-16rem)] min-h-screen overflow-x-hidden pt-16 md:pt-0">
         {children}
