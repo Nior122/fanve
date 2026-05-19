@@ -209,7 +209,18 @@ export const HomePage = ({ showFavoritesOnly }: { showFavoritesOnly?: boolean })
   );
 };
 
+const LAST_ACTIVE_OPTIONS = [
+  'Active just now', 'Active just now', 'Active just now',
+  'Active 1 min ago', 'Active 1 min ago',
+  'Active 2 mins ago', 'Active 3 mins ago', 'Active 4 mins ago', 'Active 5 mins ago',
+];
+
 const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date }) => {
+  const lastActive = React.useMemo(() => {
+    const idx = profile.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % LAST_ACTIVE_OPTIONS.length;
+    return LAST_ACTIVE_OPTIONS[idx];
+  }, [profile.id]);
+
   return (
     <Link
       to={`/profile/${profile.id}`}
@@ -255,6 +266,9 @@ const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date 
           <h3 className="text-white font-semibold text-lg md:text-xl mb-1 truncate group-hover:text-red-400 transition-colors">
             {profile.handle.replace('@', '')}
           </h3>
+          <p className="text-green-400 text-xs font-semibold mb-0.5">
+            ⚡ {lastActive}
+          </p>
           <p className="text-gray-400 text-sm">
             {date}
           </p>
