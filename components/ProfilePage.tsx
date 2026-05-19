@@ -37,6 +37,19 @@ export const ProfilePage = () => {
   // Reshuffle State
   const [shuffleToken, setShuffleToken] = useState(0);
 
+  // Live visitor counter
+  const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 38) + 16);
+
+  // Social proof toast
+  const NAMES = ['Ashley', 'Mia', 'Jordan', 'Tyler', 'Brianna', 'Kayla', 'Marcus', 'Destiny', 'Chris', 'Aaliyah', 'Devon', 'Savannah', 'Jake', 'Monique', 'Ryan', 'Jasmine', 'Taylor', 'Keisha', 'Logan', 'Priya'];
+  const ACTIONS: { label: string; icon: string; color: string }[] = [
+    { label: 'just subscribed', icon: '💳', color: 'text-red-400' },
+    { label: 'just messaged', icon: '💬', color: 'text-blue-400' },
+    { label: 'just called', icon: '📞', color: 'text-green-400' },
+  ];
+  const [socialToast, setSocialToast] = useState<{ name: string; label: string; icon: string; color: string } | null>(null);
+  const [toastVisible, setToastVisible] = useState(false);
+
   // Track unlock attempts with cumulative time tracking
   const unlockAttemptRef = useRef<{
     id: string;
@@ -74,6 +87,35 @@ export const ProfilePage = () => {
       setShuffleToken(prev => prev + 1);
     }, 60000);
     return () => clearInterval(interval);
+  }, []);
+
+  // Visitor counter fluctuation
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisitorCount(prev => {
+        const delta = Math.floor(Math.random() * 5) - 2;
+        return Math.max(8, Math.min(99, prev + delta));
+      });
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Social proof toast cycle
+  useEffect(() => {
+    const show = () => {
+      const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+      const action = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
+      setSocialToast({ name, ...action });
+      setToastVisible(true);
+      setTimeout(() => setToastVisible(false), 3500);
+    };
+    const scheduleNext = () => {
+      const delay = Math.floor(Math.random() * 7000) + 6000;
+      return setTimeout(() => { show(); scheduleNext(); }, delay);
+    };
+    const initial = setTimeout(show, 3000);
+    const recurring = setTimeout(scheduleNext, 10000);
+    return () => { clearTimeout(initial); clearTimeout(recurring); };
   }, []);
 
   // Cumulative time tracking: Track when user leaves and returns
@@ -363,6 +405,14 @@ export const ProfilePage = () => {
               {profile.bio}
             </p>
           )}
+          {/* Live visitor counter */}
+          <div className="flex items-center justify-center gap-2 pt-1">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+            </span>
+            <span className="text-sm text-gray-400"><span className="text-white font-semibold">{visitorCount}</span> people viewing now</span>
+          </div>
         </div>
 
         {/* Actions */}
@@ -619,6 +669,25 @@ export const ProfilePage = () => {
         onChangeIndex={setLightboxIndex}
         unlockedIds={unlockedIds}
       />
+
+      {/* Social Proof Toast */}
+      {socialToast && (
+        <div
+          className={`fixed bottom-6 left-4 z-50 flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0f0f0f] border border-red-900/40 shadow-2xl shadow-black/60 transition-all duration-500 max-w-[260px] ${
+            toastVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+          }`}
+        >
+          <span className="text-xl">{socialToast.icon}</span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-white text-sm font-semibold">{socialToast.name}</span>
+            <span className={`text-xs font-medium ${socialToast.color}`}>{socialToast.label}</span>
+          </div>
+          <span className="ml-auto flex h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+        </div>
+      )}
     </div>
   );
 };
