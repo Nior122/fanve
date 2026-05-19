@@ -215,10 +215,25 @@ const LAST_ACTIVE_OPTIONS = [
   'Active 2 mins ago', 'Active 3 mins ago', 'Active 4 mins ago', 'Active 5 mins ago',
 ];
 
+const PROFILE_BADGES: { label: string; icon: string; className: string }[] = [
+  { label: 'Trending',  icon: '🔥', className: 'bg-orange-500/20 text-orange-400 border border-orange-500/40' },
+  { label: 'VIP',       icon: '💎', className: 'bg-purple-500/20 text-purple-300 border border-purple-500/40' },
+  { label: 'Top Creator', icon: '⭐', className: 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/40' },
+  { label: 'Hot',       icon: '🌶️', className: 'bg-red-500/20 text-red-400 border border-red-500/40' },
+  { label: 'Exclusive', icon: '👑', className: 'bg-amber-500/20 text-amber-300 border border-amber-500/40' },
+];
+
 const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date }) => {
   const lastActive = React.useMemo(() => {
     const idx = profile.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0) % LAST_ACTIVE_OPTIONS.length;
     return LAST_ACTIVE_OPTIONS[idx];
+  }, [profile.id]);
+
+  // ~70% of profiles get a badge, deterministic per profile
+  const badge = React.useMemo(() => {
+    const hash = profile.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+    if (hash % 10 >= 7) return null; // 30% no badge
+    return PROFILE_BADGES[hash % PROFILE_BADGES.length];
   }, [profile.id]);
 
   return (
@@ -256,12 +271,17 @@ const ListCard: React.FC<{ profile: Profile; date: string }> = ({ profile, date 
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mb-2 flex items-center gap-2 flex-wrap">
             <span className="badge-onlyfans">OnlyFans</span>
             <span className="flex items-center gap-1 text-xs font-semibold text-green-400">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
               Online
             </span>
+            {badge && (
+              <span className={`flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full ${badge.className}`}>
+                {badge.icon} {badge.label}
+              </span>
+            )}
           </div>
           <h3 className="text-white font-semibold text-lg md:text-xl mb-1 truncate group-hover:text-red-400 transition-colors">
             {profile.handle.replace('@', '')}
