@@ -487,7 +487,7 @@ export const ProfilePage = () => {
                   `}
                 >
                   {/* Media Content Container */}
-                  <div className={`w-full h-full relative transition-all duration-300 ${isLocked ? 'filter blur-[2px] opacity-95 pointer-events-none' : ''}`}>
+                  <div className={`w-full h-full relative transition-all duration-300 ${isLocked ? 'filter blur-[3px] opacity-95 pointer-events-none' : ''}`}>
                     {isVideo ? (
                       <div className="w-full h-full relative flex items-center justify-center bg-black">
                         <img
