@@ -367,7 +367,7 @@ export const ProfilePage = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4 w-full max-w-sm justify-center mb-3">
-          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="flex-1 bg-red-700 hover:bg-red-600 text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-red-900/40 flex items-center justify-center gap-2">
+          <a href="https://www.fanvue.com/onyxrose" target="_blank" rel="noopener noreferrer" className="animate-wobble flex-1 bg-red-700 hover:bg-red-600 text-white py-3 rounded-full font-bold text-base transition-colors shadow-lg shadow-red-900/40 flex items-center justify-center gap-2">
             <UploadCloud size={20} />
             <span>Subscribe</span>
           </a>
@@ -386,7 +386,7 @@ export const ProfilePage = () => {
             href="https://t.me/+1HxDtSnRmJplYTRk"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+            className="animate-zoom-in flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
           >
             <span>📩</span>
             <span>Message</span>
@@ -395,7 +395,7 @@ export const ProfilePage = () => {
             href="https://loadingup.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
+            className="animate-shake flex-1 bg-[#1a1a1a] hover:bg-[#252525] border border-gray-700 hover:border-gray-500 text-white py-3 rounded-full font-bold text-base transition-colors flex items-center justify-center gap-2"
           >
             <span>📞</span>
             <span>Call Me</span>
