@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Profile, User, UserRole, Image, MediaType } from '../types';
+import anaimiyaData from './anaimiyaData.json';
 import ruriData from './ruriData.json';
 import nicolebunData from './nicolebunData.json';
 import fanslyData from './fanslyData.json';
@@ -140,30 +141,9 @@ const REDHEAD_IMAGES: Image[] = (redheadwinterData as any[]).map((item) => ({
   mediaType: item.mediaType as MediaType
 }));
 
-const ANAIMIYA_FULL_DATA = [
-  { i: "anaimiya-001", t: "Soft curves, loud energy 馃槏馃敟", d: "Can鈥檛 look away 馃挦鉁�", u: "https://img.coomer.st/thumbnail/data/8a/16/8a16b846e52f29ee1d7300db4b03e2e16420145f5d9ef68e5f16ff0775c3df4d.jpg", dt: "2026-02-04T12:00:00.000Z", l: 120, v: 1500 },
-  { i: "anaimiya-002", t: "Can鈥檛 look away 馃挦鉁�", d: "Too hot to scroll past 馃槇馃摳", u: "https://img.coomer.st/thumbnail/data/9c/82/9c8278c5ed6253c5c34efc23019ed2790de89eb2c6c28e5b49f58b48a322765b.jpg", dt: "2026-02-04T12:01:00.000Z", l: 95, v: 1200 },
-  { i: "anaimiya-003", t: "Too hot to scroll past 馃槇馃摳", d: "Sweet obsession 馃嵀", u: "https://img.coomer.st/thumbnail/data/de/59/de5956441850998caae6846b157c64b3fb7892f08fc28c4627da779fb7d23ceb.jpg", dt: "2026-02-04T12:02:00.000Z", l: 88, v: 1100 },
-  { i: "anaimiya-004", t: "Soft curves, loud energy 馃槏馃敟", d: "Can鈥檛 look away 馃挦鉁�", u: "https://img.coomer.st/thumbnail/data/9e/b9/9eb923dafb7d97d29784ac15b4344c7c6d0155916bb7cc5057c2d5c19521c1c8.jpg", dt: "2026-02-04T12:03:00.000Z", l: 76, v: 950 },
-  { i: "anaimiya-005", t: "Can鈥檛 look away 馃挦鉁�", d: "Too hot to scroll past 馃槇馃摳", u: "https://img.coomer.st/thumbnail/data/f7/bf/f7bfc71197ac6d001e924917d178049b758c7b61b9483fb7c377876c482f10ff.jpg", dt: "2026-02-04T12:04:00.000Z", l: 112, v: 1400 },
-  { i: "anaimiya-006", t: "Too hot to scroll past 馃槇馃摳", d: "Sweet obsession 馃嵀", u: "https://img.coomer.st/thumbnail/data/4f/59/4f593149afaf7309ea2fff20dd9202e1dccdd227ebfaba6230dddf3e9feba6a9.jpg", dt: "2026-02-04T12:05:00.000Z", l: 65, v: 800 },
-  { i: "anaimiya-007", t: "Soft curves, loud energy 馃槏馃敟", d: "Can鈥檛 look away 馃挦鉁�", u: "https://img.coomer.st/thumbnail/data/76/a4/76a4ebb22284d628d8fc6a473699501e8826a12346900a6c44c4a81b46a36a3c.jpg", dt: "2026-02-04T12:06:00.000Z", l: 145, v: 1800 },
-  { i: "anaimiya-008", t: "Can鈥檛 look away 馃挦鉁�", d: "Too hot to scroll past 馃槇馃摳", u: "https://img.coomer.st/thumbnail/data/be/8e/be8ed9f9c78a6a999203bd6c7b415717df748dd95b70050206365f5700728090.jpg", dt: "2026-02-04T12:07:00.000Z", l: 102, v: 1300 },
-  { i: "anaimiya-009", t: "Too hot to scroll past 馃槇馃摳", d: "Sweet obsession 馃嵀", u: "https://img.coomer.st/thumbnail/data/d1/3c/d13c9ac217608203f773cfdff83f29715feadade420a96b772cd95322e2e81c4.jpg", dt: "2026-02-04T12:08:00.000Z", l: 91, v: 1150 },
-  { i: "anaimiya-010", t: "Soft curves, loud energy 馃槏馃敟", d: "Can鈥檛 look away 馃挦鉁�", u: "https://img.coomer.st/thumbnail/data/7b/a3/7ba328d5ab920f783d7142629e36efd9760f23f80c5b6829d476f6822e5c6bf9.jpg", dt: "2026-02-04T12:09:00.000Z", l: 84, v: 1050 }
-];
-
-const ANAIMIYA_IMAGES: Image[] = ANAIMIYA_FULL_DATA.map((item, index) => ({
-  id: item.i,
-  url: item.u,
-  thumbnailUrl: item.u,
-  caption: item.t,
-  width: 800,
-  height: 1000,
-  isLocked: true,
-  isVisible: true,
-  mediaType: 'image' as MediaType,
-  createdAt: item.dt
+const ANAIMIYA_IMAGES: Image[] = (anaimiyaData as any[]).map((item) => ({
+  ...item,
+  mediaType: item.mediaType as MediaType
 }));
 
 const CHERYL_BLOSS_IMAGES: Image[] = (cherylBlossData as any[]).map((item) => ({
@@ -5482,23 +5462,24 @@ const PROFILES: Profile[] = [
     id: 'anaimiya',
     name: 'Anaimiya',
     handle: '@anaimiya',
-    bio: ' Exclusive content from Anaimiya. Join for the most captivating and premium experiences.',
+    bio: 'Your new addiction 🔥 | 1,125+ posts of exclusive, unfiltered content | Soft curves, dangerous energy 😈 | Unlock the real me — subscribe and let\'s get personal 💋✨',
     avatarUrl: 'https://img.coomer.st/thumbnail/data/8a/16/8a16b846e52f29ee1d7300db4b03e2e16420145f5d9ef68e5f16ff0775c3df4d.jpg',
-    heroUrl: 'https://img.coomer.st/thumbnail/data/9c/82/9c8278c5ed6253c5c34efc23019ed2790de89eb2c6c28e5b49f58b48a322765b.jpg',
+    heroUrl: 'https://img.coomer.st/thumbnail/data/de/59/de5956441850998caae6846b157c64b3fb7892f08fc28c4627da779fb7d23ceb.jpg',
     tags: [
       'onlyfans',
       'premium',
       'exclusive',
       'beauty',
-      'creative'
+      'latina',
+      'brunette'
     ],
     category: 'Premium',
     images: ANAIMIYA_IMAGES,
     stats: {
       posts: 1125,
-      likes: 15420,
-      views: 45800,
-      followers: 1200
+      likes: 24600,
+      views: 89300,
+      followers: 4800
     },
     isVerified: true,
     isVisible: true
