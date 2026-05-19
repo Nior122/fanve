@@ -38,15 +38,27 @@ export const ProfilePage = () => {
   const [shuffleToken, setShuffleToken] = useState(0);
 
   // Live visitor counter
-  const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 38) + 16);
+  const [visitorCount, setVisitorCount] = useState(() => Math.floor(Math.random() * 180) + 120);
 
   // Social proof toast
-  const NAMES = ['Ashley', 'Mia', 'Jordan', 'Tyler', 'Brianna', 'Kayla', 'Marcus', 'Destiny', 'Chris', 'Aaliyah', 'Devon', 'Savannah', 'Jake', 'Monique', 'Ryan', 'Jasmine', 'Taylor', 'Keisha', 'Logan', 'Priya'];
+  const NAMES = [
+    'Ashley','Mia','Jordan','Tyler','Brianna','Kayla','Marcus','Destiny','Chris','Aaliyah',
+    'Devon','Savannah','Jake','Monique','Ryan','Jasmine','Taylor','Keisha','Logan','Priya',
+    'Zoe','Cameron','Alexis','Brandon','Naomi','Hunter','Sierra','Darius','Chloe','Isaiah',
+    'Madison','Elijah','Amber','Malik','Tiffany','Kyle','Imani','Nathan','Vanessa','Caleb',
+    'Danielle','Derek','Simone','Connor','Aria','Jaden','Leah','Omar','Faith','Austin',
+    'Gabrielle','Anthony','Kiera','Xavier','Paige','Damien','Yara','Evan','Nadia','Blake',
+    'Tatiana','Jalen','Brooklyn','Miles','Selena','Andre','Camille','Tristan','Jade','Kevin',
+    'Ciara','Bryan','Lydia','Terrell','Aisha','Chase','Hailey','Dante','Maya','Preston',
+    'Tiana','Dominic','Layla','Micah','Zara','Seth','Nia','Colton','Whitney','Jaylen',
+    'Stephanie','Rashad','Elena','Brady','Raven','Vincent','Jocelyn','Shane','Amara','Grant',
+  ];
   const ACTIONS: { label: string; icon: string; color: string }[] = [
     { label: 'just subscribed', icon: '💳', color: 'text-red-400' },
     { label: 'just messaged', icon: '💬', color: 'text-blue-400' },
     { label: 'just called', icon: '📞', color: 'text-green-400' },
   ];
+  const usedNamesRef = useRef<Set<string>>(new Set());
   const [socialToast, setSocialToast] = useState<{ name: string; label: string; icon: string; color: string } | null>(null);
   const [toastVisible, setToastVisible] = useState(false);
 
@@ -93,29 +105,36 @@ export const ProfilePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisitorCount(prev => {
-        const delta = Math.floor(Math.random() * 5) - 2;
-        return Math.max(8, Math.min(99, prev + delta));
+        const delta = Math.floor(Math.random() * 9) - 4;
+        return Math.max(80, Math.min(399, prev + delta));
       });
-    }, 5000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  // Social proof toast cycle
+  // Social proof toast cycle — no name repeats until pool exhausted
   useEffect(() => {
+    const getUnusedName = () => {
+      const unused = NAMES.filter(n => !usedNamesRef.current.has(n));
+      if (unused.length === 0) { usedNamesRef.current.clear(); return NAMES[Math.floor(Math.random() * NAMES.length)]; }
+      const pick = unused[Math.floor(Math.random() * unused.length)];
+      usedNamesRef.current.add(pick);
+      return pick;
+    };
     const show = () => {
-      const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+      const name = getUnusedName();
       const action = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
       setSocialToast({ name, ...action });
       setToastVisible(true);
-      setTimeout(() => setToastVisible(false), 3500);
+      setTimeout(() => setToastVisible(false), 2500);
     };
     const scheduleNext = () => {
-      const delay = Math.floor(Math.random() * 7000) + 6000;
+      const delay = Math.floor(Math.random() * 2000) + 2000;
       return setTimeout(() => { show(); scheduleNext(); }, delay);
     };
-    const initial = setTimeout(show, 3000);
-    const recurring = setTimeout(scheduleNext, 10000);
-    return () => { clearTimeout(initial); clearTimeout(recurring); };
+    const initial = setTimeout(show, 1500);
+    const t = setTimeout(scheduleNext, 4500);
+    return () => { clearTimeout(initial); clearTimeout(t); };
   }, []);
 
   // Cumulative time tracking: Track when user leaves and returns
