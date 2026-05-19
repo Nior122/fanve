@@ -193,7 +193,7 @@ export const ProfilePage = () => {
     };
 
     // Open the link - this will trigger the blur/visibility change
-    window.open("https://whatsappchatme.vercel.app/", "_blank");
+    window.open("https://www.effectivecpmnetwork.com/quqay0k2?key=f9dc05c1566e4e3627daf87fe9a2c9fc", "_blank");
   };
 
   // Memoized shuffled images - updates when shuffleToken changes (every min) or profile changes
