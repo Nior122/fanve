@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { X, ChevronLeft, ChevronRight, Download, Info, Lock } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Info, Lock } from 'lucide-react';
 import { Image } from '../types';
 
 interface LightboxProps {
@@ -166,9 +166,6 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
           </div>
 
           <div className="flex gap-3 pointer-events-auto">
-            <button className="p-3 bg-black/50 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors" title="Download (Disabled in demo)">
-              <Download size={20} />
-            </button>
           </div>
         </div>
       </div>
