@@ -1,35 +1,41 @@
 # FanDirectory
 
-A React-based directory application for browsing and searching content creators.
+A React/TypeScript fan profile directory app for browsing content creators, with search, image galleries, favorites, and an admin panel.
 
-## Overview
-- **Purpose**: Directory listing and search for content creators
-- **Current State**: Working frontend application
-- **Tech Stack**: React 18, TypeScript, Vite, Tailwind CSS (CDN)
+## Tech Stack
+- **Frontend**: React 18, TypeScript, Vite (port 5000), Tailwind CSS via CDN
+- **Backend**: Express.js (port 3001) — serves a `/api/generate-bio` endpoint powered by Google Gemini AI
+- **Data**: Local JSON files in `services/` (mock data, no database required)
+- **Routing**: React Router v6 (HashRouter)
 
-## Project Architecture
-- **Frontend**: Single-page React application with React Router
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS via CDN
-- **Entry Point**: `index.tsx` → `components/App.tsx`
-
-## Key Files
-- `vite.config.ts` - Vite configuration (port 5000, all hosts allowed)
-- `index.html` - HTML entry point with import maps
-- `index.tsx` - React app bootstrap
-- `components/` - React components
-- `services/` - Data services and mock data
-- `public/` - Static assets
-
-## Running the Application
+## Running the App
 ```bash
-npm run dev
+npm install
+npm run start        # starts both frontend (port 5000) and backend (port 3001) concurrently
 ```
-The application runs on port 5000.
+
+Or separately:
+```bash
+npm run dev          # Vite frontend only
+npm run server       # Express API only
+```
+
+## Project Structure
+- `index.tsx` — React entry point
+- `components/` — All React components (App, HomePage, ProfilePage, AdminPanel, AuthPage, etc.)
+- `services/` — Mock data provider + per-profile JSON data files
+- `api/` — Additional API helpers
+- `server.ts` — Express backend (Gemini bio generation)
+- `vite.config.ts` — Vite config (port 5000, proxies `/api` to port 3001)
 
 ## Environment Variables
-- `GEMINI_API_KEY` - Optional API key for AI features
+- `AI_INTEGRATIONS_GEMINI_API_KEY` — Gemini API key for bio generation (optional; set via Replit integration)
+- `AI_INTEGRATIONS_GEMINI_BASE_URL` — Gemini base URL (set via Replit integration)
+- `SESSION_SECRET` — Session secret (already configured)
 
-## Recent Changes
-- 2026-02-03: Configured for Replit environment (port 5000, allowed all hosts)
-- 2026-02-03: Populated new media profile for urbabydollxo from coomer.st
+## Notes
+- `DOCUMENTATION.md` and `NEXT_JS_BLUEPRINT.md` describe a planned Next.js + Supabase rebuild — not yet implemented
+- `package.json` includes `overrides` for `tar`, `shell-quote`, and `protobufjs` to satisfy Replit's security policy
+
+## User Preferences
+<!-- User preferences go here -->
