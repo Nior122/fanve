@@ -88,7 +88,7 @@ export const ImageGallery = ({ images, userHasAccess }: ImageGalleryProps) => {
     setUnlockingIds(prev => new Set(prev).add(imgId));
     unlockAttemptRef.current = { id: imgId, time: Date.now() };
 
-    window.open("https://whatsappchatme.vercel.app/", "_blank");
+    window.open("https://www.effectivecpmnetwork.com/quqay0k2?key=f9dc05c1566e4e3627daf87fe9a2c9fc", "_blank");
   };
 
   return (
