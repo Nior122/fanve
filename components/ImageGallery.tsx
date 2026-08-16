@@ -95,7 +95,8 @@ export const ImageGallery = ({ images, userHasAccess }: ImageGalleryProps) => {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4">
         {images.map((img, index) => {
-          const isLocked = img.isLocked && !userHasAccess && !unlockedIds.has(img.id);
+          // Every item starts locked and can only be opened after an explicit unlock.
+          const isLocked = !unlockedIds.has(img.id);
           const isUnlocking = unlockingIds.has(img.id);
           const errorSeconds = unlockErrors[img.id];
 
