@@ -139,17 +139,25 @@ export const Lightbox = ({ images, selectedIndex, onClose, onChangeIndex, unlock
                 : currentImage.url
             }
             controls
+            controlsList="nodownload noremoteplayback"
+            disablePictureInPicture
+            draggable={false}
             preload="none"
             playsInline
             loop
-            className="max-w-full max-h-[85vh] shadow-2xl rounded-sm"
+            onContextMenu={(event) => event.preventDefault()}
+            onDragStart={(event) => event.preventDefault()}
+            className="protected-media max-w-full max-h-[85vh] shadow-2xl rounded-sm"
           />
         ) : (
           <img
             src={currentImage.url}
             alt={currentImage.caption || "Full screen view"}
             referrerPolicy="no-referrer"
-            className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm select-none"
+            draggable={false}
+            onContextMenu={(event) => event.preventDefault()}
+            onDragStart={(event) => event.preventDefault()}
+            className="protected-media max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm select-none"
           />
         )}
 

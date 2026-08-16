@@ -67,6 +67,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Discourage casual saving and long-press media callouts. */
+img,
+video,
+.protected-media {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
     display: none;

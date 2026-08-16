@@ -124,6 +124,38 @@ const ProtectedRoute = ({ children, requireAdmin = false }: { children?: React.R
 };
 
 export default function App() {
+  useEffect(() => {
+    const blockContextMenu = (event: MouseEvent) => {
+      event.preventDefault();
+    };
+
+    const blockMediaDrag = (event: DragEvent) => {
+      if (event.target instanceof HTMLImageElement || event.target instanceof HTMLVideoElement) {
+        event.preventDefault();
+      }
+    };
+
+    const blockSaveShortcuts = (event: KeyboardEvent) => {
+      const commandKey = event.ctrlKey || event.metaKey;
+      const key = event.key.toLowerCase();
+
+      // Prevent the most common browser save/view-source shortcuts.
+      if (commandKey && (key === 's' || key === 'u')) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', blockContextMenu, true);
+    document.addEventListener('dragstart', blockMediaDrag, true);
+    document.addEventListener('keydown', blockSaveShortcuts, true);
+
+    return () => {
+      document.removeEventListener('contextmenu', blockContextMenu, true);
+      document.removeEventListener('dragstart', blockMediaDrag, true);
+      document.removeEventListener('keydown', blockSaveShortcuts, true);
+    };
+  }, []);
+
   return (
     <MockDataProvider>
       <HashRouter>
