@@ -6,14 +6,13 @@
   "scripts": {
     "dev": "vite",
     "server": "tsx server.ts",
-    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "start": "node scripts/start.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@google/genai": "^1.52.0",
     "@types/express": "^5.0.6",
-    "concurrently": "^9.2.4",
     "express": "^5.2.1",
     "lucide-react": "^0.263.1",
     "p-limit": "^7.3.0",
